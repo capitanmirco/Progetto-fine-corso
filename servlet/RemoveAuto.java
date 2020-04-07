@@ -11,11 +11,11 @@ import database.Database;
 import model.Auto;
 import model.Categoria;
 
-@WebServlet("/removeauto")
-public class RemoveAuto extends HttpServlet {
+@WebServlet("/rimuoviauto")
+public class RimuoviAuto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-    public RemoveAuto() {
+    public RimuoviAuto() {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,7 +36,7 @@ public class RemoveAuto extends HttpServlet {
 			Auto a = Database.getInstance().getAutoById(id);
 			a.setDisponibilita((byte) 2);
 			Database.getInstance().updateAuto(a);
-			response.sendRedirect("/removeauto");
+			response.sendRedirect("/rimuoviauto");
 		}else {
 			response.sendRedirect("[home]");
 		}
