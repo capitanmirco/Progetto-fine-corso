@@ -21,7 +21,7 @@ import model.Noleggio;
 /**
  * Servlet implementation class Filtro
  */
-@WebServlet("/filtro")
+@WebServlet(name="filtro", urlPatterns = {"/filtro"})
 public class Filtro extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -51,7 +51,7 @@ public class Filtro extends HttpServlet {
 						listaAuto.remove(i);
 					}
 				}
-				/*passa alla requst la lista auto gi‡ filtrata per categoria*/
+				/*passa alla requst la lista auto gi√† filtrata per categoria*/
 				request.setAttribute("listaAuto", listaAuto);
 				
 			}else {
@@ -112,7 +112,7 @@ public class Filtro extends HttpServlet {
 		return isNumericId;
 	}
 	
-	/*restituisce tutte le auto che non sono gi‡ noleggiate -- 0 = prenotata -- 1 = prenotabile*/
+	/*restituisce tutte le auto che non sono gi√† noleggiate -- 0 = prenotata -- 1 = prenotabile*/
 	private List<Auto> isAutoLibera(List<Auto> listaAuto, String data_inizio, String data_fine) throws ParseException {
 		Date startData = stringToData(data_inizio);
 		Date endData = stringToData(data_fine);
