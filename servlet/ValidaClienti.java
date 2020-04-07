@@ -14,7 +14,7 @@ import model.Cliente;
 /**
  * Servlet implementation class ValidaClienti
  */
-@WebServlet(name ="", urlPatterns = {"/validaclienti"})
+@WebServlet(name ="validaclienti", urlPatterns = {"/validaclienti"})
 public class ValidaClienti extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
