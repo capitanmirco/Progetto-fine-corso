@@ -74,15 +74,15 @@ public class Database {
 		List<Cliente> listaClienti=q.getResultList();
 		return listaClienti;
 	}
-	public List<Cliente> getListaAuto(){
+	public List<Auto> getListaAuto(){
 		Query q=em.createNamedQuery("Auto.findAll");
-		List<Cliente> listaClienti=q.getResultList();
-		return listaClienti;
+		List<Auto> listaAuto=q.getResultList();
+		return listaAuto;
 	}
-	public List<Cliente> getListaUtenti(){
+	public List<Utente> getListaUtenti(){
 		Query q=em.createNamedQuery("Utente.findAll");
-		List<Cliente> listaClienti=q.getResultList();
-		return listaClienti;
+		List<Utente> listaUtenti=q.getResultList();
+		return listaUtenti;
 	}
 	public Cliente getCliente(String email,String password) {
 		Query q = em.createQuery("SELECT c FROM Cliente c WHERE c.email=:email AND c.password=:password"); 
@@ -150,9 +150,9 @@ public class Database {
 		return a;
 	}
 	
-	public List<Cliente> getListaNoleggi(){
+	public List<Noleggio> getListaNoleggi(){
 		Query q=em.createNamedQuery("Nolleggio.findAll");
-		List<Cliente> listaClienti=q.getResultList();
+		List<Noleggio> listaNoleggi=q.getResultList();
 		return listaClienti;
 	}
 	
@@ -163,7 +163,7 @@ public class Database {
 		return listaNoleggi;
 	}
 	public List<Auto> getAutoDisponibili() {
-		Query q = em.createQuery("SELECT a FROM Noleggio a WHERE a.disponibilita=:0 ");   
+		Query q = em.createQuery("SELECT a FROM Noleggio a WHERE a.disponibilita=:1 ");   
 		List<Auto> autoDisponibili =q.getResultList();
 		return autoDisponibili;
 	}
