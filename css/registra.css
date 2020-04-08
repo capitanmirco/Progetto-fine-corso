@@ -1,0 +1,30 @@
+@charset "UTF-8";
+/* CSS Document*/
+*{
+    box-sizing: border-box;
+}
+div{
+    overflow: auto;
+}
+body{
+    margin:0;
+    padding:0;
+    color:rgba(33,57,99,1.00);
+    line-height:1.35 em;
+    font-family:'Spartan',sans-serif;
+}
+.wrapper{
+    margin:0;
+    max-width:1200px;
+    margin-left:150 px;
+    margin-right:auto;
+}
+.container.registra{
+    margin-top:170px;
+    width:50%;
+    margin-bottom: 30px;
+}
+#registratilbl
+{
+  font-size: 17px;
+}
