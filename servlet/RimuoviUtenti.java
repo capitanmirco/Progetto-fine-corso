@@ -22,22 +22,24 @@ public class RimuoviUtenti extends HttpServlet {
                                                                                                                                      
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {            
 		HttpSession session = request.getSession();
-		
+		/*request.getServletContext().getRequestDispatcher("/jsp/header.jsp").include(request,response);
+		request.getServletContext().getRequestDispatcher("/jsp/lista.jsp").include(request,response);
+		request.getServletContext().getRequestDispatcher("/jsp/footer.jsp").include(request,response);*/
 		if(request.getParameter("remove") != null){
-			
-			int id = Integer.parseInt(request.getParameter("remove");
+			int id = Integer.parseInt(request.getParameter("remove"));
 			byte disabilitato = 2;
 				if(session.getAttribute("email_admin") !=null) {                                                                             
 			                                                                                                                                                                                   
-					Utente u = Database.getInstance().getUtenteById(id);                                                                     
+					Utente u = Database.getInstance().getUtenteById(id);   
+					u.setValidato(disabilitato);
 					Database.getInstance().updateUtente(u);		                                                                             
 					//response.sendRedirect("listautenti");   
-					System.out.println("Utente eliminato");
+					System.out.println("Utente eliminato da admin");
 				}            
 		
-				if(session.getParameter("utente")!=null) {
+				if(session.getAttribute("utente")!=null) {
 			
-					Utente u = (Utente) session.getParameter("utente");			
+					Utente u = (Utente) session.getAttribute("utente");			
 					u.setValidato(disabilitato);					
 					Database.getInstance().updateUtente(u);
 					System.out.println("Utente eliminato");
@@ -46,4 +48,4 @@ public class RimuoviUtenti extends HttpServlet {
 			}   
 		}
                                                                                                                                      
-}                                                                                                                                    
+}                                                                                                                                   
