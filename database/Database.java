@@ -18,7 +18,7 @@ public class Database {
 	}
 	
 	private static Database instance=new Database();
-	public static Database getIstance() {
+	public static Database getInstance() {
 		return instance;
 	}
 	public boolean addUtente(Utente u) {
