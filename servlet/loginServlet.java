@@ -55,11 +55,11 @@ public class loginServlet extends HttpServlet {
 			System.out.println("OK malfidati!!!!!");
 		}else if(Database.getIstance().getUtente(risposta1_jsp, risposta2_jsp)!=null)
 		{
-			Utente utente=Database.getIstance().getUtente(risposta1_jsp,risposta2_jsp);
+			Utente utente=Database.getInstance().getUtente(risposta1_jsp,risposta2_jsp);
 			session.setAttribute("utente", utente);
 			System.out.println("Ciao!!!");
 		}else if(Database.getIstance().getCliente(risposta1_jsp, risposta2_jsp)!=null){
-			Cliente cliente=Database.getIstance().getCliente(risposta1_jsp,risposta2_jsp);
+			Cliente cliente=Database.getInstance().getCliente(risposta1_jsp,risposta2_jsp);
 			request.setAttribute("cliente",cliente);
 			System.out.println("OK!!!!!");
 		}else if(risposta1_jsp==null||risposta2_jsp==null)
