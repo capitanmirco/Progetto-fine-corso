@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import database.Database;
 import model.Cliente;
@@ -15,6 +16,8 @@ public class RimuoviClienti extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		HttpSession session = request.getSession();
 		
 		int id = Integer.parseInt(request.getParameter("remove"));
 		byte disabilitato = 2;
@@ -32,7 +35,7 @@ public class RimuoviClienti extends HttpServlet {
 			}
 			
 			// se sono un utente
-			if(request.getParameter("numero_patente")==null) {
+			if(session.getAttribute("utente") != null) {
 				Cliente c = Database.getInstance().getClienteById(id);
 				c.setValidato(disabilitato);								// setto il suo stato a 2, quindi "disabilitato"
 				
@@ -42,7 +45,7 @@ public class RimuoviClienti extends HttpServlet {
 			}
 			
 			// se sono un cliente
-			if(request.getParameter("numero_patente")!=null) {
+			if(session.getAttribute("cliente") != null) {
 				String email = request.getParameter("email");
 				String password = request.getParameter("password");
 				
@@ -60,3 +63,4 @@ public class RimuoviClienti extends HttpServlet {
 	}
 
 }
+
