@@ -37,7 +37,7 @@ public class RimuoviUtenti extends HttpServlet {
 		
 				if(session.getParameter("utente")!=null) {
 			
-					Utente u = session.getParameter("utente");			
+					Utente u = (Utente) session.getParameter("utente");			
 					u.setValidato(disabilitato);					
 					Database.getInstance().updateUtente(u);
 					System.out.println("Utente eliminato");
