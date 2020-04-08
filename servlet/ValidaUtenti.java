@@ -55,5 +55,19 @@ public class ValidaUtenti extends HttpServlet {
 		} // end if
 
 	}
+	
+		/* controlla se la stringa può essere parsata senza errori */
+	private boolean isNumericId(String s) {
+		boolean isNumericId = false;
+		for (int i = 0; i < s.length(); i++) {
+			if (s.charAt(i) >= 48 && s.charAt(i) <= 57) {
+				isNumericId = true;
+			} else {
+				isNumericId = false;
+				break;
+			}
+		}
+		return isNumericId;
+	}
 
 }
