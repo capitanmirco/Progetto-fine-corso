@@ -21,25 +21,29 @@ public class RimuoviUtenti extends HttpServlet {
     }                                                                                                                                
                                                                                                                                      
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {            
-		HttpSession session = request.getSession();  
-		int id = Integer.parseInt(request.getParameter("remove"));
-		byte disabilitato = 2;
-		if(session.getAttribute("email_admin") !=null) {                                                                             
-			                                                                                                                                                                                   
-			Utente u = Database.getInstance().getUtenteById(id);                                                                     
-			Database.getInstance().updateUtente(u);		                                                                             
-			//response.sendRedirect("listautenti");   
-			System.out.println("Utente eliminato");
-		}            
+		HttpSession session = request.getSession();
 		
-		if(session.getParameter("utente")!=null) {
+		if(request.getParameter("remove") != null){
 			
-			Utente u = session.getParameter("utente");			
-			u.setValidato(disabilitato);					
-			Database.getInstance().updateUtente(u);
-			System.out.println("Utente eliminato");
-			response.sendRedirect("logoutservlet");
+			int id = Integer.parseInt(request.getParameter("remove");
+			byte disabilitato = 2;
+				if(session.getAttribute("email_admin") !=null) {                                                                             
+			                                                                                                                                                                                   
+					Utente u = Database.getInstance().getUtenteById(id);                                                                     
+					Database.getInstance().updateUtente(u);		                                                                             
+					//response.sendRedirect("listautenti");   
+					System.out.println("Utente eliminato");
+				}            
+		
+				if(session.getParameter("utente")!=null) {
+			
+					Utente u = session.getParameter("utente");			
+					u.setValidato(disabilitato);					
+					Database.getInstance().updateUtente(u);
+					System.out.println("Utente eliminato");
+					response.sendRedirect("logoutservlet");
+				}
+			}   
 		}
-	}                                                                                                                                                                                                                                                     
                                                                                                                                      
 }                                                                                                                                    
