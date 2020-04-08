@@ -28,19 +28,17 @@ public class RimuoviUtenti extends HttpServlet {
 			                                                                                                                                                                                   
 			Utente u = Database.getInstance().getUtenteById(id);                                                                     
 			Database.getInstance().updateUtente(u);		                                                                             
-			response.sendRedirect("listautenti");                                                                                    
+			//response.sendRedirect("listautenti");   
+			System.out.println("Utente eliminato");
 		}            
 		
-		if(request.getParameter("numero_patente")==null) {
-			String email = request.getParameter("email");
-			String password = request.getParameter("password");
+		if(session.getParameter("utente")!=null) {
 			
-			Utente u = Database.getInstance().getUtente(email, password);
-			
-			u.setValidato(disabilitato);								// setto il suo stato a 2, quindi "disabilitato"
-			
+			Utente u = session.getParameter("utente");			
+			u.setValidato(disabilitato);					
 			Database.getInstance().updateUtente(u);
-			response.sendRedirect("logout");
+			System.out.println("Utente eliminato");
+			response.sendRedirect("logoutservlet");
 		}
 	}                                                                                                                                                                                                                                                     
                                                                                                                                      
