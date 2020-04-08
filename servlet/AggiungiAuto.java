@@ -30,7 +30,7 @@ public class AggiungiAuto extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getServletContext().getRequestDispatcher("/jsp/header.jsp").include(request, response);
-		request.getServletContext().getRequestDispatcher("/jsp/aggiungiauto.jsp").include(request, response);
+		request.getServletContext().getRequestDispatcher("/jsp/formAuto.jsp").include(request, response);
 		request.getServletContext().getRequestDispatcher("/jsp/footer.jsp").include(request, response);
 		
 		
