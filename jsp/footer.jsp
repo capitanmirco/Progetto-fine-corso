@@ -3,24 +3,24 @@
 <footer id="bottom" class=" blue row text-left p-4">
 	<div class="col-12 col-md-4">
 		<h1>Contatti</h1>
-		
-			
-			<div class="form-group">
-				<p>emaildiprova@gmail.com</p>
-			</div>
 
-			<div class="form-group">
-				<p>+ 39 325 765 7899</p>
-			</div>
 
-			<div class="form-group">
-				<p>+ 39 355 879 5285</p>
-			</div>
+		<div class="contatti">
+			<p>emaildiprova@gmail.com</p>
+		</div>
 
+		<div class="contatti">
+			<p>+ 39 325 765 7899</p>
+		</div>
+
+		<div class="contatti">
+			<p>+ 39 355 879 5285</p>
+		</div>
+		<div class="contatti">
 			<p>Siamo a tua disposizione,contattaci!</p>
-			<div class="form-check"></div>
+		</div>
 
-		
+
 	</div>
 	<div class="col-12 col-md-4">
 		<h1>Autonoleggio Nome&copy;</h1>
@@ -57,8 +57,10 @@
 		</a>
 	</div>
 
-	<p class="privacy" id="privacy">© 2020 Nome Corporation. Tutti i diritti
-		riservati.Informativa ai sensi dell’art. 13 del d. Lgs N. 196/2003</p>
+
+	<p class="privacy" id="privacy">© 2020 Nome Corporation. Tutti i
+		diritti riservati.Informativa ai sensi dell’art. 13 del d. Lgs N.
+		196/2003</p>
 
 </footer>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
