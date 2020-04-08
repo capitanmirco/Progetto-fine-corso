@@ -16,7 +16,7 @@ public class AggiungiClienti extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Cliente c = (Cliente) request.getAttribute("cliente");
-		Database.getIstance().addCliente(c);
+		Database.getInstance().addCliente(c);
 		System.out.println("ok cliente aggiunto");
 	}
 
