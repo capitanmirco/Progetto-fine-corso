@@ -38,7 +38,7 @@ public class ValidaClienti extends HttpServlet {
 			
 			/*if id is numeric*/
 			if(isNumericId) {
-				Cliente c = Database.getInstance().getclienteById(Integer.parseInt(request.getParameter("id")));
+				Cliente c = Database.getInstance().getClienteById(Integer.parseInt(request.getParameter("id")));
 				if(c!=null) {
 					if(request.getParameter("valida").charAt(0) >= 48 && request.getParameter("valida").charAt(0)<= 50) {
 						c.setValidato(Byte.parseByte(request.getParameter("valida")));
@@ -52,7 +52,7 @@ public class ValidaClienti extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 	}
 	
-	/*controlla se la stringa può essere parsata senza errori*/
+	/*controlla se la stringa puÃ² essere parsata senza errori*/
 	private boolean isNumericId(String s) {
 		boolean isNumericId=false;
 		for(int i=0;i<s.length();i++) {
