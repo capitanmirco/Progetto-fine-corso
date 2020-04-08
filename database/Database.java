@@ -39,6 +39,12 @@ public class Database {
 		em.getTransaction().commit();
 		return true;
 	}
+	public boolean addNoleggio(Noleggio n) {
+		em.getTransaction().begin();
+		em.persist(n);
+		em.getTransaction().commit();
+		return true;
+	}
 	public boolean updateAuto(Auto a) {
 		em.getTransaction().begin();
 		em.merge(a);
@@ -90,7 +96,7 @@ public class Database {
 		}
 	}
 	public Utente getUtente(String email,String password) {
-		Query q = em.createQuery("SELECT c FROM Utente c WHERE c.email=:email AND c.password=:password"); 
+		Query q = em.createQuery("SELECT u FROM Utente u WHERE c.email=:email AND u.password=:password"); 
 		q.setParameter("email", email); 
 		q.setParameter("password", password);
 		try {
@@ -99,22 +105,64 @@ public class Database {
 		}catch(Exception e) {
 			return null;
 		}
+	}
+	
+	public Cliente getClienteById(int id) {
+		em.getTransaction().begin();
+		Cliente c = em.find(Cliente.class, id);
+		em.getTransaction().commit();
+		return c;
+	}
+	
+	public Utente getUtenteById(int id) {
+		em.getTransaction().begin();
+		Utente u = em.find(Utente.class, id);
+		em.getTransaction().commit();
+		return u;
+	}
+	
+	public Categoria getCategoria(String categoria) {
+		Query q = em.createQuery("SELECT c FROM Categoria c WHERE c.nome=:categoria");
+		q.setParameter("categoria", categoria);	
+		Categoria nomeCategoria = (Categoria) q.getSingleResult();		
+		return nomeCategoria;
 
 	}
+	
+	public Categoria getCategoriaById(int id) {
+		em.getTransaction().begin();
+		Categoria c = em.find(Categoria.class, id);
+		em.getTransaction().commit();
+		return c;
+	}
+	
+	public Noleggio getNoleggioById(int id) {
+		em.getTransaction().begin();
+		Noleggio n = em.find(Noleggio.class, id);
+		em.getTransaction().commit();
+		return n;
+	}
+	
+	public Auto getAutoById(int id) {
+		em.getTransaction().begin();
+		Auto a = em.find(Auto.class, id);
+		em.getTransaction().commit();
+		return a;
+	}
+	
 	public List<Cliente> getListaNoleggi(){
 		Query q=em.createNamedQuery("Nolleggio.findAll");
 		List<Cliente> listaClienti=q.getResultList();
 		return listaClienti;
 	}
-	public List<Noleggio> getListaNoleggio(Cliente cliente) {
+	
+	public List<Noleggio> getListaNoleggi(Cliente cliente) {
 		Query q = em.createQuery("SELECT n FROM Noleggio n WHERE n.id_cliente=:id_cliente"); 
-		//q.setParameter("email", email); 
-		//q.setParameter("password", password);
 		q.setParameter("id_cliente", cliente.getIdCliente()); 
 		List<Noleggio>listaNoleggi=q.getResultList();
 		return listaNoleggi;
 	}
-	public List<Auto> getAutoDisponibilie() {
+	public List<Auto> getAutoDisponibili() {
 		Query q = em.createQuery("SELECT a FROM Noleggio a WHERE a.disponibilita=:0 ");   
 		List<Auto> autoDisponibili =q.getResultList();
 		return autoDisponibili;
