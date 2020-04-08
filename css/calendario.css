@@ -1,0 +1,96 @@
+@charset "ISO-8859-1";
+*{
+	font-family: 'Montserrat', sans-serif;
+	text-align: center;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #004882;
+  }
+  
+  .box {
+    margin-left: 6px;
+    
+    
+  }
+  
+  .box select {
+    margin-top: 20px;
+    background-color: #59C2B0;
+    color: white;
+    padding: 12px;
+    width: 250px;
+    border: none;
+    font-size: 20px;
+   -webkit-appearance: button;
+    appearance: button;
+    outline: none;
+   
+  }
+  
+ 
+  
+
+  
+  .box select option {
+    padding: 30px;
+  }
+  
+  .input{
+     margin-top: 20px;
+        background-color: #59C2B0;
+        color: white;
+        padding: 12px;
+        width: 250px;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+        -webkit-appearance: button;
+        appearance: button;
+        outline: none;
+        
+      }
+      .bgselect{
+      margin:30px;
+          align-content: center;
+          
+          padding-top: 30px;
+          
+          background: rgba(255, 255, 255, 0.6);
+          width: 350px;
+          height: 350px;
+          border-radius: 2rem;
+          text-align: center;
+          
+      }
+      .bgselect > *{
+        margin:0 auto;
+      }
+      
+      .bottoni{
+          margin-bottom: 20px;
+          border-radius: 0.8rem;
+          background-color: #1F4267 ;
+          color: white;
+          width: 10em;  
+          height: 2em;
+          outline: none;
+          font-size:20px;
+          text-align: center;
+          
+          
+
+      }
+      .cal-position{
+       z-index:1;
+       position:absolute;
+       top: 200;
+       left:200;
+       
+      }
+      .div-car{
+     z-index:0;
+     
+      }
+    
