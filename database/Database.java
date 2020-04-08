@@ -153,7 +153,7 @@ public class Database {
 	public List<Noleggio> getListaNoleggi(){
 		Query q=em.createNamedQuery("Nolleggio.findAll");
 		List<Noleggio> listaNoleggi=q.getResultList();
-		return listaClienti;
+		return listaNoleggi;
 	}
 	
 	public List<Noleggio> getListaNoleggi(Cliente cliente) {
