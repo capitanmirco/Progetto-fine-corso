@@ -3,7 +3,6 @@ package servlet;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,15 +13,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sun.security.ntlm.Client;
-
 import database.Database;
+
+//import com.sun.security.ntlm.Client;
+
+//import database.Database;
 import model.Cliente;
 import model.Utente;
 
-
-
-@WebServlet(name="registrazione", urlPatterns = {"/registrazione"})
+@WebServlet(name = "registrazione", urlPatterns = { "/registrazione" })
 public class Registro extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -34,111 +33,67 @@ public class Registro extends HttpServlet {
 
 	}
 
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		request.getServletContext().getRequestDispatcher("/jsp/registro.jsp").include(request,response);//????????????
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.getServletContext().getRequestDispatcher("/jsp/registrazione.jsp").include(request, response);// ????????????
+		
 
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
-		String id = request.getParameter("id"); //ogg.ID
-		String cl = request.getParameter("cl"); //cliente
-		String ut = request.getParameter("ut"); //utente
-
-
-		if(id.equals(cl)) {
-
-			//cliente
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		if ((request.getParameter("nome") != null) && (request.getParameter("cognome") != null)
+			&& (request.getParameter("mail") != null) && (request.getParameter("password") != null)&& (request.getParameter("dataDiNascita") != null) && (request.getParameter("codiceFiscale") != null)) {
 			String nome = request.getParameter("nome");
-			String cognome =  request.getParameter("cognome");
-			String email =  request.getParameter("mail");
-			String password =  request.getParameter("password");
-			String dataDiNascita = request.getParameter("dataDiNascita"); 
+			String cognome = request.getParameter("cognome");
+			String email = request.getParameter("mail");
+			String password = request.getParameter("password");
+			String dataDiNascita = request.getParameter("dataDiNascita");
 			String codiceFiscale = request.getParameter("codiceFiscale");
-			String numeroPatente =  request.getParameter("numeroPatente");
 
-			if((nome != null)&&(cognome != null)&&(email != null)&&(password != null) && (dataDiNascita != null)&&(codiceFiscale != null)&&(numeroPatente != null)){
+			// request.getServletContext().getRequestDispatcher("/jsp/patente.jsp").include(request,
+			// response);// ????????????
+			if (request.getParameter("cl_ut") != null && request.getParameter("cl_ut").equals("cl")
+					&& (request.getParameter("numeroPatente") != null)) {
+				// cliente
 
+				String numeroPatente = request.getParameter("numeroPatente");
+				Cliente c = new Cliente();
 
-				List<Cliente> lista = Database.getInstance().getListaClienti();
+				c.setNome(nome);
+				c.setCognome(cognome);
+				c.setEmail(email);
+				c.setPassword(password);
+				c.setDataDiNascita(dataDiNascita);
+				c.setCodiceFiscale(codiceFiscale);
+				c.setNumeroPatente(numeroPatente);
 
-				for(Cliente elementoClienteSingolo : lista) {
+				request.setAttribute("cliente", c);
+				request.getServletContext().getNamedDispatcher("aggiungiclienti").forward(request,response);
+				//Database.getIstance().addCliente(c);
+				
 
-					if(!(elementoClienteSingolo.getEmail()).equals(email)){
+				// doGet(request, response);
 
+				// utente (dipendente)
+			} else if (request.getParameter("cl_ut") != null && request.getParameter("cl_ut").equals("ut")) {
 
+				
 
-						Cliente c = new Cliente();
+				Utente u = new Utente();
 
-						c.setNome(nome);
-						c.setCognome(cognome);
-						c.setEmail(email);
-						c.setPassword(password);
-						c.setDataDiNascita(dataDiNascita);
-						c.setCodiceFiscale(codiceFiscale);
-						c.setNumeroPatente(numeroPatente);
+				u.setNome(nome);
+				u.setCognome(cognome);
+				u.setEmail(email);
+				u.setPassword(password);
+				u.setDataDiNascita(dataDiNascita);
+				u.setCodiceFiscale(codiceFiscale);
 
-						request.setAttribute("cliente", c);
-						request.getServletContext().getNamedDispatcher("aggiungiclienti").include(request, response);
-						System.out.println("ok cliente aggiunto");
-
-					}else {
-						System.out.println("Cliente gi� registrato");
-					}
-
-				}
-			}
-
-			doGet(request,response);
-
-			//utente (dipendente)
-
-		}else if(id.equals(ut)){
-
-			String nomeU = request.getParameter("nome");
-			String cognomeU =  request.getParameter("cognome");
-			String emailU =  request.getParameter("mail");
-			String passwordU =  request.getParameter("password");
-			String dataDiNascitaU = request.getParameter("dataDiNascita"); 
-			String codiceFiscaleU = request.getParameter("codiceFiscale");
-
-
-			if((nomeU != null)&&(cognomeU != null)&&(emailU != null)&&(passwordU != null) && (dataDiNascitaU != null)&&(codiceFiscaleU != null)){
-
-				List<Utente> lista = Database.getInstance().getListaUtenti();
-
-				for(Utente elementoUtenteSingolo : lista) {
-
-					if(!(elementoUtenteSingolo.getEmail()).equals(emailU)){ 
-
-						Utente u = new Utente();
-
-						u.setNome(nomeU);
-						u.setCognome(cognomeU);
-						u.setEmail(emailU);
-						u.setPassword(passwordU);
-						u.setDataDiNascita(dataDiNascitaU);
-						u.setCodiceFiscale(codiceFiscaleU);
-
-						request.setAttribute("utente", u);
-						request.getServletContext().getNamedDispatcher("aggiungiutenti").include(request, response);
-						System.out.println("ok utente aggiunto");
-
-					}
-					else {
-						System.out.println("Cliente gi� registrato");
-					}
-				}
-			}else {
-				System.out.println("Completare i campi richiesti");
+				request.setAttribute("utente", u);
+				request.getServletContext().getNamedDispatcher("aggiungiutenti").forward(request,response);
+				//Database.getIstance().addUtente(u);
 			}
 		}
-		
-		doGet(request,response);
-
 	}
 }
 
