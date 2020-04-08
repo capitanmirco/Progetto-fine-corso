@@ -31,15 +31,7 @@ public class ValidaUtenti extends HttpServlet {
 
 		if (request.getParameter("valida") != null && request.getParameter("valida").equals("1")
 				&& request.getParameter("id") != null && session.getAttribute("email_admin") != null) {
-			boolean isNumericId = false;
-			for (int i = 0; i < request.getParameter("id").length(); i++) {
-				if (request.getParameter("id").charAt(i) >= 48 && request.getParameter("id").charAt(i) <= 57) {
-					isNumericId = true;
-				} else {
-					isNumericId = false;
-					break;
-				}
-			}
+			boolean isNumericId = isNumericId(request.getParameter("id"));
 
 			/* if id is numeric */
 			if (isNumericId) {
