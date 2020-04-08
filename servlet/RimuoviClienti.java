@@ -16,22 +16,23 @@ public class RimuoviClienti extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		/*request.getServletContext().getRequestDispatcher("/jsp/header.jsp").include(request,response);
+		request.getServletContext().getRequestDispatcher("/jsp/lista.jsp").include(request,response);
+		request.getServletContext().getRequestDispatcher("/jsp/footer.jsp").include(request,response);*/
 		HttpSession session = request.getSession();
-		
-		int id = Integer.parseInt(request.getParameter("remove"));
-		byte disabilitato = 2;
-		
-		if(request.getParameter("remove") != null && request.getParameter("email") != null && request.getParameter("password") != null) {
+		if(request.getParameter("remove") != null) {
+			int id = Integer.parseInt(request.getParameter("remove"));
+			byte disabilitato = 2;
 			
 			// se sono un admin
-			if(request.getParameter("email").equals("matteo.aiello@gmail.com") && request.getParameter("password").equals("progettofinaleGeneration")) {
+			if(session.getAttribute("email_admin")!=null) {
 				Cliente c = Database.getInstance().getClienteById(id);
 				c.setValidato(disabilitato);								// setto il suo stato a 2, quindi "disabilitato"
 				
 				Database.getInstance().updateCliente(c);
-				
-				response.sendRedirect("listaclienti");
+				System.out.println("cliente eliminato ad admin");
+
+				//response.sendRedirect("listaclienti");
 			}
 			
 			// se sono un utente
@@ -41,21 +42,21 @@ public class RimuoviClienti extends HttpServlet {
 				
 				Database.getInstance().updateCliente(c);
 				
-				response.sendRedirect("listaclienti");
+				//response.sendRedirect("listaclienti");
+				System.out.println("cliente eliminato da utente");
 			}
 			
 			// se sono un cliente
 			if(session.getAttribute("cliente") != null) {
-				String email = request.getParameter("email");
-				String password = request.getParameter("password");
 				
-				Cliente c = Database.getInstance().getCliente(email, password);
+				Cliente c=(Cliente) session.getAttribute("cliente");
 				
 				c.setValidato(disabilitato);								// setto il suo stato a 2, quindi "disabilitato"
 				
 				Database.getInstance().updateCliente(c);
 				
-				response.sendRedirect("logout");
+				System.out.println("cliente eliminato");
+				response.sendRedirect("logoutservlet");
 			}
 		
 		}
