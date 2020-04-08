@@ -16,7 +16,7 @@ public class AggiungiUtenti extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Utente u = (Utente) request.getAttribute("utente");
-		Database.getIstance().addUtente(u);
+		Database.getInstance().addUtente(u);
 		System.out.println("ok utente aggiunto");
 	}
 }
