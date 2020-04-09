@@ -31,9 +31,8 @@ public class ValidaClienti extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		/*check valida e check id passato correttamente*/
-		if(request.getParameter("valida")!=null && request.getParameter("valida").equals("1") && request.getParameter("id")!=null
+		if(request.getAttribute("valida")!=null && request.getAttribute("valida").equals("1") && request.getAttribute("id")!=null
 				&& session.getAttribute("email_admin")!=null) {
-			
 			boolean isNumericId = isNumericId(request.getParameter("id"));
 			
 			/*if id is numeric*/
@@ -46,7 +45,7 @@ public class ValidaClienti extends HttpServlet {
 					response.sendRedirect("gestionepersone");
 				}
 			}
-		}//end if
+		}//end if 
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
