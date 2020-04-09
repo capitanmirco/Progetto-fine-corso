@@ -1,7 +1,7 @@
 <div class="blue" id="header" align="center" style="">NOME
 	SITO/LOGO</div>
 <%
-	session.setAttribute("cliente", "ciao");
+	//session.setAttribute("cliente", "ciao");
 //	session.setAttribute("utente", "ciao");
 %>
 
