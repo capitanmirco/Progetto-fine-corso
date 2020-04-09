@@ -21,7 +21,7 @@ import model.Noleggio;
 /**
  * Servlet implementation class Filtro
  */
-@WebServlet(name="filtro", urlPatterns = {"/filtro"})
+@WebServlet("/filtro")
 public class Filtro extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -35,24 +35,32 @@ public class Filtro extends HttpServlet {
     }
 
     /*filtro per categoria e filtro per data*/
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		/* ***************************************filtro categoria **************************************************** */
-		if(request.getParameter("filtro_categoria")!=null) {
-			boolean isNumericId = isNumericId(request.getParameter("filtro_categoria"));
+		/* 1 = citycar // 2 = suv // 3 = auto di lusso */
+		if(request.getParameter("auto")!=null) {
+			boolean isNumericId = isNumericId(request.getParameter("auto"));
 			
 			if(isNumericId) {
-				int categoria = Integer.parseInt(request.getParameter("filtro_categoria"));
+				int categoria = Integer.parseInt(request.getParameter("auto"));
 				listaAuto = Database.getInstance().getAutoDisponibili();
 				Categoria c = Database.getInstance().getCategoriaById(categoria);
 
 				for(int i=0;i<listaAuto.size();i++) {
 					if(!isEqual(listaAuto.get(i).getCategoria(), c)) {
 						listaAuto.remove(i);
+						i--;
 					}
 				}
 				/*passa alla requst la lista auto già filtrata per categoria*/
 				request.setAttribute("listaAuto", listaAuto);
+				
+				
+				/*da cancellare
+				for(Auto a : listaAuto ) {
+					System.out.println("filtro categoria " + a.getMarca());
+				}*/
 				
 			}else {
 				request.setAttribute("errore", true);
@@ -61,8 +69,8 @@ public class Filtro extends HttpServlet {
 		
 		
 		/* ***************************************filtro data **************************************************** */
-		if(request.getParameter("data_inizio")!=null && request.getParameter("data_fine")!=null &&
-				isNumericId(request.getParameter("data_inizio")) && isNumericId(request.getParameter("data_fine"))) {
+		if(request.getParameter("inizioNolo")!=null && request.getParameter("fineNolo")!=null &&
+				isNumericId(request.getParameter("inizioNolo")) && isNumericId(request.getParameter("fineNolo"))) {
 			
 			/*filtro veicoli per data*/
 			if(request.getAttribute("listaAuto")==null) {
@@ -72,19 +80,24 @@ public class Filtro extends HttpServlet {
 			}
 			
 			try {
-				isAutoLibera(listaAuto, request.getParameter("data_inizio"), request.getParameter("data_fine"));
+				isAutoLibera(listaAuto, request.getParameter("inizioNolo"), request.getParameter("fineNolo"));
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
+			
+			/*da cancellare
+			for(Auto a : listaAuto ) {
+				System.out.println("filtro data " + a.getMarca());
+			}*/
 			
 			request.setAttribute("filtro_data", listaAuto);
 
 		}
 		
+		request.getServletContext().getNamedDispatcher("catalogo").forward(request, response);
+		
 	}/*doGet*/
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	}
 	
 	/*restituisce true se i nomi delle categorie sono uguali*/
 	private boolean isEqual(Categoria c1, Categoria c2) {
@@ -113,35 +126,46 @@ public class Filtro extends HttpServlet {
 	}
 	
 	/*restituisce tutte le auto che non sono già noleggiate -- 0 = prenotata -- 1 = prenotabile*/
-	private List<Auto> isAutoLibera(List<Auto> listaAuto, String data_inizio, String data_fine) throws ParseException {
+	private void isAutoLibera(List<Auto> listaAuto, String data_inizio, String data_fine) throws ParseException {
 		Date startData = stringToData(data_inizio);
 		Date endData = stringToData(data_fine);
-		List<Auto> listaFiltrata = new ArrayList<Auto>();
-		for(Auto a : listaAuto) {
-			if(a.getDisponibilita() == 1){
-				listaFiltrata.add(a);
-			}else if(a.getDisponibilita() == 0) {
+		List<Auto> listaFiltrata = Database.getInstance().getListaAuto();
+		for(int i=0;i<listaFiltrata.size();i++) {
+			if(listaFiltrata.get(i).getDisponibilita() == 0) {
 				List<Noleggio> listaNoleggio = Database.getInstance().getListaNoleggi();
 				for(Noleggio n : listaNoleggio) {
-					if(n.getAuto().getIdAuto() == a.getIdAuto() && n.getStato()==0) {
+					/*noleggio :  0 = terminato / 1 = in corso / 2 = interrotto*/
+					if(n.getAuto().getIdAuto() == listaFiltrata.get(i).getIdAuto() && n.getStato()==1) {
 						/*>0 data 1 dopo data2 -- <0 data 1 prima di data2 -- = data 1 e data 2 uguali*/
-						if(endData.compareTo(stringToData(n.getDataInizio()))<0 || startData.compareTo(stringToData(n.getDataFine()))>0) {
-							listaFiltrata.add(a);
+						if((startData.compareTo(stringToData(n.getDataInizio()))<0 && endData.compareTo(stringToData(n.getDataInizio()))<0) 
+								|| (startData.compareTo(stringToData(n.getDataFine()))>0 && endData.compareTo(stringToData(n.getDataFine()))>0)) {
+							if(!listaAuto.contains(listaFiltrata.get(i))) {
+								//System.out.println("aggiungi "+listaFiltrata.get(i).getMarca());
+								listaAuto.add(listaFiltrata.get(i));
+							}
+						}else {
+								//System.out.println("rimuovi "+listaFiltrata.get(i).getMarca());
+								listaAuto.remove(listaFiltrata.get(i));
+								listaFiltrata.remove(i);
+								if(i == 0) {
+									i=0;
+								}else {
+									i--;
+								}
 						}
 					}
+
 				}
 			}
 		}
-		return listaFiltrata;
 	}
 	
 	/*converte una stringa in data*/
 	private Date stringToData(String data) throws ParseException {
-		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = formatter.parse(data);
 		return date;
 	}
-	
-	
 
 }
+
