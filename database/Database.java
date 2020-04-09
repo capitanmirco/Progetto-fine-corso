@@ -237,7 +237,7 @@ public class Database {
 	}
 
 	public List<Noleggio> getListaNoleggi() {
-		Query q = em.createNamedQuery("Nolleggio.findAll");
+		Query q = em.createNamedQuery("Noleggio.findAll");
 		try {
 			List<Noleggio> listaNoleggi = q.getResultList();
 			return listaNoleggi;
@@ -258,7 +258,7 @@ public class Database {
 	}
 
 	public List<Auto> getAutoDisponibili() {
-		Query q = em.createQuery("SELECT a FROM Noleggio a WHERE a.disponibilita=1");
+		Query q = em.createQuery("SELECT a FROM Auto a WHERE a.disponibilita=1");
 		try {
 			List<Auto> autoDisponibili = q.getResultList();
 			return autoDisponibili;
