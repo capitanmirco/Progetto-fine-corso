@@ -30,6 +30,8 @@ public class AggiungiAuto extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		
+		session.setAttribute("utente", "neve");
+		
 		// solo utenti e admin
 		
 		if(session.getAttribute("email_admin") != null || session.getAttribute("utente") != null) {
@@ -56,7 +58,7 @@ public class AggiungiAuto extends HttpServlet {
 			String modello = request.getParameter("modello");
 			String targa = request.getParameter("targa");
 			
-			int idCategoria=Integer.parseInt(request.getParameter("id_categoria"));
+			int idCategoria=Integer.parseInt(request.getParameter("categoria"));
 			Categoria c = Database.getInstance().getCategoriaById(idCategoria);
 			
 			if(cilindrata!=0 && colore!=null && marca!=null && modello!=null && targa!=null && idCategoria!=0) {
@@ -79,8 +81,6 @@ public class AggiungiAuto extends HttpServlet {
 }
 	
 }
-
-
 
 
 
