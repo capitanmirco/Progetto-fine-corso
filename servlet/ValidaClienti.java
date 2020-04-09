@@ -31,9 +31,9 @@ public class ValidaClienti extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		/*check valida e check id passato correttamente*/
-		if(request.getAttribute("valida")!=null && request.getAttribute("valida").equals("1") && request.getAttribute("id")!=null
+		if(request.getParameter("valida")!=null && request.getParameter("valida").equals("1") && request.getParameter("id")!=null
 				&& session.getAttribute("email_admin")!=null) {
-			boolean isNumericId = isNumericId(request.getParameter("id"));
+			boolean isNumericId = isNumericId((String)request.getAttribute("id"));
 			
 			/*if id is numeric*/
 			if(isNumericId) {
@@ -66,3 +66,4 @@ public class ValidaClienti extends HttpServlet {
 	}
 
 }
+
