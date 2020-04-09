@@ -26,77 +26,121 @@ public class Database {
 	}
 
 	public boolean addUtente(Utente u) {
-		em.getTransaction().begin();
-		em.persist(u);
-		em.getTransaction().commit();
-		return true;
+		try {
+			em.getTransaction().begin();
+			em.persist(u);
+			em.getTransaction().commit();
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 	public boolean addCliente(Cliente c) {
-		em.getTransaction().begin();
-		em.persist(c);
-		em.getTransaction().commit();
-		return true;
+		try {
+			em.getTransaction().begin();
+			em.persist(c);
+			em.getTransaction().commit();
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 	public boolean addAuto(Auto a) {
-		em.getTransaction().begin();
-		em.persist(a);
-		em.getTransaction().commit();
-		return true;
+		try {
+			em.getTransaction().begin();
+			em.persist(a);
+			em.getTransaction().commit();
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 	public boolean addNoleggio(Noleggio n) {
-		em.getTransaction().begin();
-		em.persist(n);
-		em.getTransaction().commit();
-		return true;
+		try {
+			em.getTransaction().begin();
+			em.persist(n);
+			em.getTransaction().commit();
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 	public boolean updateAuto(Auto a) {
-		em.getTransaction().begin();
-		em.merge(a);
-		em.getTransaction().commit();
-		return true;
+		try {
+			em.getTransaction().begin();
+			em.merge(a);
+			em.getTransaction().commit();
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 	public boolean updateCliente(Cliente c) {
-		em.getTransaction().begin();
-		em.merge(c);
-		em.getTransaction().commit();
-		return true;
+		try {
+			em.getTransaction().begin();
+			em.merge(c);
+			em.getTransaction().commit();
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 	public boolean updateUtente(Utente u) {
-		em.getTransaction().begin();
-		em.merge(u);
-		em.getTransaction().commit();
-		return true;
+		try {
+			em.getTransaction().begin();
+			em.merge(u);
+			em.getTransaction().commit();
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 	public boolean updateNoleggio(Noleggio n) {
-		em.getTransaction().begin();
-		em.merge(n);
-		em.getTransaction().commit();
-		return true;
+		try {
+			em.getTransaction().begin();
+			em.merge(n);
+			em.getTransaction().commit();
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 	public List<Cliente> getListaClienti() {
 		Query q = em.createNamedQuery("Cliente.findAll");
-		List<Cliente> listaClienti = q.getResultList();
-		return listaClienti;
+		try {
+			List<Cliente> listaClienti = q.getResultList();
+			return listaClienti;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	public List<Auto> getListaAuto() {
 		Query q = em.createNamedQuery("Auto.findAll");
-		List<Auto> listaAuto = q.getResultList();
-		return listaAuto;
+		try {
+			List<Auto> listaAuto = q.getResultList();
+			return listaAuto;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	public List<Utente> getListaUtenti() {
 		Query q = em.createNamedQuery("Utente.findAll");
-		List<Utente> listaUtenti = q.getResultList();
-		return listaUtenti;
+		try {
+			List<Utente> listaUtenti = q.getResultList();
+			return listaUtenti;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	public Cliente getCliente(String email, String password) {
@@ -121,7 +165,7 @@ public class Database {
 			return null;
 		}
 	}
-	
+
 	public Utente getUtente(String email) {
 		Query q = em.createQuery("SELECT u FROM Utente u WHERE u.email=:email");
 		q.setParameter("email", email);
@@ -132,7 +176,6 @@ public class Database {
 			return null;
 		}
 	}
-
 
 	public Utente getUtente(String email, String password) {
 		Query q = em.createQuery("SELECT u FROM Utente u WHERE c.email=:email AND u.password=:password");
@@ -163,8 +206,12 @@ public class Database {
 	public Categoria getCategoria(String categoria) {
 		Query q = em.createQuery("SELECT c FROM Categoria c WHERE c.nome=:categoria");
 		q.setParameter("categoria", categoria);
-		Categoria nomeCategoria = (Categoria) q.getSingleResult();
-		return nomeCategoria;
+		try {
+			Categoria nomeCategoria = (Categoria) q.getSingleResult();
+			return nomeCategoria;
+		} catch (Exception e) {
+			return null;
+		}
 
 	}
 
@@ -191,21 +238,33 @@ public class Database {
 
 	public List<Noleggio> getListaNoleggi() {
 		Query q = em.createNamedQuery("Nolleggio.findAll");
-		List<Noleggio> listaNoleggi = q.getResultList();
-		return listaNoleggi;
+		try {
+			List<Noleggio> listaNoleggi = q.getResultList();
+			return listaNoleggi;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	public List<Noleggio> getListaNoleggi(Cliente cliente) {
 		Query q = em.createQuery("SELECT n FROM Noleggio n WHERE n.id_cliente=:id_cliente");
 		q.setParameter("id_cliente", cliente.getIdCliente());
-		List<Noleggio> listaNoleggi = q.getResultList();
-		return listaNoleggi;
+		try {
+			List<Noleggio> listaNoleggi = q.getResultList();
+			return listaNoleggi;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	public List<Auto> getAutoDisponibili() {
-		Query q = em.createQuery("SELECT a FROM Noleggio a WHERE a.disponibilita=1");
-		List<Auto> autoDisponibili = q.getResultList();
-		return autoDisponibili;
+		Query q = em.createQuery("SELECT a FROM Noleggio a WHERE a.disponibilita=:1");
+		try {
+			List<Auto> autoDisponibili = q.getResultList();
+			return autoDisponibili;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 }
