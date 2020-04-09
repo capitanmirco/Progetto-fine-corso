@@ -35,7 +35,7 @@ public class AggiungiAuto extends HttpServlet {
 		if(session.getAttribute("email_admin") != null || session.getAttribute("utente") != null) {
 		
 			request.getServletContext().getRequestDispatcher("/jsp/header.jsp").include(request, response);
-			request.getServletContext().getRequestDispatcher("/jsp/FormAuto.jsp").include(request, response);
+			request.getServletContext().getRequestDispatcher("/jsp/formAuto.jsp").include(request, response);
 			request.getServletContext().getRequestDispatcher("/jsp/footer.jsp").include(request, response);
 		
 		}
