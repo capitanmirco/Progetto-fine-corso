@@ -38,9 +38,9 @@
         <div class="form-group">
        		<input type="radio" id="suv" name="categoria" value="2">
        		<label for="male">Suv</label> &nbsp &nbsp
-       		<input type="radio" id="citycar" name="categoria" value="citycar">
+       		<input type="radio" id="citycar" name="categoria" value="1">
        		<label for="male">City car</label> &nbsp &nbsp
-       		<input type="radio" id="lusso" name="categoria" value="lusso">    
+       		<input type="radio" id="lusso" name="categoria" value="  3" >
        		<label for="male">Auto di lusso</label><br>   		
        	</div>
         		 
