@@ -60,7 +60,7 @@ public class loginServlet extends HttpServlet {
 			System.out.println("Ciao!!!");
 		}else if(Database.getIstance().getCliente(risposta1_jsp, risposta2_jsp)!=null){
 			Cliente cliente=Database.getInstance().getCliente(risposta1_jsp,risposta2_jsp);
-			request.setAttribute("cliente",cliente);
+			session.setAttribute("cliente",cliente);
 			System.out.println("OK!!!!!");
 		}else if(risposta1_jsp==null||risposta2_jsp==null)
 		{
