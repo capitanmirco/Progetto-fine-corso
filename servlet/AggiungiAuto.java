@@ -30,8 +30,6 @@ public class AggiungiAuto extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		
-		session.setAttribute("utente", "neve");
-		
 		// solo utenti e admin
 		
 		if(session.getAttribute("email_admin") != null || session.getAttribute("utente") != null) {
