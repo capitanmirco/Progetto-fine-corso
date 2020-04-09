@@ -36,7 +36,7 @@
 </div>
 <div >
 	<div class="bgselect cal-position">
-		<form method="post" action="/catalogo">
+		<form method="post" action="filtro">
 
 			<div class="box">
 				<select name="auto" id="text">
