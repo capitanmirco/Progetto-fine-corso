@@ -57,7 +57,7 @@
 					id="start" name="fineNolo" value="<%=today%>" min="<%=today%>"
 					max="2021-04-08"> <br>
 				<br>
-				<button class="bottoni" type="submit" id="text">Prenota</button>
+				<button class="bottone-calendario" type="submit" id="text">Prenota</button>
 			</div>
 
 
