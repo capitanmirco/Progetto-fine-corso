@@ -1,4 +1,4 @@
-package Database;
+package servlet;
 
 import java.io.IOException;
 
@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import database.Database;
 import model.Cliente;
 import model.Utente;
 
@@ -33,19 +34,19 @@ public class VisualizzaDati extends HttpServlet {
 		HttpSession session = request.getSession();
 		if(session.getAttribute("utente")!=null) {
 		 Utente u = (Utente) session.getAttribute("utente");
-	    request.setAttribute("Utente", u);
-		request.getServletContext().getRequestDispatcher("jsp/header.jsp").include(request, response);
-		request.getServletContext().getRequestDispatcher("jsp/navbar.jsp").include(request, response);
-		request.getServletContext().getRequestDispatcher("jsp/paginautente.jsp").include(request, response);
-		request.getServletContext().getRequestDispatcher("jsp/footer.jsp").include(request, response);
+	    request.setAttribute("utente", u);
+		request.getServletContext().getRequestDispatcher("/jsp/header.jsp").include(request, response);
+		request.getServletContext().getRequestDispatcher("/jsp/navbar.jsp").include(request, response);
+		request.getServletContext().getRequestDispatcher("/jsp/lista.jsp").include(request, response);
+		request.getServletContext().getRequestDispatcher("/jsp/footer.jsp").include(request, response);
 		}
 		if(session.getAttribute("cliente")!=null) {
 			Cliente c= (Cliente) session.getAttribute("cliente");
-		request.setAttribute("Cliente", c);
-		request.getServletContext().getRequestDispatcher("jsp/header.jsp").include(request, response);
-		request.getServletContext().getRequestDispatcher("jsp/navbar.jsp").include(request, response);
-		request.getServletContext().getRequestDispatcher("jsp/paginacliente.jsp").include(request, response);
-		request.getServletContext().getRequestDispatcher("jsp/footer.jsp").include(request, response);
+		request.setAttribute("cliente", c);
+		request.getServletContext().getRequestDispatcher("/jsp/header.jsp").include(request, response);
+		request.getServletContext().getRequestDispatcher("/jsp/navbar.jsp").include(request, response);
+		request.getServletContext().getRequestDispatcher("/jsp/lista.jsp").include(request, response);
+		request.getServletContext().getRequestDispatcher("/jsp/footer.jsp").include(request, response);
 		}
 	}
 	
