@@ -40,10 +40,10 @@ public class ValidaClienti extends HttpServlet {
 			if(isNumericId) {
 				Cliente c = Database.getInstance().getClienteById(Integer.parseInt(request.getParameter("id")));
 				if(c!=null) {
-					if(request.getParameter("valida").charAt(0) >= 48 && request.getParameter("valida").charAt(0)<= 50) {
-						c.setValidato(Byte.parseByte(request.getParameter("valida")));
-						Database.getInstance().updateCliente(c);	
-					}
+					byte valida = 1;
+					c.setValidato(valida);
+					Database.getInstance().updateCliente(c);
+					response.sendRedirect("gestionepersone");
 				}
 			}
 		}//end if
