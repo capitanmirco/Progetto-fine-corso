@@ -1,11 +1,16 @@
 
 	<div class="container registra">
 			<form method="post">
-				<div>
-					<label id="registratilbl"> Registrati come: </label> <br> 
-					Utente <input type="radio" onclick="mostraPatente('utente')" name="ut_cl" id="ut">  
-					Cliente <input type="radio" onclick="mostraPatente('cliente')" name="ut_cl" id="cl">
-				</div> <br>
+				<div class="form-group">
+       				<label id="registratilbl"> Registrati come: </label> <br>
+       				
+       				<input type="radio" id="ut" name="ut_cl" value="ut" onclick="mostraPatente('utente')">
+       				<label for="ut">Utente</label> &nbsp &nbsp
+       		
+		       		<input type="radio" id="cl" name="ut_cl" value="cl" onclick="mostraPatente('cliente')">
+       				<label for="cl">Cliente</label> &nbsp &nbsp
+       	   		
+        	 	</div>
 			
 				<div class="form-group">
 					<label for="exampleInputNome"> Nome </label> 
