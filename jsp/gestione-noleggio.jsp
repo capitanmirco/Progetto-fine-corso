@@ -1,4 +1,5 @@
 
+
 <%@page import="model.Noleggio"%>
 <%
 	request.getAttribute("Noleggi_lista");
@@ -21,6 +22,7 @@
         </thead>
         <tbody>
         <%List<Noleggio> listaNoleggi  = (List <Noleggio>) request.getAttribute("Noleggi_lista"); 
+        if (listaNoleggi != null){
         for (Noleggio noleggio : listaNoleggi){ %>
         	
           <tr>
@@ -29,6 +31,7 @@
             <td><%= n.getAuto().getModello()%> <%= n.getAuto().getMarca() %></td>
             <td><%= n.getDataInizio() %></td>
             <td><%= n.getDataFine() %></td>
+            <% } %>
             <% } %>
           </tr>
           
