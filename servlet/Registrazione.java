@@ -23,8 +23,11 @@ public class Registrazione extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
+		request.getServletContext().getRequestDispatcher("/jsp/header.jsp").include(request, response);
+		request.getServletContext().getRequestDispatcher("/jsp/navbar.jsp").include(request, response);
 		request.getServletContext().getRequestDispatcher("/jsp/registrazione.jsp").include(request, response);
+		request.getServletContext().getRequestDispatcher("/jsp/footer.jsp").include(request, response);
 
 	}
 
@@ -32,23 +35,22 @@ public class Registrazione extends HttpServlet {
 			throws ServletException, IOException {
 
 		if ((request.getParameter("nome") != null) && (request.getParameter("cognome") != null)
-				&& (request.getParameter("mail") != null) && (request.getParameter("password") != null)
-				&& (request.getParameter("password").trim().equals(" "))
-				&& (request.getParameter("dataDiNascita") != null) && (request.getParameter("codiceFiscale") != null)) {
-			System.out.println("step1");
+				&& (request.getParameter("email") != null) && (request.getParameter("password") != null)
+				&& (request.getParameter("datadinascita") != null) && (request.getParameter("codicefiscale") != null)) {
+
 			String nome = request.getParameter("nome");
 			String cognome = request.getParameter("cognome");
-			String email = request.getParameter("mail");
+			String email = request.getParameter("email");
 			String password = request.getParameter("password");
-			String dataDiNascita = request.getParameter("dataDiNascita");
-			String codiceFiscale = request.getParameter("codiceFiscale");
+			String dataDiNascita = request.getParameter("datadinascita");
+			String codiceFiscale = request.getParameter("codicefiscale");
 
-			if (request.getParameter("cl_ut") != null && request.getParameter("cl_ut").equals("cl")
-					&& (request.getParameter("numeroPatente") != null)) {
+			if (request.getParameter("ut_cl") != null && request.getParameter("ut_cl").equals("cl")
+					&& (request.getParameter("numeropatente") != null)) {
 
 				if (!(Database.getInstance().getCliente(email) != null)) {
 
-					String numeroPatente = request.getParameter("numeroPatente");
+					String numeroPatente = request.getParameter("numeropatente");
 					Cliente c = new Cliente();
 
 					c.setNome(nome);
@@ -62,9 +64,9 @@ public class Registrazione extends HttpServlet {
 					request.setAttribute("cliente", c);
 					request.getServletContext().getNamedDispatcher("aggiungiclienti").forward(request, response);
 				} else {
-					System.out.println("Cliente gia' registrato");
+					System.out.println("Mail gia inserita");
 				}
-			} else if (request.getParameter("cl_ut") != null && request.getParameter("cl_ut").equals("ut")) {
+			} else if (request.getParameter("ut_cl") != null && request.getParameter("ut_cl").equals("ut")) {
 
 				if (!(Database.getInstance().getUtente(email) != null)) {
 					Utente u = new Utente();
@@ -80,9 +82,9 @@ public class Registrazione extends HttpServlet {
 					request.getServletContext().getNamedDispatcher("aggiungiutenti").forward(request, response);
 
 				} else {
-					System.out.println("Utente gia' registrato");
+					System.out.println("Mail gia inserita");
 				}
-			}
+			}			
 		}
-	} 
+	}
 }
