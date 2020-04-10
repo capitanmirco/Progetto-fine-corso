@@ -3,8 +3,8 @@
 			<form method="post">
 				<div>
 					<label id="registratilbl"> Registrati come: </label> <br> 
-					Utente <input type="radio" onclick="mostraPatente('utente')" name="options" id="option">  
-					Cliente <input type="radio" onclick="mostraPatente('cliente')" name="options" id="option">
+					Utente <input type="radio" onclick="mostraPatente('utente')" name="ut_cl" id="ut">  
+					Cliente <input type="radio" onclick="mostraPatente('cliente')" name="ut_cl" id="cl">
 				</div> <br>
 			
 				<div class="form-group">
