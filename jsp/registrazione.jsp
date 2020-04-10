@@ -58,10 +58,13 @@
 					<label for="exampleInputPassword"> Password </label> 
 					<input type="password" class="form-control" name="password" id="exampleInputPassword" value="<%= password= c!=null ? c.getPassword(): u!=null? u.getPassword():""%>">
 				</div>
-			
+				
+				
 				<div class="form-group" id="patente">
+				<% if(c == null && u == null){%>
 					<label for="exampleInputNumeroPatente"> Numero di patente </label> 
 					<input type="text" class="form-control" name="numeropatente" id="exampleInputNumeroPatente" value="<%= numeroDiPatente= c!=null ? c.getNumeroPatente() :""%>">
+				<%}%>	
 				</div>
 				
 					<button type="submit" class="bottone"> 
