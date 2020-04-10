@@ -18,5 +18,6 @@ public class AggiungiUtenti extends HttpServlet {
 		Utente u = (Utente) request.getAttribute("utente");
 		Database.getInstance().addUtente(u);
 		System.out.println("ok utente aggiunto");
+		response.sendRedirect("home");
 	}
 }
