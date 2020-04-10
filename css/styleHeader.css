@@ -1,0 +1,141 @@
+nav.navbar
+{
+    border-radius: 0px;
+    opacity: 0.5;
+	border:0;
+	position: fixed;
+  	top: 80px;
+  	padding: 0;
+  	width: 100%;
+  	margin: 0;
+  	z-index: 1000;
+  	
+ 	padding: 0;
+  	width: 100%;
+}
+
+ul.nav
+{
+	flex-direction: row;
+	margin: 0;
+}
+
+
+.bottone
+{
+	color: #59c2b0;
+}
+
+#header
+{
+	z-index: 1000;
+}
+
+.navbar-nav > li
+{
+
+    flex: 1;
+}
+
+#emailDiv
+{
+	width:100%;
+}
+
+nav ul
+{
+	width: 100%;
+}
+
+#loginForm
+{
+	display:flex;
+}
+
+#loginForm > div 
+{
+    width: max-content;
+}
+
+.loginInput
+{
+    border-radius: 4px;
+    background-color: #fff;
+    background-image: none;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-sizing: border-box;
+    color: #555;
+    height: 20px;
+}
+
+#login>* 
+{
+    float:left;
+}
+
+#header
+{
+	 height: 80px;
+	 width: 100%;
+	 position:fixed;
+	 top: 0;
+}
+
+#login 
+{
+    float:right;
+}
+
+.blue
+{
+	color: #fff;
+	background-color: #1f4267;
+}
+
+#dropdownMenuButton 
+{
+  	background: transparent;
+  	padding: 15px;
+	border: 0;
+}
+
+.navbar-nav .dropdown-menu, #dropdownMenuButton:hover, #dropdownMenuButton:focus
+{
+    position: unset;
+    float: none;
+    margin-top: 0px;
+    width: min-content;
+    border:0;
+    box-shadow: unset;
+}
+
+.navbar-nav {
+  height: 49px;
+}
+
+.navbar-inverse .navbar-nav > li a:hover 
+{
+    color: white;
+}
+
+.navbar-inverse .navbar-nav > li a 
+{
+    color: #9d9d9d;
+}
+
+.dropdown-item:hover 
+{
+    color: #5e5e5e !important;
+}
+
+#loginForm > div
+{
+	padding: 3px;
+}
+
+.pagineDiv
+{
+	  margin: 170px 50px;
+}
+
+
