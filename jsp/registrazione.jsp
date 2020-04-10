@@ -24,7 +24,7 @@
        				<input type="radio" id="ut" name="ut_cl" value="ut" onclick="mostraPatente('utente')">
        				<label for="ut">Utente</label> &nbsp &nbsp
        		
-		       		<input type="radio" id="cl" name="ut_cl" value="cl" onclick="mostraPatente('cliente')">
+		       		<input type="radio" id="cl" name="ut_cl" value="cl" onclick="mostraPatente('cliente')" checked="true">
        				<label for="cl">Cliente</label> &nbsp &nbsp
        	   		
         	 	</div> 
