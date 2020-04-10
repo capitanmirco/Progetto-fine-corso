@@ -34,9 +34,18 @@ public class Registrazione extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		if ((request.getParameter("nome") != null) && (request.getParameter("cognome") != null)
-				&& (request.getParameter("email") != null) && (request.getParameter("password") != null)
-				&& (request.getParameter("datadinascita") != null) && (request.getParameter("codicefiscale") != null)) {
+		if ((request.getParameter("nome") != null) 
+				&& !(request.getParameter("nome").trim().equals(" ")) 
+				&& (request.getParameter("cognome") != null)
+				&& !(request.getParameter("cognome").trim().equals(" "))
+				&& (request.getParameter("email") != null) 
+				&& !(request.getParameter("email").trim().equals(" "))
+				&& (request.getParameter("password") != null) 
+				&& !(request.getParameter("password").trim().equals(" "))
+				&& (request.getParameter("datadinascita") != null) 
+				&& !(request.getParameter("datadinascita").trim().equals(" "))
+				&& (request.getParameter("codicefiscale") != null)
+				&& !(request.getParameter("codicefiscale").trim().equals(" "))){
 
 			String nome = request.getParameter("nome");
 			String cognome = request.getParameter("cognome");
@@ -64,7 +73,7 @@ public class Registrazione extends HttpServlet {
 					request.setAttribute("cliente", c);
 					request.getServletContext().getNamedDispatcher("aggiungiclienti").forward(request, response);
 				} else {
-					System.out.println("Mail gia inserita");
+					System.out.println("Cliente gia' registrato con questa email");
 				}
 			} else if (request.getParameter("ut_cl") != null && request.getParameter("ut_cl").equals("ut")) {
 
@@ -82,7 +91,7 @@ public class Registrazione extends HttpServlet {
 					request.getServletContext().getNamedDispatcher("aggiungiutenti").forward(request, response);
 
 				} else {
-					System.out.println("Mail gia inserita");
+					System.out.println("Utente gia' registrato con questa email");
 				}
 			}			
 		}
