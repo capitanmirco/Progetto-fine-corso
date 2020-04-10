@@ -56,31 +56,37 @@ body {
           align-content: center;
           
           padding-top: 30px;
-          
           background: rgba(255, 255, 255, 0.6);
           width: 350px;
           height: 350px;
           border-radius: 2rem;
           text-align: center;
           
+          
       }
       .bgselect > *{
         margin:0 auto;
       }
       
-      .bottone-calendario{
-          margin-bottom: 20px;
+      #bottone-calendario{
+         
+          width: 10em;  
+          height: 2em;
+          
+          
+          
+
+      }
+      .bottone{
+         margin-bottom: 20px;
           border-radius: 0.8rem;
           background-color: #1F4267 ;
           color: white;
-          width: 10em;  
-          height: 2em;
           outline: none;
           font-size:20px;
           text-align: center;
           
-          
-
+      
       }
       .cal-position{
        z-index:1;
