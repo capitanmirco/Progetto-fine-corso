@@ -18,6 +18,7 @@ public class AggiungiClienti extends HttpServlet {
 		Cliente c = (Cliente) request.getAttribute("cliente");
 		Database.getInstance().addCliente(c);
 		System.out.println("ok cliente aggiunto");
+		response.sendRedirect("home");
 	}
 
 }
