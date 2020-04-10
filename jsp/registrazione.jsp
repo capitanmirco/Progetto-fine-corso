@@ -46,7 +46,7 @@
 			
 				<div class="form-group">
 					<label for="exampleInputDataDiNascita"> Data di nascita </label> 
-					<input type="dates" class="form-control" name="datadinascita" id="exampleInputDataDiNascita" value="<%= dataDiNascita= c!=null ? c.getNome(): u!=null? u.getNome():""%>">
+					<input type="date" class="form-control" name="datadinascita" id="exampleInputDataDiNascita" value="<%= dataDiNascita= c!=null ? c.getNome(): u!=null? u.getNome():""%>">
 				</div>
 				
 				<div class="form-group">
