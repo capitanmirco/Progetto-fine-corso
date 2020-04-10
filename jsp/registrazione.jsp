@@ -17,8 +17,8 @@
 %>
 		<div class="container registra">
 			<form method="post">
-				
 				<div class="form-group">
+			
        				<label id="registratilbl"> Registrati come: </label> <br>
        				
        				<input type="radio" id="ut" name="ut_cl" value="ut" onclick="mostraPatente('utente')">
@@ -26,9 +26,7 @@
        		
 		       		<input type="radio" id="cl" name="ut_cl" value="cl" onclick="mostraPatente('cliente')" checked="true">
        				<label for="cl">Cliente</label> &nbsp &nbsp
-       	   		
-        	 	</div> 
-			
+			</div> 
 				<div class="form-group">
 					<label for="exampleInputNome"> Nome </label> 
 					<input type="text" class="form-control" name="nome" id="exampleInputNome" value="<%= nome= c!=null ? c.getNome(): u!=null? u.getNome():""%>">
@@ -36,32 +34,32 @@
 			
 				<div class="form-group">
 					<label for=" exampleInputCognome"> Cognome </label> 
-					<input type="text" class="form-control" name="cognome" id="exampleInputCognome" value="<%= cognome= c!=null ? c.getNome(): u!=null? u.getNome():""%>">
+					<input type="text" class="form-control" name="cognome" id="exampleInputCognome" value="<%= cognome= c!=null ? c.getCognome(): u!=null? u.getCognome():""%>">
 				</div>
 			
 				<div class="form-group">
 					<label for="exampleInputEmail"> Email </label> 
-					<input type="email" class="form-control" name="email" id="exampleInputEmail" value="<%= email= c!=null ? c.getNome(): u!=null? u.getNome():""%>"> 
+					<input type="email" class="form-control" name="email" id="exampleInputEmail" value="<%= email= c!=null ? c.getEmail(): u!=null? u.getEmail():""%>"> 
 				</div>
 			
 				<div class="form-group">
 					<label for="exampleInputDataDiNascita"> Data di nascita </label> 
-					<input type="date" class="form-control" name="datadinascita" id="exampleInputDataDiNascita" value="<%= dataDiNascita= c!=null ? c.getNome(): u!=null? u.getNome():""%>">
+					<input type="date" class="form-control" name="datadinascita" id="exampleInputDataDiNascita" value="<%= dataDiNascita= c!=null ? c.getDataDiNascita(): u!=null? u.getDataDiNascita():""%>">
 				</div>
 				
 				<div class="form-group">
 					<label for="exampleInputCodiceFiscale"> Codice Fiscale </label> 
-					<input type="text" class="form-control" name="codicefiscale" id="exampleInputCodiceFiscale" value="<%= codiceFiscale= c!=null ? c.getNome(): u!=null? u.getNome():""%>">
+					<input type="text" class="form-control" name="codicefiscale" id="exampleInputCodiceFiscale" value="<%= codiceFiscale= c!=null ? c.getCodiceFiscale(): u!=null? u.getCodiceFiscale():""%>">
 				</div>
 			
 				<div class="form-group">
 					<label for="exampleInputPassword"> Password </label> 
-					<input type="password" class="form-control" name="password" id="exampleInputPassword" value="<%= password= c!=null ? c.getNome(): u!=null? u.getNome():""%>">
+					<input type="password" class="form-control" name="password" id="exampleInputPassword" value="<%= password= c!=null ? c.getPassword(): u!=null? u.getPassword():""%>">
 				</div>
 			
 				<div class="form-group" id="patente">
 					<label for="exampleInputNumeroPatente"> Numero di patente </label> 
-					<input type="text" class="form-control" name="numeropatente" id="exampleInputNumeroPatente" value="<%= numeroDiPatente= c!=null ? c.getNome(): u!=null? u.getNome():""%>">
+					<input type="text" class="form-control" name="numeropatente" id="exampleInputNumeroPatente" value="<%= numeroDiPatente= c!=null ? c.getNumeroPatente() :""%>">
 				</div>
 				
 					<button type="submit" class="btn btn-primary"> Submit </button>
