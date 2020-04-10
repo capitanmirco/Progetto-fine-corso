@@ -33,8 +33,9 @@ public class Registrazione extends HttpServlet {
 
 		if ((request.getParameter("nome") != null) && (request.getParameter("cognome") != null)
 				&& (request.getParameter("mail") != null) && (request.getParameter("password") != null)
+				&& (request.getParameter("password").trim().equals(" "))
 				&& (request.getParameter("dataDiNascita") != null) && (request.getParameter("codiceFiscale") != null)) {
-
+			System.out.println("step1");
 			String nome = request.getParameter("nome");
 			String cognome = request.getParameter("cognome");
 			String email = request.getParameter("mail");
@@ -61,7 +62,7 @@ public class Registrazione extends HttpServlet {
 					request.setAttribute("cliente", c);
 					request.getServletContext().getNamedDispatcher("aggiungiclienti").forward(request, response);
 				} else {
-					System.out.println("Mail gia inserita");
+					System.out.println("Cliente gia' registrato");
 				}
 			} else if (request.getParameter("cl_ut") != null && request.getParameter("cl_ut").equals("ut")) {
 
@@ -79,11 +80,9 @@ public class Registrazione extends HttpServlet {
 					request.getServletContext().getNamedDispatcher("aggiungiutenti").forward(request, response);
 
 				} else {
-					System.out.println("Mail gia inserita");
+					System.out.println("Utente gia' registrato");
 				}
 			}
 		}
-	}
+	} 
 }
-
-
