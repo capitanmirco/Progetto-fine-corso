@@ -35,17 +35,17 @@ public class Registrazione extends HttpServlet {
 			throws ServletException, IOException {
 
 		if ((request.getParameter("nome") != null) 
-				&& !(request.getParameter("nome").trim().equals(" ")) 
+				&& !(request.getParameter("nome").trim().equals("")) 
 				&& (request.getParameter("cognome") != null)
-				&& !(request.getParameter("cognome").trim().equals(" "))
+				&& !(request.getParameter("cognome").trim().equals(""))
 				&& (request.getParameter("email") != null) 
-				&& !(request.getParameter("email").trim().equals(" "))
+				&& !(request.getParameter("email").trim().equals(""))
 				&& (request.getParameter("password") != null) 
-				&& !(request.getParameter("password").trim().equals(" "))
+				&& !(request.getParameter("password").trim().equals(""))
 				&& (request.getParameter("datadinascita") != null) 
-				&& !(request.getParameter("datadinascita").trim().equals(" "))
+				&& !(request.getParameter("datadinascita").trim().equals(""))
 				&& (request.getParameter("codicefiscale") != null)
-				&& !(request.getParameter("codicefiscale").trim().equals(" "))){
+				&& !(request.getParameter("codicefiscale").trim().equals(""))){
 
 			String nome = request.getParameter("nome");
 			String cognome = request.getParameter("cognome");
@@ -56,7 +56,7 @@ public class Registrazione extends HttpServlet {
 
 			if (request.getParameter("ut_cl") != null && request.getParameter("ut_cl").equals("cl")
 					&& (request.getParameter("numeropatente") != null)
-					&& !(request.getParameter("numeropatente").trim().equals(" "))){
+					&& !(request.getParameter("numeropatente").trim().equals(""))){
  
 
 				if (!(Database.getInstance().getCliente(email) != null)) {
@@ -96,6 +96,8 @@ public class Registrazione extends HttpServlet {
 					System.out.println("Utente gia' registrato con questa email");
 				}
 			}			
+		}else {
+			doGet(request, response);
 		}
 	}
 }
