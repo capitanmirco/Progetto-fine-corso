@@ -1,6 +1,7 @@
-package Database;
+package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import model.Cliente;
@@ -12,54 +13,51 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import database.Database;
 
 @WebServlet("/listautenti")
 public class ListaUtenti extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	List<Utente> listaUtenti;
 	List<Utente> listaDaValidare;
-	List<Utente>listaValidati;
-	List<Utente>listaRimossi;
-       
-   
-    public ListaUtenti() {
-        super();
-    }
+	List<Utente> listaValidati;
+	List<Utente> listaRimossi;
 
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+	public ListaUtenti() {
+		listaDaValidare = new ArrayList<Utente>();
+		listaValidati = new ArrayList<Utente>();
+		listaRimossi = new ArrayList<Utente>();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.getServletContext().getRequestDispatcher("/jsp/header.jsp").include(request, response);
+		request.getServletContext().getRequestDispatcher("/jsp/navbar.jsp").include(request, response);
 
 		listaUtenti = Database.getInstance().getListaUtenti();
-		
+
 		for (Utente u : listaUtenti) {
-			
-			if(u.getValidato()==0 ) {
-				
+
+			if (u.getValidato() == 0) {
 				listaDaValidare.add(u);
-				
+
 			}
-			
-			if(u.getValidato()==1) {
-				
+
+			if (u.getValidato() == 1) {
 				listaValidati.add(u);
-				
+
 			}
-			
-			if(u.getValidato()==2) {
-				
+
+			if (u.getValidato() == 2) {
+
 				listaRimossi.add(u);
-			
 			}
 		}
 		request.setAttribute("listaUtentiNonValidati", listaDaValidare);
 		request.setAttribute("listaUtentiValidati", listaValidati);
 		request.setAttribute("listaUtentiCancellati", listaRimossi);
-		
-	
+		request.getServletContext().getRequestDispatcher("/jsp/lista.jsp").include(request, response);
+		request.getServletContext().getRequestDispatcher("/jsp/footer.jsp").include(request, response);
+
 	}
-
-	
-	
-
 }
