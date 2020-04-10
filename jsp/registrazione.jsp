@@ -6,7 +6,7 @@
 	String nome, cognome, email, dataDiNascita, codiceFiscale, password, numeroDiPatente;
 	Cliente c = null;
 	Utente u = null;
-	
+
 	if(session.getAttribute("cliente") !=null){
 		c = (Cliente) request.getSession().getAttribute("cliente");	
 	}	
@@ -18,7 +18,8 @@
 		<div class="container registra">
 			<form method="post">
 				<div class="form-group">
-			
+				
+       			<% if(c == null && u == null){%>	
        				<label id="registratilbl"> Registrati come: </label> <br>
        				
        				<input type="radio" id="ut" name="ut_cl" value="ut" onclick="mostraPatente('utente')">
@@ -26,6 +27,7 @@
        		
 		       		<input type="radio" id="cl" name="ut_cl" value="cl" onclick="mostraPatente('cliente')" checked="true">
        				<label for="cl">Cliente</label> &nbsp &nbsp
+       			<%}%>
 			</div> 
 				<div class="form-group">
 					<label for="exampleInputNome"> Nome </label> 
@@ -62,6 +64,11 @@
 					<input type="text" class="form-control" name="numeropatente" id="exampleInputNumeroPatente" value="<%= numeroDiPatente= c!=null ? c.getNumeroPatente() :""%>">
 				</div>
 				
-					<button type="submit" class="btn btn-primary"> Submit </button>
+					<button type="submit" class="bottone"> 
+					<%if(c ==null && u ==null) {
+    	    			out.print("Registra");
+        			} else {
+	        			out.print("Modifica");
+        			} %> </button>
 		</form>
 	</div>
