@@ -32,36 +32,33 @@ public class loginServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getServletContext().getRequestDispatcher("/jsp/header.jsp").include(request,response);
-		request.getServletContext().getRequestDispatcher("/jsp/login.jsp").include(request,response);
+		request.getServletContext().getRequestDispatcher("/jsp/navbar.jsp").include(request,response);
+		request.getServletContext().getRequestDispatcher("/jsp/home.jsp").include(request,response);
 		request.getServletContext().getRequestDispatcher("/jsp/footer.jsp").include(request,response);
-		System.out.println(request.getSession().getAttribute("utente")!=null);
-		System.out.println(request.getSession().getAttribute("cliente")!=null);
-		System.out.println(request.getSession().getAttribute("mail_admin")!=null);
 	}
 
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
-		risposta1_jsp=request.getParameter("mail");
+		risposta1_jsp=request.getParameter("email");
 		risposta2_jsp=request.getParameter("password");
-		//System.out.println(risposta1_jsp);
-		//System.out.println(risposta2_jsp);
-		//Cliente cliente=Database.getIstance().getCliente(risposta1_jsp,risposta2_jsp);
-		//request.setAttribute("cliente",cliente);
-		//System.out.println("OK!!!!!");
 		if(admin_email.equals(risposta1_jsp)&&admin_password.equals(risposta2_jsp)){
 			session.setAttribute("email_admin", request.getParameter("email"));
 			System.out.println("OK malfidati!!!!!");
-		}else if(Database.getIstance().getUtente(risposta1_jsp, risposta2_jsp)!=null)
+		}else if(Database.getInstance().getUtente(risposta1_jsp, risposta2_jsp)!=null)
 		{
 			Utente utente=Database.getInstance().getUtente(risposta1_jsp,risposta2_jsp);
+			if(utente.getValidato()==1) {
 			session.setAttribute("utente", utente);
 			System.out.println("Ciao!!!");
-		}else if(Database.getIstance().getCliente(risposta1_jsp, risposta2_jsp)!=null){
+			}
+		}else if(Database.getInstance().getCliente(risposta1_jsp, risposta2_jsp)!=null){
 			Cliente cliente=Database.getInstance().getCliente(risposta1_jsp,risposta2_jsp);
+			if(cliente.getValidato()==1) {
 			session.setAttribute("cliente",cliente);
 			System.out.println("OK!!!!!");
+			}
 		}else if(risposta1_jsp==null||risposta2_jsp==null)
 		{
 			String errore_null="Non hai inserito tutti i campi!!!";
@@ -70,15 +67,9 @@ public class loginServlet extends HttpServlet {
 		else {
 			String errore="siete scemi";
 			session.setAttribute("errore", errore);
+			System.out.println(errore);
 		}
-		response.sendRedirect("logoutservlet");
+		response.sendRedirect("loginservlet");
 	}
-	/*public Utente checkUtente(String email,String password) {
-		Utente utente=Database.getIstance().getUtente(email, password);
-		return utente;
-	}
-	public Cliente checkCliente(String email,String password) {
-		Cliente cliente=
-	}*/
+	
 }
-
