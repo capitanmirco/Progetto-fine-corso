@@ -20,8 +20,6 @@ import model.Utente;
 @WebServlet("/visualizzadati")
 public class VisualizzaDati extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	EntityManagerFactory emf = Persistence.createEntityManagerFactory("AutoNoleggio");
-	EntityManager em = emf.createEntityManager();
 	String numeroPatente;
        
    
