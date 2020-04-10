@@ -40,10 +40,12 @@ public class ModificaDati extends HttpServlet {
 				(!request.getParameter("codicefiscale").trim().equals(""))&&(request.getParameter("codicefiscale") != null)) {
 			String nome = request.getParameter("nome");
 			String cognome = request.getParameter("cognome");
-			String email = request.getParameter("mail");
+			String email = request.getParameter("email");
 			String password = request.getParameter("password");
 			String dataDiNascita = request.getParameter("datadinascita");
 			String codiceFiscale = request.getParameter("codicefiscale");
+			
+			System.out.println(nome+cognome+email+password+dataDiNascita+codiceFiscale);
 			if (session.getAttribute("cliente") != null) {
 
 				Cliente c = (Cliente) session.getAttribute("cliente");
@@ -65,6 +67,7 @@ public class ModificaDati extends HttpServlet {
 			if (session.getAttribute("utente") != null) {
 
 				Utente u = (Utente) session.getAttribute("utente");
+				
 
 				u.setNome(nome);
 				u.setCognome(cognome);
