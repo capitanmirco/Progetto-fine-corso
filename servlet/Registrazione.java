@@ -55,7 +55,9 @@ public class Registrazione extends HttpServlet {
 			String codiceFiscale = request.getParameter("codicefiscale");
 
 			if (request.getParameter("ut_cl") != null && request.getParameter("ut_cl").equals("cl")
-					&& (request.getParameter("numeropatente") != null)) {
+					&& (request.getParameter("numeropatente") != null)
+					&& !(request.getParameter("numeropatente").trim().equals(" "))){
+ 
 
 				if (!(Database.getInstance().getCliente(email) != null)) {
 
