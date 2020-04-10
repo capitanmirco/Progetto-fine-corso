@@ -1,0 +1,25 @@
+.size-riepilogo{
+    display: grid;
+    grid-template-columns:1fr  1fr ;
+    
+    grid-template-areas: " form form"
+    "div-car div-car"
+    
+    ;
+}
+.form{
+grid-area: form;
+}
+.div-car{
+    grid-area: div-car;
+}
+@media screen and (min-width: 736px){
+    .size-riepilogo{
+        display: grid;
+        grid-template-columns: 100px  1fr   1fr 100px ;
+        grid-template-rows: 1f 1f ;
+        grid-template-areas: ". form  div-car ."
+        
+        ;
+    } 
+}
