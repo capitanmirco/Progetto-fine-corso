@@ -178,7 +178,7 @@ public class Database {
 	}
 
 	public Utente getUtente(String email, String password) {
-		Query q = em.createQuery("SELECT u FROM Utente u WHERE c.email=:email AND u.password=:password");
+		Query q = em.createQuery("SELECT u FROM Utente u WHERE u.email=:email AND u.password=:password");
 		q.setParameter("email", email);
 		q.setParameter("password", password);
 		try {
