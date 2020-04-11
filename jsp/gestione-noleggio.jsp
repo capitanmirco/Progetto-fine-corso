@@ -32,7 +32,7 @@
 					<td><%=n.getAuto().getModello()%> <%=n.getAuto().getMarca()%></td>
 					<td><%=n.getDataInizio()%></td>
 					<td><%=n.getDataFine()%></td>
-					<td><a href="rimuoviauto?remove=<%=n.getAuto().getIdAuto()%>"
+					<td><a href="interrompinoleggiate?stato=2&idNoleggio=<%=n.getIdNoleggio()%>"
 						type="button" class="bottone">Interrompi</a></td>
 					<td><a href="jsp/gestione"></a></td>
 
