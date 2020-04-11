@@ -65,7 +65,7 @@
 	</div>
 	
 	//FOTO/CAROSELLO
-	<div class="div-car">
+	<div class="car-riepilogo">
 		<div id="carouselExampleFade" class="carousel slide carousel-fade"
 			data-ride="carousel">
 			<div class="carousel-inner">
