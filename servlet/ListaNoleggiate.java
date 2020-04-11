@@ -71,6 +71,7 @@ public class ListaNoleggiate extends HttpServlet {
     			for(Noleggio n : listaNoleggi) {
     				if((n.getStato()==0 || n.getStato()==2) && n.getCliente().getIdCliente()==c.getIdCliente() &&
     						!storicoNoleggi.contains(n)) {
+    					System.out.println("storico" + n.getDataInizio());
     					storicoNoleggi.add(n);
     				}
     			}
