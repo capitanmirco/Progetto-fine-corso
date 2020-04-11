@@ -19,6 +19,7 @@
 				</tr>
 			</thead>
 			<tbody>
+		
 				<%
 					List<Noleggio> listaNoleggi = (List<Noleggio>) request.getAttribute("Noleggi_lista");
 					if (listaNoleggi != null) {
@@ -41,6 +42,7 @@
 					%>
 				</tr>
 			</tbody>
+		</table>
 			<!--////////////////////////////////////////// storico cliente  -->
 			<table class="table">
 				<thead>
@@ -67,7 +69,7 @@
 						<td><%=n.getAuto().getModello()%> <%=n.getAuto().getMarca()%></td>
 						<td><%=n.getDataInizio()%></td>
 						<td><%=n.getDataFine()%></td>
-
+				
 
 
 						<%
@@ -77,5 +79,6 @@
 					%>
 					</tr>
 				</tbody>
-				</div>
-				</div>
+			</table>
+		</div>
+	</div>
