@@ -57,7 +57,7 @@
 				<tbody>
 					<%
 					
-				    if(request.getParameter("id_cliente")!= null) { 
+				    if(request.getParameter("email_admin")!=null) { 
 				    List<Noleggio> storicoNoleggi = (List<Noleggio>) request.getAttribute("storico_noleggi");
 					if (storicoNoleggi != null) {
 						for (Noleggio n : storicoNoleggi) {
