@@ -1,6 +1,4 @@
 
-
-
 <%@page import="model.Noleggio"%>
 <%
 	request.getAttribute("Noleggi_lista");
@@ -32,6 +30,9 @@
 					<td><%=n.getAuto().getModello()%> <%=n.getAuto().getMarca()%></td>
 					<td><%=n.getDataInizio()%></td>
 					<td><%=n.getDataFine()%></td>
+					<td><a href="rimuoviauto?remove=<%=n.getAuto().getIdAuto()%>" 
+					 type="button" class="bottone">Interrompi</a>
+				    </td>
 					<%
 						}
 						}
