@@ -1,5 +1,4 @@
 
-
 <%@page import="model.Noleggio"%>
 <%
 	request.getAttribute("Noleggi_lista");
@@ -19,7 +18,7 @@
 				</tr>
 			</thead>
 			<tbody>
-		
+			
 				<%
 					List<Noleggio> listaNoleggi = (List<Noleggio>) request.getAttribute("Noleggi_lista");
 					if (listaNoleggi != null) {
@@ -27,12 +26,12 @@
 				%>
 
 				<tr>
-					<th scope="row">1</th>
+					<th scope="row"><%=(listaNoleggi.indexOf(n)+1) %></th>
 					<td><%=n.getCliente().getNome()%> <%=n.getCliente().getCognome()%></td>
 					<td><%=n.getAuto().getModello()%> <%=n.getAuto().getMarca()%></td>
 					<td><%=n.getDataInizio()%></td>
 					<td><%=n.getDataFine()%></td>
-					<td><a href="interrompinoleggiate?stato=2&idNoleggio=<%=n.getIdNoleggio()%>"
+					<td><a href="rimuoviauto?remove=<%=n.getAuto().getIdAuto()%>"
 						type="button" class="bottone">Interrompi</a></td>
 					<td><a href="jsp/gestione"></a></td>
 
@@ -42,7 +41,7 @@
 					%>
 				</tr>
 			</tbody>
-		</table>
+			</table>
 			<!--////////////////////////////////////////// storico cliente  -->
 			<table class="table">
 				<thead>
@@ -57,28 +56,28 @@
 				<tbody>
 					<%
 					
-				    if(request.getParameter("email_admin")!=null) { 
+				     
 				    List<Noleggio> storicoNoleggi = (List<Noleggio>) request.getAttribute("storico_noleggi");
 					if (storicoNoleggi != null) {
 						for (Noleggio n : storicoNoleggi) {
 				%>
 
 					<tr>
-						<th scope="row">1</th>
+						<th scope="row"><%=(listaNoleggi.indexOf(n)+1) %></th>
 						<td>><%=n.getCliente().getNome()%> <%=n.getCliente().getCognome()%></td>
 						<td><%=n.getAuto().getModello()%> <%=n.getAuto().getMarca()%></td>
 						<td><%=n.getDataInizio()%></td>
 						<td><%=n.getDataFine()%></td>
-				
+
 
 
 						<%
 						}
 						}
-				        }
+				        
 					%>
 					</tr>
 				</tbody>
-			</table>
-		</div>
-	</div>
+				</table>
+				</div>
+				</div>
