@@ -246,19 +246,8 @@ public class Database {
 		}
 	}
 
-	public List<Noleggio> getListaNoleggi(Cliente cliente) {
-		Query q = em.createQuery("SELECT n FROM Noleggio n WHERE n.id_cliente=:id_cliente");
-		q.setParameter("id_cliente", cliente.getIdCliente());
-		try {
-			List<Noleggio> listaNoleggi = q.getResultList();
-			return listaNoleggi;
-		} catch (Exception e) {
-			return null;
-		}
-	}
-
 	public List<Auto> getAutoDisponibili() {
-		Query q = em.createQuery("SELECT a FROM Auto a WHERE a.disponibilita=1");
+		Query q = em.createQuery("SELECT a FROM Noleggio a WHERE a.disponibilita=:1");
 		try {
 			List<Auto> autoDisponibili = q.getResultList();
 			return autoDisponibili;
