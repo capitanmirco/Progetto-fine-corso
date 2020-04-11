@@ -1,4 +1,5 @@
 
+
 <%@page import="model.Noleggio"%>
 <%
 	request.getAttribute("Noleggi_lista");
@@ -63,7 +64,7 @@
 				%>
 
 					<tr>
-						<th scope="row"><%=(listaNoleggi.indexOf(n)+1) %></th>
+						<th scope="row"><%=(storicoNoleggi.indexOf(n)+1) %></th>
 						<td>><%=n.getCliente().getNome()%> <%=n.getCliente().getCognome()%></td>
 						<td><%=n.getAuto().getModello()%> <%=n.getAuto().getMarca()%></td>
 						<td><%=n.getDataInizio()%></td>
