@@ -1,4 +1,8 @@
-
+#colore-bottone{
+    color: white;
+    background-color:#59C2B0 ;
+    border-color: #59C2B0;
+}
 .size-riepilogo{
     display: grid;
     grid-template-columns:1fr  1fr ;
@@ -10,10 +14,10 @@
 }
 .form{
 grid-area: form;
-min-width: 850px
+min-width: 600px
 }
-.car-riepilogo{
-    margin-left: px;
+.div-car{
+   
     margin-top: 49px;
     grid-area: div-car;
     max-width: 800px;
