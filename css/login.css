@@ -5,8 +5,8 @@
 	position: fixed;
 	border-radius: 5px;
 	padding: 10px;
-	color: #1f4267 !important;
-	background-color: #f7f7f7;
+	color: #efefef !important;
+	background-color: #656664;
 	
 }
 
@@ -17,6 +17,11 @@
 	justify-content: center;
 	display: none;
 	position: absolute;
+}
+
+#login input[type=text]
+{
+	color: black;
 }
 
 
