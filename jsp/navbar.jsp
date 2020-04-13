@@ -69,7 +69,7 @@
 		%>
 		<li id="loginLi">
 		
-				<a class="aMenu" style="float:right;margin-right:20px" href="">Registrati</a>
+				<a class="aMenu" style="float:right;margin-right:20px" href="registrazione">Registrati</a>
 				<a class="aMenu" style="float:right" href="javascript:finestraLog('accedi')">Accedi</a>
 		</li>
 
