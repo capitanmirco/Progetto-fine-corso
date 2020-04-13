@@ -1,6 +1,9 @@
 package servlet;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -32,6 +35,7 @@ public class InterrompiNoleggiate extends HttpServlet {
 			byte disponibile = 1;
 			byte interrotto = 2;
 			n.setStato(interrotto);
+			n.setDataFine(dataInterruzioneNoleggio());
 			Database.getInstance().updateNoleggio(n);
 			
 			if(!noleggiAttivi(a)) {
@@ -57,6 +61,14 @@ public class InterrompiNoleggiate extends HttpServlet {
 		
 		return noleggiAttivi;
 		
+	}
+	
+	/*data interruzione noleggio*/
+	public String dataInterruzioneNoleggio() {
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = new Date();
+		String data = dateFormat.format(date);
+		return data;
 	}
 
 
