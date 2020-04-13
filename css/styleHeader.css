@@ -9,7 +9,6 @@ nav.navbar
   	width: 100%;
   	margin: 0;
   	z-index: 1000;
-  	
  	padding: 0;
   	width: 100%;
 }
@@ -47,31 +46,7 @@ nav ul
 	width: 100%;
 }
 
-#loginForm
-{
-	display:flex;
-}
 
-#loginForm > div 
-{
-    width: max-content;
-}
-
-.loginInput
-{
-    border-radius: 4px;
-    background-color: #fff;
-    background-image: none;
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-    box-sizing: border-box;
-    color: #555;
-    height: 20px;
-}
-
-#login>* 
-{
-    float:left;
-}
 
 #header
 {
@@ -81,7 +56,7 @@ nav ul
 	 top: 0;
 }
 
-#login 
+#loginLi
 {
     float:right;
 }
@@ -89,7 +64,7 @@ nav ul
 .blue
 {
 	color: #fff;
-	background-color: #1f4267;
+	background-color: #1f4267 !important;
 }
 
 #dropdownMenuButton 
@@ -97,20 +72,64 @@ nav ul
   	background: transparent;
   	padding: 15px;
 	border: 0;
+	float: right;
 }
 
-.navbar-nav .dropdown-menu, #dropdownMenuButton:hover, #dropdownMenuButton:focus
+.navbar-nav .dropdown-menu
 {
     position: unset;
-    float: none;
-    margin-top: 0px;
     width: min-content;
     border:0;
-    box-shadow: unset;
+   
+    float: right !important;
+  	margin-top: -3px;
+  	text-align: center;
+    clear: right;
 }
 
-.navbar-nav {
+#dropdownMenuButton:hover, #dropdownMenuButton:focus
+{
+	 box-shadow: unset;
+}
+
+.navbar-inverse .navbar-nav > li a.aMenu:focus, 
+.navbar-inverse .navbar-nav > li a.aMenu:hover
+{
+    border-bottom: 1px solid white;
+    padding-bottom: 8px;
+    margin-bottom: 7px;
+}
+
+.dropdown-item:focus, .dropdown-item:hover
+{
+ 	background-color: transparent !important;
+	border-bottom: 1px solid white;
+  	padding-right: 2px;
+  	padding-left: 2px;
+  	margin-right: 13px;
+  	margin-left: 13px;
+  	width: 154px;
+  	color: white !important;
+  	padding-bottom: 0px;
+	margin-bottom: 1.5px;
+}
+
+.navbar-nav 
+{
   height: 49px;
+}
+
+.aMenu[href="catalogo"]
+{
+	width: min-content;
+	margin: 0 auto;	
+}
+
+
+.dropdown-item 
+{
+    width: 150px !important;
+    box-sizing: content-box;
 }
 
 .navbar-inverse .navbar-nav > li a:hover 
@@ -123,15 +142,13 @@ nav ul
     color: #9d9d9d;
 }
 
-.dropdown-item:hover 
+.navbar-inverse .navbar-nav > li a[href="home"]
 {
-    color: #5e5e5e !important;
+	float: left;
+	margin-left: 10px;
 }
 
-#loginForm > div
-{
-	padding: 3px;
-}
+
 
 .pagineDiv
 {
