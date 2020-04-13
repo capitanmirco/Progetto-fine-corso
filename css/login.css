@@ -1,0 +1,39 @@
+#login{
+	width: 300px;
+	z-index: 20000;
+	top: 100px;
+	left: 30%;
+	display: none;
+	position: fixed;
+	border-radius: 5px;
+	padding: 10px;
+	color: #1f4267 !important;
+	background-color: #f7f7f7;
+	
+}
+
+#esci:hover, #esci
+{
+	position: absolute;
+	border-radius: 5px;
+	right: 15px;
+	top: 5px;
+	text-decoration: none;
+}
+
+#login > form > *
+{
+	width: 100%;
+}
+#login > form > input {
+
+margin: 10px;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+	width: 200px;
+	color: black;
+	margin-bottom: 20px;
+	margin-top: 0;
+
+}
