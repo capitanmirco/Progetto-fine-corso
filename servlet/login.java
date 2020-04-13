@@ -15,20 +15,17 @@ import model.Noleggio;
 import database.Database;
 
 
-@WebServlet("/loginservlet")
-public class loginServlet extends HttpServlet {
+@WebServlet("/login")
+public class login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private String admin_email="matteo.aiello@gmail.com";
 	private String admin_password="progettofinaleGeneration";
 	String risposta1_jsp;
 	String risposta2_jsp;
 
-    public loginServlet() {
+    public login() {
         super();
     }
-    
-
-
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getServletContext().getRequestDispatcher("/jsp/header.jsp").include(request,response);
@@ -69,7 +66,7 @@ public class loginServlet extends HttpServlet {
 			session.setAttribute("errore", errore);
 			System.out.println(errore);
 		}
-		response.sendRedirect("loginservlet");
+		response.sendRedirect("login");
 	}
 	
 }
