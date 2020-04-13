@@ -14,13 +14,31 @@ function finestraLog(param)
 {
 	if(param=="accedi")
 	{
-		$('#login').css("display","block");
-		$('body>*:not("#login")').css('filter', 'blur(3px)');
+		$('#divLogin').css("display","flex");
+		$('body>*:not("#divLogin")').css('filter', 'blur(3px)');
 	}
 }
 //grayscale(80%)
 function esci()
 {
-	$('#login').css("display","none");
+	$('#divLogin').css("display","none");
 	$('body>*').css('filter', 'none');
+}
+
+
+function checkPassword(){
+	alert ('funziona');
+	var password = document.getElementById('exampleInputPassword');
+	var cPassword = document.getElementById('exampleInputConfermaPassword');
+	
+	if(password.value != cPassword.value){
+		alert('Le password non coincidono');
+		password.focus();
+		password.select();
+	} else {
+		alert(password.value);
+		alert(cPassword.value);
+		document.getQuerySelector(".registra>form").submit();
+
+	}
 }
