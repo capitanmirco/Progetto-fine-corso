@@ -80,3 +80,15 @@
 
 </nav>
 
+<div id="login" class="">
+	<a href="javascript:esci()" id="esci">x</a> 
+	<h2 style="margin-bottom: 30px"> Accedi </h2>
+	<form method="POST" action="login">
+		<label>E-mail</label> <input type="email" name="email" id="email">
+		<label>Password</label> <input type="password" name="password" id="password">
+			
+		<div >
+			<input class="bottoni bottone" id="loginButton" type="submit" value="Login">
+		</div>	
+	</form>
+</div>
