@@ -5,8 +5,8 @@
 
 <nav class="navbar navbar-inverse">
 	<ul class="nav blue navbar-nav">
-		<li><a href="home">Home</a></li>
-		<li><a href="catalogo">Catalogo</a></li>
+		<li><a href="home" class="aMenu">Home</a></li>
+		<li><a href="catalogo" class="aMenu">Catalogo</a></li>
 
 		<%
 			if (request.getSession().getAttribute("cliente") != null || 
@@ -15,12 +15,12 @@
 		%>
 		<li>
 			<div class="dropdown">
-				<button class="btn btn-secondary blue dropdown-toggle" type="button"
+				<button class="btn btn-secondary dropdown-toggle" type="button"
 					id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false">
-					<a>Area Personale</a>
+					<a class="aMenu">Area Personale</a>
 				</button>
-				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				<div class="dropdown-menu blue" aria-labelledby="dropdownMenuButton">
 					<%
 						if (request.getSession().getAttribute("cliente") != null || 
 								request.getSession().getAttribute("utente") != null) {
@@ -52,7 +52,7 @@
 						if (request.getSession().getAttribute("email_admin") != null) {
 					%>
 					
-					<a class="dropdown-item" href="gestionepersona">Gestione Clienti e Utenti</a> 
+					<a class="dropdown-item" href="gestionepersona">Gestione clienti e utenti</a> 
 					
 					<% } %>
 					
@@ -67,25 +67,10 @@
 		<%
 			} else {
 		%>
-		<li id="login">
-			<form method=POST action="login">
-				<div id="loginForm">
-					<div style="margin-right: 10px;">
-						E-mail <input type="email" name="email" class="loginInput"
-							id="email">
-					</div>
-					<div>
-						Password <input type="password" name="password" class="loginInput"
-							id="password">
-					</div>
-				</div>
-				<div style="float: right">
-					<a href="registrazione">Registrati.</a> 
-					<input
-						class="bottoni bottone" id="loginButton" type="submit"
-						value="Login">
-				</div>
-			</form>
+		<li id="loginLi">
+		
+				<a class="aMenu" style="float:right;margin-right:20px" href="">Registrati</a>
+				<a class="aMenu" style="float:right" href="javascript:finestraLog('accedi')">Accedi</a>
 		</li>
 
 		<%
