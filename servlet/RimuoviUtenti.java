@@ -32,7 +32,7 @@ public class RimuoviUtenti extends HttpServlet {
 				u.setValidato(disabilitato);
 				Database.getInstance().updateUtente(u);
 				System.out.println("Utente eliminato da admin");
-				request.getServletContext().getNamedDispatcher("gestionepersona").include(request, response);
+				response.sendRedirect("gestionepersona");
 			}
 
 			if (session.getAttribute("utente") != null) {
@@ -40,9 +40,8 @@ public class RimuoviUtenti extends HttpServlet {
 				Utente u = (Utente) session.getAttribute("utente");
 				u.setValidato(disabilitato);
 				Database.getInstance().updateUtente(u);
-				request.getServletContext().getNamedDispatcher("gestionepersona").include(request, response);
 				System.out.println("Utente eliminato");
-				response.sendRedirect("logoutservlet");
+				response.sendRedirect("logout");
 			}
 		}
 	}
