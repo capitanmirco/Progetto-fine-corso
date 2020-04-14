@@ -3,7 +3,6 @@ package servlet;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -33,14 +32,10 @@ public class Filtro extends HttpServlet {
     public Filtro() {
         super();
     }
-    
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	doPost(request, response);
-    }
 
     /*filtro per categoria e filtro per data*/
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		
 		/* ***************************************filtro categoria **************************************************** */
 		/* 1 = citycar // 2 = suv // 3 = auto di lusso */
@@ -51,7 +46,6 @@ public class Filtro extends HttpServlet {
 				int categoria = Integer.parseInt(request.getParameter("auto"));
 				listaAuto = Database.getInstance().getAutoDisponibili();
 				Categoria c = Database.getInstance().getCategoriaById(categoria);
-				request.setAttribute("categoria", categoria);
 
 				for(int i=0;i<listaAuto.size();i++) {
 					if(!isEqual(listaAuto.get(i).getCategoria(), c)) {
@@ -67,10 +61,10 @@ public class Filtro extends HttpServlet {
 				request.setAttribute("listaAuto", listaAuto);
 				
 				
-				/*da cancellare
+				//da cancellare
 				for(Auto a : listaAuto ) {
 					System.out.println("filtro categoria " + a.getMarca());
-				}*/
+				}
 				
 			}else {
 				request.setAttribute("errore", true);
@@ -82,13 +76,6 @@ public class Filtro extends HttpServlet {
 		if(request.getParameter("inizioNolo")!=null && request.getParameter("fineNolo")!=null &&
 				isNumericId(request.getParameter("inizioNolo")) && isNumericId(request.getParameter("fineNolo"))) {
 			
-			try {
-				request.setAttribute("inizioNolo", stringToData(request.getParameter("inizioNolo")));
-				request.setAttribute("fineNolo", stringToData(request.getParameter("fineNolo")));
-			} catch (ParseException e1) {
-				e1.printStackTrace();
-			}
-			
 			/*filtro veicoli per data*/
 			if(request.getAttribute("listaAuto")==null) {
 				listaAuto = Database.getInstance().getListaAuto();
@@ -97,21 +84,33 @@ public class Filtro extends HttpServlet {
 			}
 			
 			try {
-				isAutoLibera(listaAuto, request.getParameter("inizioNolo"), request.getParameter("fineNolo"));
+				isAutoLibera(listaAuto, request.getParameter("inizioNolo"), request.getParameter("fineNolo"), Integer.parseInt(request.getParameter("auto")));
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
 			
-			/*da cancellare
+			//da cancellare
 			for(Auto a : listaAuto ) {
 				System.out.println("filtro data " + a.getMarca());
-			}*/
+			}
 			
 			request.setAttribute("listaAuto", listaAuto);
 
 		}
 		
-		request.getServletContext().getNamedDispatcher("catalogo").forward(request, response);
+		/*controllo validità date*/
+		try {
+			if(request.getParameter("inizioNolo")!=null && request.getParameter("fineNolo")!=null &&
+					compareDate(request.getParameter("inizioNolo"), request.getParameter("fineNolo"))) {
+				System.out.println("date sbagliate");
+				response.sendRedirect("home");
+			}else {
+				request.getServletContext().getNamedDispatcher("catalogo").forward(request, response);
+			}
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
+		
 		
 	}/*doPost*/
 
@@ -143,7 +142,7 @@ public class Filtro extends HttpServlet {
 	}
 	
 	/*restituisce tutte le auto che non sono già noleggiate -- 0 = prenotata -- 1 = prenotabile*/
-	private void isAutoLibera(List<Auto> listaAuto, String data_inizio, String data_fine) throws ParseException {
+	private void isAutoLibera(List<Auto> listaAuto, String data_inizio, String data_fine, int categoria) throws ParseException {
 		Date startData = stringToData(data_inizio);
 		Date endData = stringToData(data_fine);
 		List<Auto> listaFiltrata = Database.getInstance().getListaAuto();
@@ -152,7 +151,7 @@ public class Filtro extends HttpServlet {
 				List<Noleggio> listaNoleggio = Database.getInstance().getListaNoleggi();
 				for(Noleggio n : listaNoleggio) {
 					/*noleggio :  0 = terminato / 1 = in corso / 2 = interrotto*/
-					if(n.getAuto().getIdAuto() == listaFiltrata.get(i).getIdAuto() && n.getStato()==1) {
+					if(n.getAuto().getIdAuto() == listaFiltrata.get(i).getIdAuto() && n.getStato()==1 && listaFiltrata.get(i).getCategoria().getIdCategoria() == categoria) {
 						/*>0 data 1 dopo data2 -- <0 data 1 prima di data2 -- = data 1 e data 2 uguali*/
 						if((startData.compareTo(stringToData(n.getDataInizio()))<0 && endData.compareTo(stringToData(n.getDataInizio()))<0) 
 								|| (startData.compareTo(stringToData(n.getDataFine()))>0 && endData.compareTo(stringToData(n.getDataFine()))>0)) {
@@ -182,6 +181,17 @@ public class Filtro extends HttpServlet {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = formatter.parse(data);
 		return date;
+	}
+	
+	private boolean compareDate(String dataInizio, String dataFine) throws ParseException {
+		boolean check = false;
+		Date data1 = stringToData(dataInizio);
+		Date data2 = stringToData(dataFine);
+		/*>0 data 1 dopo data2 -- <0 data 1 prima di data2 -- = data 1 e data 2 uguali*/
+		if(data1.compareTo(data2)>0) {
+			check  = true;
+		}
+		return check;
 	}
 
 }
