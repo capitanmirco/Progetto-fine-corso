@@ -40,9 +40,9 @@
 
 			<div class="box">
 				<select name="auto" id="text">
-					<option value="citycar">City car</option>
-					<option value="lusso">Lusso</option>
-					<option value="suv">Suv</option>
+					<option value="1">City car</option>
+					<option value="3">Lusso</option>
+					<option value="2">Suv</option>
 
 				</select>
 			</div>
