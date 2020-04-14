@@ -21,7 +21,7 @@ Cliente c=(Cliente)request.getAttribute("cliente");
 					<th scope="col">Email</th>
 					<th scope="col">Password</th>
 					<th scope="col">Codice Fiscale</th>
-					<th scope="col">Numero Patente</th>					
+				<%if(c!= null){%> <th scope="col">Numero Patente</th>			<%} %>
 				</tr>
 			</thead>
 			<tbody class="table">
@@ -68,12 +68,14 @@ Cliente c=(Cliente)request.getAttribute("cliente");
 			
 				</table>
 					<div>
-					<a href="registrazione"
+					<a href="/modificaDati"
 						type="button" class="bottone">Modifica</a>
 
 				</div>
 				<div>
-					<a href="home"
+				<%if (u != null){ %>	<a href="rimuoviUtenti" <% }else if(c != null){ %>
+				<a href="rimuoviClienti"></a>
+				<%} %>
 						type="button" class="bottone">Elimina</a>
 
 				</div>
