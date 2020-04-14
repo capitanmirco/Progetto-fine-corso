@@ -1,3 +1,4 @@
+  
 package servlet;
 
 import java.io.IOException;
@@ -35,7 +36,7 @@ public class VisualizzaDati extends HttpServlet {
 	    request.setAttribute("utente", u);
 		request.getServletContext().getRequestDispatcher("/jsp/header.jsp").include(request, response);
 		request.getServletContext().getRequestDispatcher("/jsp/navbar.jsp").include(request, response);
-		request.getServletContext().getRequestDispatcher("/jsp/lista.jsp").include(request, response);
+		request.getServletContext().getRequestDispatcher("/jsp/gestioneDati.jsp").include(request, response);
 		request.getServletContext().getRequestDispatcher("/jsp/footer.jsp").include(request, response);
 		}
 		if(session.getAttribute("cliente")!=null) {
@@ -43,7 +44,7 @@ public class VisualizzaDati extends HttpServlet {
 		request.setAttribute("cliente", c);
 		request.getServletContext().getRequestDispatcher("/jsp/header.jsp").include(request, response);
 		request.getServletContext().getRequestDispatcher("/jsp/navbar.jsp").include(request, response);
-		request.getServletContext().getRequestDispatcher("/jsp/lista.jsp").include(request, response);
+		request.getServletContext().getRequestDispatcher("/jsp/gestioneDati.jsp").include(request, response);
 		request.getServletContext().getRequestDispatcher("/jsp/footer.jsp").include(request, response);
 		}
 	}
