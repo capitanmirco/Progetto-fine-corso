@@ -7,10 +7,10 @@
 		<li><a href="home" class="aMenu">Home</a></li>
 		<li><a href="catalogo" class="aMenu">Catalogo</a></li>
 
-			if (request.getSession().getAttribute("cliente") != null || 
+			<%if (request.getSession().getAttribute("cliente") != null || 
 				request.getSession().getAttribute("email_admin") != null
-					|| request.getSession().getAttribute("utente") != null) {
-		%>
+					|| request.getSession().getAttribute("utente") != null) {%>
+	
 		<li>
 			<div class="dropdown">
 				<button class="btn btn-secondary dropdown-toggle" type="button"
