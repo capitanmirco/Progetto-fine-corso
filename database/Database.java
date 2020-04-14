@@ -247,7 +247,7 @@ public class Database {
 	}
 
 	public List<Auto> getAutoDisponibili() {
-		Query q = em.createQuery("SELECT a FROM Noleggio a WHERE a.disponibilita=:1");
+		Query q = em.createQuery("SELECT a FROM Auto a WHERE a.disponibilita=1");
 		try {
 			List<Auto> autoDisponibili = q.getResultList();
 			return autoDisponibili;
