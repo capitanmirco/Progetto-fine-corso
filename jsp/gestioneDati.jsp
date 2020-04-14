@@ -68,17 +68,15 @@ Cliente c=(Cliente)request.getAttribute("cliente");
 			
 				</table>
 					<div>
-					<a href="/modificadati"
+					<a href="modificadati"
 						type="button" class="bottone">Modifica</a>
 
 				</div>
 				<div>
-				<%if (u != null){ %> <a href="rimuoviutenti?remove=<%= u.getIdUtente()%>"></a>
-					<a type="button" class="bottone">Elimina</a>
-				
-				<% }else if(c != null){ %>
-				  <a href="rimuoviclienti?remove=<%=c.getIdCliente()%>"></a> 
-				  <a type="button" class="bottone">Elimina</a>
+				<%if(u!=null){ %> 
+				<a type="button" class="bottone" href="rimuoviutenti?remove=<%=u.getIdUtente()%>">Elimina</a>		
+				<%}else if(c!=null){%>
+				  <a type="button" class="bottone" href="rimuoviclienti?remove=<%=c.getIdCliente()%>">Elimina</a> 
 				  <%} %>
 				</div>
 				
