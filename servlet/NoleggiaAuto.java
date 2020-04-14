@@ -26,9 +26,9 @@ public class NoleggiaAuto extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		
-		if(session.getAttribute("cliente")!=null) {												// posso fare un noleggio solo se sono un cliente
+		if(session.getAttribute("cliente")!=null && request.getParameter("noleggia") != null) {	// posso fare un noleggio solo se sono un cliente
 		
-			if(request.getParameter("noleggia") != null && request.getParameter("noleggia").equals(request.getParameter("id_auto"))) {		// prendo il parametro noleggia che sarà = all'id dell'auto selezionata
+			if(request.getParameter("noleggia").equals(request.getParameter("id_auto"))) {		// prendo il parametro noleggia che sarà = all'id dell'auto selezionata
 			
 				int id_auto = Integer.parseInt(request.getParameter("id_auto"));				// una volta che premo il pulsante per noleggiare l'auto, prendo l'id di quell'auto corrispondente
 				Auto auto = Database.getInstance().getAutoById(id_auto);						// prendo i dati dell'auto tramite l'id che ho appena preso
@@ -47,7 +47,7 @@ public class NoleggiaAuto extends HttpServlet {
 				request.setAttribute("noleggio", n);											// metto il noleggio nella request
 				
 				request.getServletContext().getRequestDispatcher("/jsp/header.jsp").include(request, response);
-				request.getServletContext().getRequestDispatcher("/jsp/navbar.jsp").include(request, response);
+				//request.getServletContext().getRequestDispatcher("/jsp/navbar.jsp").include(request, response);
 				request.getServletContext().getRequestDispatcher("/jsp/riepilogo.jsp").include(request, response);
 				request.getServletContext().getRequestDispatcher("/jsp/footer.jsp").include(request, response);
 			
@@ -65,3 +65,4 @@ public class NoleggiaAuto extends HttpServlet {
 	}
 
 }
+
