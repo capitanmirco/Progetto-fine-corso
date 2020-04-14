@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import database.Database;
 import model.Utente;
 
-@WebServlet(name = "rimuoviutente", urlPatterns = { "/rimuoviutente" })
+@WebServlet(name = "rimuoviutenti", urlPatterns = { "/rimuoviutenti" })
 public class RimuoviUtenti extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
