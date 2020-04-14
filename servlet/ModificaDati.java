@@ -80,6 +80,7 @@ public class ModificaDati extends HttpServlet {
 			}
 
 		}
+		response.sendRedirect("home");
 	}
 
 }
