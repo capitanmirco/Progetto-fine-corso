@@ -45,10 +45,11 @@ public class ValidaUtenti extends HttpServlet {
 				}
 			}
 		} // end if
+		response.sendRedirect("gestionepersona");
 
 	}
 	
-		/* controlla se la stringa può essere parsata senza errori */
+		/* controlla se la stringa puÃ² essere parsata senza errori */
 	private boolean isNumericId(String s) {
 		boolean isNumericId = false;
 		for (int i = 0; i < s.length(); i++) {
