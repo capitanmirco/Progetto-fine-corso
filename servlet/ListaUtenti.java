@@ -24,13 +24,13 @@ public class ListaUtenti extends HttpServlet {
 	List<Utente> listaRimossi;
 
 	public ListaUtenti() {
-		listaDaValidare = new ArrayList<Utente>();
-		listaValidati = new ArrayList<Utente>();
-		listaRimossi = new ArrayList<Utente>();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		listaDaValidare = new ArrayList<Utente>();
+		listaValidati = new ArrayList<Utente>();
+		listaRimossi = new ArrayList<Utente>();
 
 		listaUtenti = Database.getInstance().getListaUtenti();
 
