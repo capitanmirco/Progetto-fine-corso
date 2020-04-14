@@ -144,11 +144,11 @@
 									<% break; 
 								case 4: %>
 									<a type="button" href="rimuovicliente?remove=<%=c.getIdCliente()%>">Elimina</a>
-									<a type="button" href="listanoleggiate?idstorico=<%=c.getIdCliente()%>">Storico</a>
+									<a type="button" href="listanoleggi?idstorico=<%=c.getIdCliente()%>">Storico</a>
 									<% break; 
 								case 5: %>
 									<a type="button" href="ripristinapersona?ripristinacliente=<%=c.getIdCliente()%>">Ripristina</a>
-									<a type="button" href="listanoleggiate?idstorico=<%=c.getIdCliente()%>">Storico</a>
+									<a type="button" href="listanoleggi?idstorico=<%=c.getIdCliente()%>">Storico</a>
 									<% break;
 								 } %>
 						 	</td>
