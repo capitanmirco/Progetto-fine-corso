@@ -50,7 +50,11 @@ public class Filtro extends HttpServlet {
 				for(int i=0;i<listaAuto.size();i++) {
 					if(!isEqual(listaAuto.get(i).getCategoria(), c)) {
 						listaAuto.remove(i);
-						i--;
+						if(i!=0) {
+							i=0;
+						}else {
+							i--;
+						}
 					}
 				}
 				/*passa alla requst la lista auto già filtrata per categoria*/
@@ -90,13 +94,13 @@ public class Filtro extends HttpServlet {
 				System.out.println("filtro data " + a.getMarca());
 			}*/
 			
-			request.setAttribute("filtro_data", listaAuto);
+			request.setAttribute("listaAuto", listaAuto);
 
 		}
 		
 		request.getServletContext().getNamedDispatcher("catalogo").forward(request, response);
 		
-	}/*doGet*/
+	}/*doPost*/
 
 	
 	/*restituisce true se i nomi delle categorie sono uguali*/
@@ -168,4 +172,3 @@ public class Filtro extends HttpServlet {
 	}
 
 }
-
