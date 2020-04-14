@@ -14,7 +14,7 @@ import database.Database;
 import model.Cliente;
 
 
-@WebServlet("/listaclienti")
+@WebServlet(name="listaclienti", urlPatterns = {"/listaclienti"})
 public class ListaClienti extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	List<Cliente> listaClienti;
@@ -24,42 +24,34 @@ public class ListaClienti extends HttpServlet {
        
     
     public ListaClienti() {
-        listaNonValidati=new ArrayList<Cliente>();
-        listaValidati=new ArrayList<Cliente>();
-        listaCancellati=new ArrayList<Cliente>();
     }
 
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getServletContext().getRequestDispatcher("/jsp/header.jsp").include(request, response);
-		request.getServletContext().getRequestDispatcher("/jsp/navbar.jsp").include(request, response);
-	
-	listaClienti = Database.getInstance().getListaClienti();
-	
-	for (Cliente cliente : listaClienti) {
-		if(cliente.getValidato()==0) {
-			
-			listaNonValidati.add(cliente);
-			
-		}else if(cliente.getValidato()==1) {
-			
-			listaValidati.add(cliente);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	listaNonValidati=new ArrayList<Cliente>();
+    	listaValidati=new ArrayList<Cliente>();
+    	listaCancellati=new ArrayList<Cliente>();
+    	listaClienti = Database.getInstance().getListaClienti();
 
-			
-		}else if(cliente.getValidato()==2) {
-			listaCancellati.add(cliente);
-			
-		}
-	}
-	request.setAttribute("listaClientiNonValidati", listaNonValidati);
-	request.setAttribute("listaClientiValidati", listaValidati);
-	request.setAttribute("listaClientiCancellati", listaCancellati);
-	request.getServletContext().getRequestDispatcher("/jsp/lista.jsp").include(request, response);
-	request.getServletContext().getRequestDispatcher("/jsp/footer.jsp").include(request, response);
-	
-	
-	
-	
-	}	
+    	for (Cliente cliente : listaClienti) {
+    		if(cliente.getValidato()==0 && !listaNonValidati.contains(cliente)) {
+
+    			listaNonValidati.add(cliente);
+
+    		}else if(cliente.getValidato()==1 && !listaValidati.contains(cliente)) {
+
+    			listaValidati.add(cliente);
+
+
+    		}else if(cliente.getValidato()==2 && !listaCancellati.contains(cliente)) {
+    			listaCancellati.add(cliente);
+
+    		}
+    	}
+    	request.setAttribute("listaClientiNonValidati", listaNonValidati);
+    	request.setAttribute("listaClientiValidati", listaValidati);
+    	request.setAttribute("listaClientiCancellati", listaCancellati);
+
+    }	
 
 }
