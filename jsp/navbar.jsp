@@ -37,7 +37,7 @@
 						if (request.getSession().getAttribute("utente") != null)
 						{
 					%>
-					<a class="dropdown-item" href="gestione">Gestione clienti</a>
+					<a class="dropdown-item" href="gestionepersona">Gestione clienti</a>
 					<%
 						}
 						if (request.getSession().getAttribute("email_admin") != null
