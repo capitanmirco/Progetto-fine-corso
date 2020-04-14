@@ -40,7 +40,7 @@ public class Pagamento extends HttpServlet {
 			String dataFine=request.getParameter("dataFine");
 			byte disp=0;
 			a.setDisponibilita(disp);
-			byte stato=0;
+			byte stato=1;
 			int id=Integer.parseInt(request.getParameter("id"));
 			Noleggio n=new Noleggio();
 			n.setStato(stato);
@@ -52,7 +52,7 @@ public class Pagamento extends HttpServlet {
 			Database.getInstance().addNoleggio(n);
 			request.setAttribute("conferma", n);
 			//dall'attribute create un alert con solo data inizio e fine
-			request.getServletContext().getRequestDispatcher("/jsp/home.jsp").forward(request,response);
+			request.getServletContext().getRequestDispatcher("home").forward(request,response);
 		}
 	}
 
