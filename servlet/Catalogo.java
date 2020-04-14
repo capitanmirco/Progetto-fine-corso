@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,6 @@ import model.Auto;
 @WebServlet(name = "catalogo", urlPatterns = { "/catalogo" })
 public class Catalogo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	List<Auto> catalogoAuto;
 	
        
    
@@ -31,8 +31,9 @@ public class Catalogo extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+	List<Auto> catalogoAuto;
 	catalogoAuto = Database.getInstance().getAutoDisponibili();
-	request.setAttribute("catalogo", catalogoAuto);
+	request.setAttribute("listaAuto", catalogoAuto);
 	request.getServletContext().getRequestDispatcher("/jsp/header.jsp").include(request, response);
 	request.getServletContext().getRequestDispatcher("/jsp/navbar.jsp").include(request, response);
 	request.getServletContext().getRequestDispatcher("/jsp/catalogo.jsp").include(request, response);
@@ -43,8 +44,6 @@ public class Catalogo extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-	catalogoAuto = (List<Auto>) request.getAttribute("listaAuto");
-	request.setAttribute("catalogo", catalogoAuto);
 	request.getServletContext().getRequestDispatcher("/jsp/header.jsp").include(request, response);
 	request.getServletContext().getRequestDispatcher("/jsp/navbar.jsp").include(request, response);
 	request.getServletContext().getRequestDispatcher("/jsp/catalogo.jsp").include(request, response);
@@ -53,3 +52,4 @@ public class Catalogo extends HttpServlet {
 	}
 
 }
+
