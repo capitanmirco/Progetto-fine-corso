@@ -16,7 +16,9 @@ public class RimuoviClienti extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		/*request.getServletContext().getRequestDispatcher("/jsp/header.jsp").include(request,response);
+		request.getServletContext().getRequestDispatcher("/jsp/lista.jsp").include(request,response);
+		request.getServletContext().getRequestDispatcher("/jsp/footer.jsp").include(request,response);*/
 		HttpSession session = request.getSession();
 		if(request.getParameter("remove") != null) {
 			int id = Integer.parseInt(request.getParameter("remove"));
@@ -29,9 +31,8 @@ public class RimuoviClienti extends HttpServlet {
 				
 				Database.getInstance().updateCliente(c);
 				System.out.println("cliente eliminato ad admin");
-				request.getServletContext().getNamedDispatcher("gestionepersona").include(request, response);
 
-				//response.sendRedirect("listaclienti");
+				response.sendRedirect("gestionepersona");
 			}
 			
 			// se sono un utente
@@ -41,9 +42,8 @@ public class RimuoviClienti extends HttpServlet {
 				
 				Database.getInstance().updateCliente(c);
 				
-				//response.sendRedirect("listaclienti");
+				response.sendRedirect("gestionepersona");
 				System.out.println("cliente eliminato da utente");
-				request.getServletContext().getNamedDispatcher("gestionepersona").include(request, response);
 			}
 			
 			// se sono un cliente
