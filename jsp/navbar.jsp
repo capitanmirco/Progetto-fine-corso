@@ -7,7 +7,6 @@
 		<li><a href="home" class="aMenu">Home</a></li>
 		<li><a href="catalogo" class="aMenu">Catalogo</a></li>
 
-		<%request.getSession().setAttribute("utente", "hyuio");
 			if (request.getSession().getAttribute("cliente") != null || 
 				request.getSession().getAttribute("email_admin") != null
 					|| request.getSession().getAttribute("utente") != null) {
