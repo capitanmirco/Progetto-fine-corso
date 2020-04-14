@@ -15,7 +15,7 @@ import model.Cliente;
 /**
  * Servlet implementation class ValidaClienti
  */
-@WebServlet(name ="validaclienti", urlPatterns = {"/validaclienti"})
+@WebServlet(name ="validacliente", urlPatterns = {"/validacliente"})
 public class ValidaClienti extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -33,7 +33,7 @@ public class ValidaClienti extends HttpServlet {
 		/*check valida e check id passato correttamente*/
 		if(request.getParameter("valida")!=null && request.getParameter("valida").equals("1") && request.getParameter("id")!=null
 				&& session.getAttribute("email_admin")!=null) {
-			boolean isNumericId = isNumericId((String)request.getAttribute("id"));
+			boolean isNumericId = isNumericId(request.getParameter("id"));
 			
 			/*if id is numeric*/
 			if(isNumericId) {
@@ -42,16 +42,16 @@ public class ValidaClienti extends HttpServlet {
 					byte valida = 1;
 					c.setValidato(valida);
 					Database.getInstance().updateCliente(c);
-					response.sendRedirect("gestionepersone");
 				}
 			}
 		}//end if 
+		response.sendRedirect("gestionepersona");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 	}
 	
-	/*controlla se la stringa può essere parsata senza errori*/
+	/*controlla se la stringa puÃ² essere parsata senza errori*/
 	private boolean isNumericId(String s) {
 		boolean isNumericId=false;
 		for(int i=0;i<s.length();i++) {
