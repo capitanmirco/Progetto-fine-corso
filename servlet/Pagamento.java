@@ -14,7 +14,7 @@ import model.Cliente;
 import model.Noleggio;
 
 
-@WebServlet("/Pagamento")
+@WebServlet("/pagamento")
 public class Pagamento extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
