@@ -1,6 +1,9 @@
 package servlet;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,8 +23,11 @@ public class Home extends HttpServlet {
 		request.getServletContext().getRequestDispatcher("/jsp/header.jsp").include(request, response);
 		request.getServletContext().getRequestDispatcher("/jsp/navbar.jsp").include(request, response);
 		request.getServletContext().getRequestDispatcher("/jsp/home.jsp").include(request, response);
+		request.getServletContext().getNamedDispatcher("controllodata").include(request, response);
 		request.getServletContext().getRequestDispatcher("/jsp/footer.jsp").include(request, response);
+		
 	}
 
 
 }
+
