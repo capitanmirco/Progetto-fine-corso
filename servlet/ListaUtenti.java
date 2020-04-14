@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import database.Database;
 
-@WebServlet("/listautenti")
+@WebServlet(name="listautenti", urlPatterns = {"/listautenti"})
 public class ListaUtenti extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	List<Utente> listaUtenti;
@@ -31,24 +31,22 @@ public class ListaUtenti extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.getServletContext().getRequestDispatcher("/jsp/header.jsp").include(request, response);
-		request.getServletContext().getRequestDispatcher("/jsp/navbar.jsp").include(request, response);
 
 		listaUtenti = Database.getInstance().getListaUtenti();
 
 		for (Utente u : listaUtenti) {
 
-			if (u.getValidato() == 0) {
+			if (u.getValidato() == 0 && !listaDaValidare.contains(u)) {
 				listaDaValidare.add(u);
 
 			}
 
-			if (u.getValidato() == 1) {
+			if (u.getValidato() == 1 && !listaValidati.contains(u)) {
 				listaValidati.add(u);
 
 			}
 
-			if (u.getValidato() == 2) {
+			if (u.getValidato() == 2 && !listaRimossi.contains(u)) {
 
 				listaRimossi.add(u);
 			}
@@ -56,8 +54,5 @@ public class ListaUtenti extends HttpServlet {
 		request.setAttribute("listaUtentiNonValidati", listaDaValidare);
 		request.setAttribute("listaUtentiValidati", listaValidati);
 		request.setAttribute("listaUtentiCancellati", listaRimossi);
-		request.getServletContext().getRequestDispatcher("/jsp/lista.jsp").include(request, response);
-		request.getServletContext().getRequestDispatcher("/jsp/footer.jsp").include(request, response);
-
 	}
 }
