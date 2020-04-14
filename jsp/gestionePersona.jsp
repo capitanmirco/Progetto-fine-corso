@@ -101,7 +101,8 @@
 									<% break; 
 								case 4: %>
 									<a type="button" href="rimuoviutenti?remove=<%=u.getIdUtente()%>">Elimina</a>
-									<%case 5: %>
+									<% break; 
+								case 5: %>
 									<a type="button" href="ripristinapersona?ripristinautente=<%=u.getIdUtente()%>">Ripristina</a>
 									<% break;
 								 } %>
@@ -144,7 +145,8 @@
 								case 4: %>
 									<a type="button" href="rimuovicliente?remove=<%=c.getIdCliente()%>">Elimina</a>
 									<a type="button" href="listanoleggiate?idstorico=<%=c.getIdCliente()%>">Storico</a>
-									<%case 5: %>
+									<% break; 
+								case 5: %>
 									<a type="button" href="ripristinapersona?ripristinacliente=<%=c.getIdCliente()%>">Ripristina</a>
 									<a type="button" href="listanoleggiate?idstorico=<%=c.getIdCliente()%>">Storico</a>
 									<% break;
