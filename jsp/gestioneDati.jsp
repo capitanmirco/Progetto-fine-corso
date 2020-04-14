@@ -73,8 +73,8 @@ Cliente c=(Cliente)request.getAttribute("cliente");
 
 				</div>
 				<div>
-				<%if (u != null){ %>	<a href="rimuoviUtenti" <% }else if(c != null){ %>
-				<a href="rimuoviClienti"></a>
+				<%if (u != null){ %>	<a href="rimuoviutenti" <% }else if(c != null){ %>
+										<a href="rimuoviclienti"></a>
 				<%} %>
 						type="button" class="bottone">Elimina</a>
 
