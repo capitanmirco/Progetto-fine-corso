@@ -1,0 +1,69 @@
+@charset "ISO-8859-1";
+
+.imgcat {
+	width: 150px;
+	height: 88px;
+	
+	align: left;
+	
+	
+}
+
+.container {
+	margin-top: 200px;
+	margin-bottom: 200px;
+	
+	
+}
+.divcat{
+	
+	margin-top: 50px;
+}
+.calendario-catalogo{
+	width: 250px;
+	height: 180px;
+}
+.bottone-catalogo{
+	
+	border-radius: 0.8rem;
+	background-color: #1F4267;
+	color: white;
+	width: 10em;
+	height: 2em;
+	outline: none;
+	font-size: 20px;
+	text-align: center;
+}
+.prova{
+	margin-top: auto;
+	margin-bottom: auto;
+}
+.row{
+	margin-top: 20px;
+}
+.col-sm #div-prenota {
+    margin: 3px auto;
+}
+.row .col-sm {
+    overflow: unset;
+    margin: 12px auto;
+    padding: 0;
+}
+.col-sm .input {
+    margin-top: 0;
+}
+.col-6.descrizione {
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.col-3.descrizione{
+	 display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: unset;
+}
+body * {
+    overflow: unset;
+}
