@@ -111,7 +111,7 @@
 					}
 			  		
 			  		
-					if(nRuoli[i]==2 || nRuoli[i]==3){
+					if(nRuoli[i]==1 || nRuoli[i]==3){
 						String nomeAttr2 = "listaClienti"+nomiAttr[i];
 						List<Cliente> listaClienti = (List<Cliente>) request.getAttribute(nomeAttr2);
 					
