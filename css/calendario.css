@@ -1,7 +1,7 @@
 @charset "ISO-8859-1";
 *{
 	font-family: 'Montserrat', sans-serif;
-	text-align: center;
+	
 }
 body {
     margin: 0;
@@ -26,6 +26,7 @@ body {
    -webkit-appearance: button;
     appearance: button;
     outline: none;
+    text-align: center;
    
   }
   
@@ -60,6 +61,7 @@ body {
           width: 350px;
           height: 350px;
           border-radius: 2rem;
+          text-align: center;
           text-align: center;
           
           
@@ -98,5 +100,4 @@ body {
       .div-car{
      z-index:0;
      
-      }
-    
+      } 
