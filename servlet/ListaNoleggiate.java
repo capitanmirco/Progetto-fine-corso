@@ -46,6 +46,18 @@ public class ListaNoleggiate extends HttpServlet {
     				}
     			}
     			request.setAttribute("Noleggi_lista", noleggiIncorso);
+    			
+    			/*storico come cliente selezionato*/
+    			if(request.getParameter("idstorico")!=null && isNumericId(request.getParameter("idstorico"))) {
+    				Cliente c = Database.getInstance().getClienteById(Integer.parseInt(request.getParameter("idstorico")));
+    				List<Noleggio> noleggi = c.getNoleggios();
+    				for(Noleggio nol : noleggi) {
+    					if(nol.getStato()==0 || nol.getStato()==2) {
+    						storicoNoleggi.add(nol);
+    					}
+    				}
+    				request.setAttribute("storico_noleggi", storicoNoleggi);
+    			}
     		}
     	}//if loggato come utente/admin
 
@@ -87,5 +99,20 @@ public class ListaNoleggiate extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
+    
+    
+    /* controlla se la stringa puÃ² essere parsata senza errori */
+	private boolean isNumericId(String s) {
+		boolean isNumericId = false;
+		for (int i = 0; i < s.length(); i++) {
+			if (s.charAt(i) >= 48 && s.charAt(i) <= 57) {
+				isNumericId = true;
+			} else {
+				isNumericId = false;
+				break;
+			}
+		}
+		return isNumericId;
+	}
 
 }
