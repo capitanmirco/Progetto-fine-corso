@@ -56,7 +56,7 @@ public class RimuoviClienti extends HttpServlet {
 				Database.getInstance().updateCliente(c);
 				
 				System.out.println("cliente eliminato");
-				response.sendRedirect("logoutservlet");
+				response.sendRedirect("logout");
 			}
 		
 		}
