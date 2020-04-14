@@ -40,18 +40,12 @@ public class RimuoviAuto extends HttpServlet {
 		
 		if(session.getAttribute("utente")!=null || session.getAttribute("email_admin")!=null) {
 			
-		
-			request.getServletContext().getRequestDispatcher("/jsp/header.jsp").include(request, response);
-			request.getServletContext().getRequestDispatcher("/jsp/navbar.jsp").include(request, response);
-			request.getServletContext().getRequestDispatcher("/jsp/lista.jsp").include(request, response);
-			request.getServletContext().getRequestDispatcher("/jsp/footer.jsp").include(request, response);
-			
 			if(request.getParameter("remove")!=null) {
 				int id = Integer.parseInt(request.getParameter("remove"));
 				Auto a = Database.getInstance().getAutoById(id);
 				a.setDisponibilita(disponibilita);
 				Database.getInstance().updateAuto(a);
-				response.sendRedirect("rimuoviauto");
+				response.sendRedirect("catalogo");
 			}
 
 		}
@@ -66,3 +60,4 @@ public class RimuoviAuto extends HttpServlet {
 	}
 	
 }
+
