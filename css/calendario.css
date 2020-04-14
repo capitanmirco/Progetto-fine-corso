@@ -70,26 +70,12 @@ body {
         margin:0 auto;
       }
       
-      #bottone-calendario{
-         
+     #bottone-calendario
+	{
           width: 10em;  
           height: 2em;
-          
-          
-          
-
       }
-      .bottone{
-         margin-bottom: 20px;
-          border-radius: 0.8rem;
-          background-color: #1F4267 ;
-          color: white;
-          outline: none;
-          font-size:20px;
-          text-align: center;
-          
       
-      }
       .cal-position{
        z-index:1;
        position:absolute;
