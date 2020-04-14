@@ -33,6 +33,11 @@ public class Filtro extends HttpServlet {
     public Filtro() {
         super();
     }
+    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	doPost(request, response);
+    }
 
     /*filtro per categoria e filtro per data*/
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -46,6 +51,7 @@ public class Filtro extends HttpServlet {
 				int categoria = Integer.parseInt(request.getParameter("auto"));
 				listaAuto = Database.getInstance().getAutoDisponibili();
 				Categoria c = Database.getInstance().getCategoriaById(categoria);
+				request.setAttribute("categoria", categoria);
 
 				for(int i=0;i<listaAuto.size();i++) {
 					if(!isEqual(listaAuto.get(i).getCategoria(), c)) {
@@ -75,6 +81,13 @@ public class Filtro extends HttpServlet {
 		/* ***************************************filtro data **************************************************** */
 		if(request.getParameter("inizioNolo")!=null && request.getParameter("fineNolo")!=null &&
 				isNumericId(request.getParameter("inizioNolo")) && isNumericId(request.getParameter("fineNolo"))) {
+			
+			try {
+				request.setAttribute("inizioNolo", stringToData(request.getParameter("inizioNolo")));
+				request.setAttribute("fineNolo", stringToData(request.getParameter("fineNolo")));
+			} catch (ParseException e1) {
+				e1.printStackTrace();
+			}
 			
 			/*filtro veicoli per data*/
 			if(request.getAttribute("listaAuto")==null) {
