@@ -1,0 +1,18 @@
+.bottone
+{
+	border-radius: 10px;
+    background-color: #1F4267;
+    color: white !important;
+    outline: none;
+    font-size:20px;
+    text-align: center;
+    opacity: 1;
+    max-width: min-content;
+    margin: 15px;
+}
+
+.blue
+{
+	color: #fff;
+	background-color: #1f4267 !important;
+}
