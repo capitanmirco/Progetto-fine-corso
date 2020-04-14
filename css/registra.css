@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 div{
-    overflow: auto;
+    overflow: unset;
 }
 body{
     margin:0;
