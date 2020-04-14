@@ -33,16 +33,16 @@ public class RipristinaPersona extends HttpServlet {
 				Utente u = Database.getInstance().getUtenteById(id);
 				u.setValidato(validato);
 				Database.getInstance().updateUtente(u);
-				request.getServletContext().getNamedDispatcher("gestionepersona").include(request, response);
-
+				response.sendRedirect("gestionepersona");
+				
 			} else if (request.getParameter("ripristinacliente") != null) {
 				int id = Integer.parseInt(request.getParameter("ripristinacliente"));
 
 				Cliente c = Database.getInstance().getClienteById(id);
 				c.setValidato(validato);
 				Database.getInstance().updateCliente(c);
-				request.getServletContext().getNamedDispatcher("gestionepersona").include(request, response);
-
+				response.sendRedirect("gestionepersona");
+				
 			}
 		}
 	}
