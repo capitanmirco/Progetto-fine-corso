@@ -11,7 +11,7 @@
 			<thead class="table">
 				<tr>
 					<th scope="col" ></th>
-					<th scope="col">Cilente</th>
+					<th scope="col">Cliente</th>
 					<th scope="col">Veicolo</th>
 					<th scope="col">Inizio noleggio</th>
 					<th scope="col">Fine noleggio</th>
@@ -54,6 +54,7 @@
 						<th scope="col">Veicolo</th>
 						<th scope="col">Inizio noleggio</th>
 						<th scope="col">Fine noleggio</th>
+						
 					</tr>
 				</thead>
 				<tbody>
@@ -71,7 +72,8 @@
 						<td><%=n.getAuto().getModello()+" "+n.getAuto().getMarca()%></td>
 						<td><%=n.getDataInizio()%></td>
 						<td><%=n.getDataFine()%></td>
-
+						
+                          
 
 
 						<%
