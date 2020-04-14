@@ -1,8 +1,12 @@
 <%@page import="model.Cliente"%>
 <%@page import="model.Utente"%>
+<br>
+<br>
+<br>
+<br>
 <%
-Utente u=(Utente)session.getAttribute("Utente"); 
-Cliente c=(Cliente)session.getAttribute("Cliente");
+Utente u=(Utente)request.getAttribute("utente"); 
+Cliente c=(Cliente)request.getAttribute("cliente");
 %>
 
 <%@page import="java.util.List"%>
@@ -17,7 +21,7 @@ Cliente c=(Cliente)session.getAttribute("Cliente");
 					<th scope="col">Email</th>
 					<th scope="col">Password</th>
 					<th scope="col">Codice Fiscale</th>
-					<th scope="col">Patente</th>					
+					<th scope="col">Numero Patente</th>					
 				</tr>
 			</thead>
 			<tbody class="table">
@@ -31,9 +35,8 @@ Cliente c=(Cliente)session.getAttribute("Cliente");
 					<td><%=c.getDataDiNascita()%></td>
 					<td><%=c.getEmail()%></td>
 					<td><%=c.getPassword()%></td>
-					<td><%=c.getEmail()%></td>
-					<td><%=c.getEmail()%></td>
-					<td><%=c.getEmail()%></td>
+					<td><%=c.getCodiceFiscale()%></td>
+					<td><%=c.getNumeroPatente()%></td>
 					
 								
 				<%
@@ -46,9 +49,7 @@ Cliente c=(Cliente)session.getAttribute("Cliente");
 					<td><%=u.getDataDiNascita()%></td>
 					<td><%=u.getEmail()%></td>
 					<td><%=u.getPassword()%></td>
-					<td><%=u.getEmail()%></td>
-					<td><%=u.getEmail()%></td>
-					<td><%=u.getEmail()%></td>
+					<td><%=u.getCodiceFiscale()%></td>
 		
 		<%
 				
@@ -56,7 +57,15 @@ Cliente c=(Cliente)session.getAttribute("Cliente");
 			}
 			
 			
-			%>			
+			%>
+			
+			
+			
+			
+			
+			
+			
+			
 				</table>
 					<div>
 					<a href="registrazione"
@@ -71,5 +80,13 @@ Cliente c=(Cliente)session.getAttribute("Cliente");
 				
 				</div>
 				</div>
+				
+				
+				
+				
+				
+				
+				
+				
 				
 				
