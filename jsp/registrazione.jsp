@@ -61,7 +61,7 @@
 				
 				
 				<div class="form-group" id="patente">
-				<% if(c == null || u != null){%>
+				<% if(c == null || c != null){%>
 					<label for="exampleInputNumeroPatente"> Numero di patente </label> 
 					<input type="text" class="form-control" name="numeropatente" id="exampleInputNumeroPatente" value="<%= numeroDiPatente= c!=null ? c.getNumeroPatente() :""%>">
 				<%}%>	
