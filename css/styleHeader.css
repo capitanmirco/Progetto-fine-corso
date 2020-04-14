@@ -10,8 +10,8 @@ nav.navbar
   	z-index: 1000;
  	padding: 0;
   	width: 100%;
+  	
 }
-
 ul.nav
 {
 	flex-direction: row;
@@ -31,6 +31,7 @@ ul.nav
 	width: 100%;
 	position:fixed;
 	top: 0;
+	border-bottom: 1px solid #303030;
 }
 
 .navbar-nav > li
@@ -74,9 +75,8 @@ nav ul
     position: unset;
     width: min-content;
     border:0;
-   
     float: right !important;
-  	margin-top: -3px;
+  	margin-top: -3px !important;
   	text-align: center;
     clear: right;
 }
@@ -142,8 +142,10 @@ nav ul
 	margin-left: 10px;
 }
 
-
-
+.aMenu 
+{
+    padding: 15px !important;
+}
 .pagineDiv
 {
 	  margin: 170px 50px;
