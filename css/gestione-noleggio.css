@@ -1,0 +1,33 @@
+@charset "ISO-8859-1";
+.table-noleggio{
+    padding-left: 100px;
+    margin-right: 100px;
+    grid-area: table;
+    margin-top: 200px;
+}
+.madre{
+    grid-template-columns: 1f ;
+    
+    grid-template-areas: "navbar"
+    "noleggio";
+    
+    margin-top: 100px;
+    
+    
+    
+
+}
+.navbar .navbar-inverse {
+	grid-area: navbar;
+	
+	
+	
+}
+.table-noleggio{
+	grid-area : noleggio;
+	margin-top:200px;
+	min-height:1000px;
+}
+.table {
+	text-align: left;
+}
