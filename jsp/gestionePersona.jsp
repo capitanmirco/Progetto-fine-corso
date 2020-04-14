@@ -139,7 +139,7 @@
 									<a type="button" href="ripristinapersona?ripristinacliente=<%=c.getIdCliente()%>">Ripristina</a>
 									<% break;
 								case 3: %>
-									<a type="button" href="validaucliente?valida=1&id=<%=c.getIdCliente()%>">Approva</a>
+									<a type="button" href="validacliente?valida=1&id=<%=c.getIdCliente()%>">Approva</a>
 									<a type="button" href="rimuovicliente?remove=<%=c.getIdCliente()%>">Elimina</a>
 									<% break; 
 								case 4: %>
