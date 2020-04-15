@@ -77,6 +77,9 @@ public class Filtro extends HttpServlet {
 		if(request.getParameter("inizioNolo")!=null && request.getParameter("fineNolo")!=null &&
 				isNumericId(request.getParameter("inizioNolo")) && isNumericId(request.getParameter("fineNolo"))) {
 			
+			request.setAttribute("inizioNolo", request.getParameter("inizioNolo"));
+			request.setAttribute("fineNolo", request.getParameter("fineNolo"));
+			
 			/*filtro veicoli per data*/
 			if(request.getAttribute("listaAuto")==null) {
 				listaAuto = Database.getInstance().getListaAuto();
