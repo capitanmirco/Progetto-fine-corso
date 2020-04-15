@@ -43,7 +43,8 @@
 								|| request.getSession().getAttribute("utente") != null) {
 					%>
 
-					<a class="dropdown-item" href="listanoleggi">Noleggi clienti</a> 
+					<a class="dropdown-item" href="listanoleggi">Noleggi clienti</a>
+					<a class="dropdown-item" href="gestioneauto">Auto rimosse</a>
 					
 				
 					<%
