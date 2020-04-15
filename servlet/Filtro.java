@@ -38,7 +38,7 @@ public class Filtro extends HttpServlet {
 
 		
 		/* ***************************************filtro categoria **************************************************** */
-		/* 1 = citycar // 2 = suv // 3 = auto di lusso */
+		/* 1 = citycar // 2 = suv // 3 = auto di lusso // 0=nessun filtro*/
 		if(request.getParameter("auto")!=null) {
 			boolean isNumericId = isNumericId(request.getParameter("auto"));
 			
@@ -46,15 +46,20 @@ public class Filtro extends HttpServlet {
 				int categoria = Integer.parseInt(request.getParameter("auto"));
 				request.setAttribute("categoria", categoria);
 				listaAuto = Database.getInstance().getAutoDisponibili();
-				Categoria c = Database.getInstance().getCategoriaById(categoria);
+				
+				if(categoria!=0) {
+					Categoria c = Database.getInstance().getCategoriaById(categoria);
 
-				for(int i=0;i<listaAuto.size();i++) {
-					if(!isEqual(listaAuto.get(i).getCategoria(), c)) {
-						listaAuto.remove(i);
-						if(i!=0) {
-							i=0;
-						}else {
-							i--;
+					System.out.println(request.getParameter("auto"));
+
+					for(int i=0;i<listaAuto.size();i++) {
+						if(!isEqual(listaAuto.get(i).getCategoria(), c)) {
+							listaAuto.remove(i);
+							if(i!=0) {
+								i=0;
+							}else {
+								i--;
+							}
 						}
 					}
 				}
@@ -62,10 +67,11 @@ public class Filtro extends HttpServlet {
 				request.setAttribute("listaAuto", listaAuto);
 				
 				
-				//da cancellare
+				/*da cancellare
 				for(Auto a : listaAuto ) {
 					System.out.println("filtro categoria " + a.getMarca());
-				}
+				}*/
+				
 				
 			}else {
 				request.setAttribute("errore", true);
@@ -164,6 +170,24 @@ public class Filtro extends HttpServlet {
 				for(Noleggio n : listaNoleggio) {
 					/*noleggio :  0 = terminato / 1 = in corso / 2 = interrotto*/
 					if(n.getAuto().getIdAuto() == listaFiltrata.get(i).getIdAuto() && n.getStato()==1 && listaFiltrata.get(i).getCategoria().getIdCategoria() == categoria) {
+						/*>0 data 1 dopo data2 -- <0 data 1 prima di data2 -- = data 1 e data 2 uguali*/
+						if((startData.compareTo(stringToData(n.getDataInizio()))<0 && endData.compareTo(stringToData(n.getDataInizio()))<0) 
+								|| (startData.compareTo(stringToData(n.getDataFine()))>0 && endData.compareTo(stringToData(n.getDataFine()))>0)) {
+							if(!listaAuto.contains(listaFiltrata.get(i))) {
+								//System.out.println("aggiungi "+listaFiltrata.get(i).getMarca());
+								listaAuto.add(listaFiltrata.get(i));
+							}
+						}else {
+								//System.out.println("rimuovi "+listaFiltrata.get(i).getMarca());
+								listaAuto.remove(listaFiltrata.get(i));
+								listaFiltrata.remove(i);
+								if(i == 0) {
+									i=0;
+								}else {
+									i--;
+								}
+						}
+					}else if(n.getAuto().getIdAuto() == listaFiltrata.get(i).getIdAuto() && n.getStato()==1 && categoria == 0) {
 						/*>0 data 1 dopo data2 -- <0 data 1 prima di data2 -- = data 1 e data 2 uguali*/
 						if((startData.compareTo(stringToData(n.getDataInizio()))<0 && endData.compareTo(stringToData(n.getDataInizio()))<0) 
 								|| (startData.compareTo(stringToData(n.getDataFine()))>0 && endData.compareTo(stringToData(n.getDataFine()))>0)) {
