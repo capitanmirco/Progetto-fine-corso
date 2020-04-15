@@ -107,6 +107,7 @@ public class Filtro extends HttpServlet {
 				request.setAttribute("dataerrata", true);
 				request.getServletContext().getNamedDispatcher("catalogo").forward(request, response);
 			}else {
+				request.removeAttribute("dataerrata");
 				request.getServletContext().getNamedDispatcher("catalogo").forward(request, response);
 			}
 		} catch (ParseException e1) {
