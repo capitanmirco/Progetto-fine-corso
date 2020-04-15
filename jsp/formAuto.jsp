@@ -44,14 +44,15 @@
        		<input type="radio" id="3" name="categoria" value="3" <%=a!=null && (a.getCategoria().getIdCategoria() == 3) ? "checked" : "" %>>      
        		<label for="3">Auto di lusso</label><br>   		
        	</div>	 
-     	
+     	<div id="btn-reg">
 	    <button type="submit" class="bottone"> 
      		<%if(request.getAttribute("auto")!=null) {
     	    		out.print("Modifica");
         	} else {        			
 			out.print("Registra");
         	} %>
-     	 </button> 		 		
+        	
+     	 </button> 	
+     	 </div >	 		
  	</form>
 </div>
-
