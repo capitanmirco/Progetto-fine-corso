@@ -2,7 +2,12 @@
 * {
 	font-family: 'Montserrat', sans-serif;
 }
-
+*{
+    box-sizing: border-box;
+}
+div{
+    overflow: unset;
+}
 
 
 .bottone {
@@ -18,6 +23,7 @@
 	padding: 4px 6px !important;
 	height: min-content;
 }
+
 
 
 
@@ -67,15 +73,10 @@ body * {
 }
 
 
-.coloreUno{
-	color: #fff;
-	background-color: #1f4267 !important;
-}
-
 .coloreDue{
 	background-color: dimgray;
 }
 
 .coloreTre {
-	background-color: cadetblue;
+	background-color: #c2440a;
 }
