@@ -42,7 +42,7 @@ public class GestionePersona extends HttpServlet {
 				request.removeAttribute("listaClientiCancellati");
 			}
 
-			request.getServletContext().getRequestDispatcher("/jsp/gestioneClienti.jsp").include(request, response);		
+			request.getServletContext().getRequestDispatcher("/jsp/gestionePersona.jsp").include(request, response);		
 			request.getServletContext().getRequestDispatcher("/jsp/footer.jsp").include(request, response);
 		}else {
 			response.sendRedirect("home");
