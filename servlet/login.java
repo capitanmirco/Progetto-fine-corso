@@ -8,10 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Utente;
-import model.Auto;
-import model.Categoria;
 import model.Cliente;
-import model.Noleggio;
 import database.Database;
 
 
@@ -42,18 +39,21 @@ public class login extends HttpServlet {
 		risposta2_jsp=request.getParameter("password");
 		if(admin_email.equals(risposta1_jsp)&&admin_password.equals(risposta2_jsp)){
 			session.setAttribute("email_admin", request.getParameter("email"));
+			session.removeAttribute("errore");
 			System.out.println("OK malfidati!!!!!");
 		}else if(Database.getInstance().getUtente(risposta1_jsp, risposta2_jsp)!=null)
 		{
 			Utente utente=Database.getInstance().getUtente(risposta1_jsp,risposta2_jsp);
 			if(utente.getValidato()==1) {
 			session.setAttribute("utente", utente);
+			session.removeAttribute("errore");
 			System.out.println("Ciao!!!");
 			}
 		}else if(Database.getInstance().getCliente(risposta1_jsp, risposta2_jsp)!=null){
 			Cliente cliente=Database.getInstance().getCliente(risposta1_jsp,risposta2_jsp);
 			if(cliente.getValidato()==1) {
 			session.setAttribute("cliente",cliente);
+			session.removeAttribute("errore");
 			System.out.println("OK!!!!!");
 			}
 		}else if(risposta1_jsp==null||risposta2_jsp==null)
