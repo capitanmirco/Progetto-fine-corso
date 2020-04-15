@@ -1,6 +1,11 @@
 package servlet;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,7 +28,7 @@ public class Registrazione extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		request.getServletContext().getRequestDispatcher("/jsp/header.jsp").include(request, response);
 		request.getServletContext().getRequestDispatcher("/jsp/navbar.jsp").include(request, response);
 		request.getServletContext().getRequestDispatcher("/jsp/registrazione.jsp").include(request, response);
@@ -33,6 +38,11 @@ public class Registrazione extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		LocalDate data = LocalDate.now().minusYears(18);  //data attuale meno 18 anni
+		LocalDate dataInserita = LocalDate.parse(request.getParameter("datadinascita").trim()); 
+		int differenzaDate = data.compareTo(dataInserita); //restituisce la differenza tra le 2 date
 
 		if ((request.getParameter("nome") != null) 
 				&& !(request.getParameter("nome").trim().equals("")) 
@@ -44,6 +54,7 @@ public class Registrazione extends HttpServlet {
 				&& !(request.getParameter("password").trim().equals(""))
 				&& (request.getParameter("datadinascita") != null) 
 				&& !(request.getParameter("datadinascita").trim().equals(""))
+				&& (differenzaDate >= 0)// <------------------------------------------------------
 				&& (request.getParameter("codicefiscale") != null)
 				&& !(request.getParameter("codicefiscale").trim().equals(""))){
 
@@ -57,7 +68,7 @@ public class Registrazione extends HttpServlet {
 			if (request.getParameter("ut_cl") != null && request.getParameter("ut_cl").equals("cl")
 					&& (request.getParameter("numeropatente") != null)
 					&& !(request.getParameter("numeropatente").trim().equals(""))){
- 
+
 
 				if (!(Database.getInstance().getCliente(email) != null)) {
 
@@ -94,9 +105,11 @@ public class Registrazione extends HttpServlet {
 
 				} else {
 					System.out.println("Utente gia' registrato con questa email");
+					doGet(request, response);
 				}
 			}			
 		}else {
+			System.out.println("Tutto ok raga è minorenne");
 			doGet(request, response);
 		}
 	}
