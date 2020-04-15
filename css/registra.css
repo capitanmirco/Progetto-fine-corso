@@ -1,18 +1,6 @@
 @charset "UTF-8";
 /* CSS Document*/
-*{
-    box-sizing: border-box;
-}
-div{
-    overflow: unset;
-}
-body{
-    margin:0;
-    padding:0;
-    color:rgba(33,57,99,1.00);
-    line-height:1.35 em;
-    font-family:'Spartan',sans-serif;
-}
+
 .wrapper{
     margin:0;
     max-width:1200px;
