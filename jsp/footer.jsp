@@ -1,4 +1,4 @@
-
+</div>
 
 <footer id="bottom" class=" blue row text-left p-4">
 	<div class="col-12 col-md-4">
