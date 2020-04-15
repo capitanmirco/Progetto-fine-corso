@@ -13,7 +13,7 @@ import model.Auto;
 import model.Categoria;
 
 
-@WebServlet("/ModificaAuto")
+@WebServlet("/modificaauto")
 public class ModificaAuto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
