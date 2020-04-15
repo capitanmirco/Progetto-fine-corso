@@ -22,7 +22,7 @@
       
      	  <div class="form-group">
             <label for="inputCilindrata">Cilindrata</label>
-            <input type="text" class="form-control" name="cilindrata" id="inputCilindrata"<%=a != null ? a.getCilindrata() : "" %>>
+            <input type="text" class="form-control" name="cilindrata" id="inputCilindrata" value="<%=a != null ? a.getCilindrata() : "" %>">
           </div>
     
           <div class="form-group">
