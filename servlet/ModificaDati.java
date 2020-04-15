@@ -11,7 +11,7 @@ import database.Database;
 import model.Cliente;
 import model.Utente;
 
-@WebServlet("/updatedati")
+@WebServlet("/modificadati")
 public class ModificaDati extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
