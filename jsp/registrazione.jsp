@@ -65,13 +65,31 @@
 					<input type="text" class="form-control" name="numeropatente" id="exampleInputNumeroPatente" value="<%= numeroDiPatente= c!=null ? c.getNumeroPatente() :""%>">
 				<%}%>	
 				</div>
-				     <div id="btn-reg">
+				
+				<div id="btn-reg">
 					<button type="submit"  class="bottone"> 
 					<%if(c ==null && u ==null) {
-    	    			out.print("Registra");
-        			} else {
-	        			out.print("Modifica");
-        			} %> </button>
+    	    					out.print("Registra");
+        				} else {
+	        				out.print("Modifica");
+        				} %> </button>
         			</div>
 		</form>
 	</div>
+<script>
+
+	document.getElementById('form').addEventListener('submit', function(e) {
+		e.preventDefault();
+		alert ('funziona');
+		var password = document.getElementById('exampleInputPassword');
+		var cPassword = document.getElementById('exampleInputConfermaPassword');
+		
+		if(password.value != cPassword.value){
+			alert('Le password non coincidono');	
+		} else {
+			alert(password.value);
+			alert(cPassword.value);
+			return true;
+		}
+	});
+</script>
