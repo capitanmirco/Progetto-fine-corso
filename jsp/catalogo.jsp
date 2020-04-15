@@ -11,14 +11,14 @@
 	String today = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 	boolean flag = false;
 	if (request.getParameter("inizioNolo") != null) {
-		data1 = request.getParameter("inizioNolo");
+		data1 = (String)request.getAttribute("inizioNolo");
 
 	} else {
 		data1 = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 	}
 
 	if (request.getParameter("fineNolo") != null) {
-		data2 = request.getParameter("fineNolo");
+		data2 = (String)request.getAttribute("fineNolo");
 	} else if (flag) {
 		data2 = data1;
 	} else {
@@ -33,10 +33,7 @@
 %>
 <div class="container" id="catalogo">
 
-	<br>
-	<br>
-	<br>
-	<br>
+	<br> <br> <br> <br>
 
 	<div class="row">
 		<div class="col-12">
@@ -97,7 +94,7 @@
 				</div>
 				<div class="col-sm-2 calendario">
 
-					<button type="submit"  class="btn bottone btn-primary mb-2">Cerca</button>
+					<button type="submit" class="btn bottone btn-primary mb-2">Cerca</button>
 				</div>
 			</form>
 			<%
@@ -114,11 +111,11 @@
 			</div>
 
 			<%
-			if(request.getAttribute("dataerrata"))
+			if(request.getAttribute("dataerrata")!=null && (boolean)request.getAttribute("dataerrata"))
 			{%>
 				<p>Data di fine errata</p>
 			<%}%>
-			
+
 		</div>
 	</div>
 </div>
@@ -165,8 +162,9 @@
 			<%
 				if (request.getSession().getAttribute("cliente") != null) {
 			%>
-			<a href="noleggiaauto?noleggia=<%=auto.getIdAuto()%>" class="btn btn-primary btn-lg active bottone"
-				role="button" aria-pressed="true">noleggia</a>
+			<a href="noleggiaauto?noleggia=<%=auto.getIdAuto()%>&inizioNolo=<%=data1 %>&fineNolo=<%=data2 %>"
+				class="btn btn-primary btn-lg active bottone" role="button"
+				aria-pressed="true">noleggia</a>
 			<%
 				}
 			%>
@@ -175,8 +173,10 @@
 				if ((request.getSession().getAttribute("email_admin") != null)
 							|| (request.getSession().getAttribute("utente") != null)) {
 			%>
-			<a href="rimuoviauto?remove=<%=auto.getIdAuto()%>" class="btn btn-primary btn-lg active bottone"
-				role="button" aria-pressed="true">elimina</a> <a href="modificaauto?modifica=<%=auto.getIdAuto()%>"
+			<a href="rimuoviauto?remove=<%=auto.getIdAuto()%>"
+				class="btn btn-primary btn-lg active bottone" role="button"
+				aria-pressed="true">elimina</a> <a
+				href="modificaauto?modifica=<%=auto.getIdAuto()%>"
 				class="btn btn-primary btn-lg active bottone" role="button"
 				aria-pressed="true">modifica</a>
 
@@ -187,6 +187,7 @@
 	</div>
 	<%
 		}
+	}
 	%>
 
 </div>
