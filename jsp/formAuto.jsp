@@ -38,11 +38,11 @@
         <div class="form-group">
        
        		<div class="form-group">
-       		<input type="radio" required id="1" name="categoria" value="1" <%=a!=null ? (a.getCategoria().getIdCategoria() == 1) ? "checked" : "" : "" %>>  
+       		<input type="radio" required id="1" name="categoria" value="1" <%=a!=null && (a.getCategoria().getIdCategoria() == 1) ? "checked" %>>  
        		<label for="1">City car</label> &nbsp &nbsp       		
-       		<input type="radio" id="2" name="categoria" value="2" <%=a!=null ? (a.getCategoria().getIdCategoria() == 2) ? "checked" : "" : "" %>> 
+       		<input type="radio" id="2" name="categoria" value="2" <%=a!=null && (a.getCategoria().getIdCategoria() == 2) ? "checked" : ""  %>> 
        		<label for="2">Suv</label> &nbsp &nbsp       		
-       		<input type="radio" id="3" name="categoria" value="3" <%=a!=null ? (a.getCategoria().getIdCategoria() == 3) ? "checked" : "" : "" %>>      
+       		<input type="radio" id="3" name="categoria" value="3" <%=a!=null && (a.getCategoria().getIdCategoria() == 3) ? "checked" : "" %>>      
        		<label for="3">Auto di lusso</label><br>   		
        	</div>	 
      		<button type="submit" class="bottone"> 
