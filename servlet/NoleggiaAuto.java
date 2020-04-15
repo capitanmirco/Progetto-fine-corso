@@ -45,7 +45,7 @@ public class NoleggiaAuto extends HttpServlet {
 				request.setAttribute("noleggio", n);											// metto il noleggio nella request
 				
 				request.getServletContext().getRequestDispatcher("/jsp/header.jsp").include(request, response);
-				//request.getServletContext().getRequestDispatcher("/jsp/navbar.jsp").include(request, response);
+				request.getServletContext().getRequestDispatcher("/jsp/navbar.jsp").include(request, response);
 				request.getServletContext().getRequestDispatcher("/jsp/riepilogo.jsp").include(request, response);
 				request.getServletContext().getRequestDispatcher("/jsp/footer.jsp").include(request, response);
 			
@@ -61,5 +61,3 @@ public class NoleggiaAuto extends HttpServlet {
 	}
 
 }
-
-
