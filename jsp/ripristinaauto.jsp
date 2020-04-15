@@ -1,12 +1,13 @@
+<br><br><br><br>
 <%@page import="java.util.List"%>
 <%@page import="model.Auto"%>
 <div class="accordion" id="accordionExample">
 	<div class="card">
-		<div class="card-header" id="autorimosse">
+		<div class="card-header" id="headingOne">
 			<h2 class="mb-0">
 				<button class="btn btn-link" type="button" data-toggle="collapse"
-					data-target="#collapseOne" aria-expanded="true"
-					aria-controls="collapseOne">Lista auto rimosse</button>
+					data-target="autorimosse" aria-expanded="true"
+					aria-controls="autorimosse">Lista auto rimosse</button>
 			</h2>
 		</div>
 
@@ -16,6 +17,7 @@
 				<table class="table mt-3" border=1>
 					<thead class="thead-dark text-center">
 						<tr>
+							<th scope="col">#</th>
 							<th scope="col">Marca</th>
 							<th scope="col">Modello</th>
 							<th scope="col">Targa</th>
@@ -31,7 +33,7 @@
 
 						<%
 					
-					if (session.getAttribute("cliente") != null)
+					if (session.getAttribute("cliente") == null)
 					{
 						
 					
@@ -47,13 +49,13 @@
 							<td><%=a.getCilindrata()%></td>
 							<td><%=a.getColore()%></td>
 							<td><%=a.getCategoria().getNome()%></td>
-							<td><a href=ripristinaauto?ripristinaauto=
-								<%=a.getIdAuto()%>></a></td>
+							<td><a href=ripristinaauto?ripristinaauto=<%=a.getIdAuto()%>>Ripristina</a></td>
 						</tr>
 						<% } 
 					}%>
 			  	
 					</tbody>
+					</table>
 			</div>
 		</div>
 	</div>
