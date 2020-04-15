@@ -9,12 +9,10 @@
 	
 }
 
-.container {
-	margin-top: 200px;
-	margin-bottom: 200px;
-	
-	
+#catalogo .form-group.box.mb-2 {
+    width: 100%;
 }
+
 .divcat{
 	
 	margin-top: 50px;
@@ -34,6 +32,18 @@
 	font-size: 20px;
 	text-align: center;
 }
+
+#catalogo form 
+{
+    padding: 0;
+}
+
+#catalogo .calendario.divBottone {
+    display: flex;
+    justify-content: center;
+    width: min-content;
+}
+
 .prova{
 	margin-top: auto;
 	margin-bottom: auto;
