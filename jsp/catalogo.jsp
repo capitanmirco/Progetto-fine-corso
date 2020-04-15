@@ -4,18 +4,15 @@
 
 <%
 	/* 1 = citycar // 2 = suv // 3 = auto di lusso */
-
 	String data1 = null;
 	String data2 = null;
 	String today = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 	boolean flag = false;
 	if (request.getParameter("inizioNolo") != null) {
 		data1 = (String)request.getAttribute("inizioNolo");
-
 	} else {
 		data1 = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 	}
-
 	if (request.getParameter("fineNolo") != null) {
 		data2 = (String)request.getAttribute("fineNolo");
 	} else if (flag) {
@@ -28,8 +25,9 @@
 <%@page import="model.Auto"%>
 <%@page import="java.util.List"%>
 <%
-	List<Auto> listaAuto = (List<Auto>) request.getAttribute("listaAuto");
+	List<Auto> listaAuto = (List<Auto>) request.getAttribute("catalogo");
 %>
+<br><br><br>
 <div class="container" id="catalogo">
 
 	<br> <br> <br> <br>
@@ -93,7 +91,7 @@
 				</div>
 				<div class="col-sm-2 calendario">
 
-					<button type="submit" class="btn bottone btn-primary mb-2">Cerca</button>
+					<button type="submit" class="bottone">Cerca</button>
 				</div>
 			</form>
 			<%
@@ -186,7 +184,6 @@
 	</div>
 	<%
 		}
-
 	%>
 
 </div>
