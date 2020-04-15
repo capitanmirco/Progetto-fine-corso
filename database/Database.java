@@ -275,6 +275,15 @@ public class Database {
 			return null;
 		}
 	}
+	
+	public List<Auto> getAutoRimosse() {
+		Query q = em.createQuery("SELECT a FROM Auto a WHERE a.disponibilita=2");
+		try {
+			List<Auto> autoRimosse = q.getResultList();
+			return autoRimosse;
+		} catch (Exception e) {
+			return null;
+		}
+	}
 
 }
-
