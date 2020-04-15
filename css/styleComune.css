@@ -1,18 +1,71 @@
-.bottone
-{
-	border-radius: 10px;
-    background-color: #1F4267;
-    color: white !important;
-    outline: none;
-    font-size:20px;
-    text-align: center;
-    opacity: 1;
-    max-width: min-content;
-    margin: 15px;
+.bottone {
+	border-radius: 10px !important;
+	background-color: #1F4267 !important;
+	color: white !important;
+	outline: none !important;
+	font-size: 20px !important;
+	text-align: center !important;
+	opacity: 1;
+	max-width: min-content;
+	margin: 10px !important;
+	padding: 4px 6px !important;
+	height: min-content;
 }
 
-.blue
-{
+.blue {
 	color: #fff;
 	background-color: #1f4267 !important;
+}
+
+body * {
+	overflow: unset !important;
+}
+
+.box select {
+	color: white;
+	padding: 12px;
+	border: none;
+	font-size: 20px;
+	-webkit-appearance: button;
+	appearance: button;
+	outline: none;
+	text-align: center;
+	max-width: 250px;
+	width: 100%;
+	border-radius: 5px;
+}
+
+.cal-position .input
+{
+	margin-top: 20px;
+}
+
+.input {
+	color: white;
+	padding: 12px;
+	width: 250px;
+	border: none;
+	font-size: 20px;
+	box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+	-webkit-appearance: button;
+	appearance: button;
+	outline: none;
+	max-width: 250px;
+	width: 100%;
+	text-align: center;
+	border-radius: 5px;
+}
+
+
+.coloreUno{
+	color: #fff;
+	background-color: #1f4267 !important;
+}
+
+.coloreDue{
+	background-color: dimgray;
+}
+
+.coloreTre {
+	background-color: cadetblue;
 }
