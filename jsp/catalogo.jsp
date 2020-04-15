@@ -27,10 +27,10 @@
 <%
 	List<Auto> listaAuto = (List<Auto>) request.getAttribute("catalogo");
 %>
-<br><br><br>
+<br><br><br><br><br><br><br><br>
 <div class="container" id="catalogo">
 
-	<br> <br> <br> <br>
+	
 
 	<div class="row">
 		<div class="col-12">
