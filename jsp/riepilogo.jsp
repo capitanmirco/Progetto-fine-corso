@@ -4,7 +4,7 @@
 <%
 	Noleggio n = (Noleggio) request.getAttribute("noleggio");
 %>
-//RIEPILOGO NOLEGGIO
+
 <div class="size-riepilogo">
 	<div class="form">
 		<table class="table">
@@ -65,7 +65,7 @@
 		</form>
 	</div>
 	
-	//FOTO/CAROSELLO
+
 	<div class="car-riepilogo">
 		<div id="carouselExampleFade" class="carousel slide carousel-fade"
 			data-ride="carousel">
