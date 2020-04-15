@@ -6,7 +6,6 @@
 	String nome, cognome, email, dataDiNascita, codiceFiscale, password, numeroDiPatente;
 	Cliente c = null;
 	Utente u = null;
-
 	if(session.getAttribute("cliente") !=null){
 		c = (Cliente) request.getSession().getAttribute("cliente");	
 	}	
@@ -66,12 +65,13 @@
 					<input type="text" class="form-control" name="numeropatente" id="exampleInputNumeroPatente" value="<%= numeroDiPatente= c!=null ? c.getNumeroPatente() :""%>">
 				<%}%>	
 				</div>
-				
-					<button type="submit" class="bottone"> 
+				     <div id="btn-reg">
+					<button type="submit"  class="bottone"> 
 					<%if(c ==null && u ==null) {
     	    			out.print("Registra");
         			} else {
 	        			out.print("Modifica");
         			} %> </button>
+        			</div>
 		</form>
 	</div>
