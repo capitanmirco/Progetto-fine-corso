@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/home")
+@WebServlet(name = "home", urlPatterns = { "/home" })
 public class Home extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -28,6 +28,4 @@ public class Home extends HttpServlet {
 		
 	}
 
-
 }
-
