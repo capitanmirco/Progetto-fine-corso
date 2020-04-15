@@ -75,10 +75,12 @@ public class Filtro extends HttpServlet {
 		
 		/* ***************************************filtro data **************************************************** */
 		if(request.getParameter("inizioNolo")!=null && request.getParameter("fineNolo")!=null &&
-				isNumericId(request.getParameter("inizioNolo")) && isNumericId(request.getParameter("fineNolo"))) {
+				isNumericId(request.getParameter("inizioNolo")) && isNumericId(request.getParameter("fineNolo")) &&
+				!request.getParameter("inizioNolo").trim().equals("") && !request.getParameter("fineNolo").trim().equals("")) {
 			
 			request.setAttribute("inizioNolo", request.getParameter("inizioNolo"));
 			request.setAttribute("fineNolo", request.getParameter("fineNolo"));
+			
 			
 			/*filtro veicoli per data*/
 			if(request.getAttribute("listaAuto")==null) {
@@ -105,9 +107,13 @@ public class Filtro extends HttpServlet {
 		/*controllo validitÃ  date*/
 		try {
 			if(request.getParameter("inizioNolo")!=null && request.getParameter("fineNolo")!=null &&
+					!request.getParameter("inizioNolo").trim().equals("") && !request.getParameter("fineNolo").trim().equals("") &&
 					compareDate(request.getParameter("inizioNolo"), request.getParameter("fineNolo"))) {
 				System.out.println("date sbagliate");
 				request.setAttribute("dataerrata", true);
+				request.removeAttribute("listaAuto");
+				List<Auto> catalogoAuto = Database.getInstance().getAutoDisponibili();
+				request.setAttribute("listaAuto", catalogoAuto);
 				request.getServletContext().getNamedDispatcher("catalogo").forward(request, response);
 			}else {
 				request.removeAttribute("dataerrata");
