@@ -12,6 +12,12 @@
 	height: min-content;
 }
 
+
+* {
+	font-family: 'Montserrat', sans-serif;
+}
+
+
 .blue {
 	color: #fff;
 	background-color: #1f4267 !important;
