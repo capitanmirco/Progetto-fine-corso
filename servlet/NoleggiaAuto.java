@@ -33,21 +33,28 @@ public class NoleggiaAuto extends HttpServlet {
 				
 				Cliente cliente = (Cliente) session.getAttribute("cliente");					// prendo i dati del cliente che sta facendo la prenotazione
 				
-				String dataInizio = request.getParameter("inizioNolo");							// prendo la data di inizio noleggio
-				String dataFine = request.getParameter("fineNolo");								// prendo la data di fine noleggio
+				if(request.getParameter("inizioNolo")!=null && request.getParameter("fineNolo")!=null) {
+					
+					String dataInizio = request.getParameter("inizioNolo");							// prendo la data di inizio noleggio
+					String dataFine = request.getParameter("fineNolo");								// prendo la data di fine noleggio
+					
+					Noleggio n = new Noleggio();													// creo un noleggio settando l'auto, il cliente e le date di inizio e fine
+					n.setAuto(auto);
+					n.setCliente(cliente);
+					n.setDataInizio(dataInizio);
+					n.setDataFine(dataFine);
+					
+					request.setAttribute("noleggio", n);											// metto il noleggio nella request
+					
+					request.getServletContext().getRequestDispatcher("/jsp/header.jsp").include(request, response);
+					request.getServletContext().getRequestDispatcher("/jsp/navbar.jsp").include(request, response);
+					request.getServletContext().getRequestDispatcher("/jsp/riepilogo.jsp").include(request, response);
+					request.getServletContext().getRequestDispatcher("/jsp/footer.jsp").include(request, response);
+				}
 				
-				Noleggio n = new Noleggio();													// creo un noleggio settando l'auto, il cliente e le date di inizio e fine
-				n.setAuto(auto);
-				n.setCliente(cliente);
-				n.setDataInizio(dataInizio);
-				n.setDataFine(dataFine);
-				
-				request.setAttribute("noleggio", n);											// metto il noleggio nella request
-				
-				request.getServletContext().getRequestDispatcher("/jsp/header.jsp").include(request, response);
-				request.getServletContext().getRequestDispatcher("/jsp/navbar.jsp").include(request, response);
-				request.getServletContext().getRequestDispatcher("/jsp/riepilogo.jsp").include(request, response);
-				request.getServletContext().getRequestDispatcher("/jsp/footer.jsp").include(request, response);
+				else {
+					response.sendRedirect("catalogo");
+				}
 			
 		}
 		else {
@@ -61,3 +68,4 @@ public class NoleggiaAuto extends HttpServlet {
 	}
 
 }
+
