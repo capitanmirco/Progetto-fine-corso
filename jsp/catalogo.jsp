@@ -29,7 +29,7 @@
 <%@page import="model.Auto"%>
 <%@page import="java.util.List"%>
 <%
-	List<Auto> listaAuto = (List<Auto>) request.getAttribute("catalogo");
+	List<Auto> listaAuto = (List<Auto>) request.getAttribute("listaAuto");
 %>
 
 <br><br><br><br><br><br><br><br>
