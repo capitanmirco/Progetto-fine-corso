@@ -104,7 +104,8 @@ public class Filtro extends HttpServlet {
 			if(request.getParameter("inizioNolo")!=null && request.getParameter("fineNolo")!=null &&
 					compareDate(request.getParameter("inizioNolo"), request.getParameter("fineNolo"))) {
 				System.out.println("date sbagliate");
-				response.sendRedirect("home");
+				request.setAttribute("dataerrata", true);
+				request.getServletContext().getNamedDispatcher("catalogo").forward(request, response);
 			}else {
 				request.getServletContext().getNamedDispatcher("catalogo").forward(request, response);
 			}
