@@ -1,4 +1,5 @@
 
+
 <%@page import="model.Noleggio"%>
 <%
 	Noleggio n = (Noleggio) request.getAttribute("noleggio");
@@ -16,7 +17,7 @@
 			<tbody>
 				<tr>
 
-					<td><%=n.getAuto()%></td>
+					<td><%=n.getAuto().getModello()+" "+n.getAuto().getMarca()%></td>
 				</tr>
 			</tbody>
 		</table>
