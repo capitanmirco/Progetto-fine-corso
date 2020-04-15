@@ -1,102 +1,62 @@
-*{
+@charset "ISO-8859-1";
+
+* {
 	font-family: 'Montserrat', sans-serif;
-	
 }
+
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #004882;
-  }
-  
-  .box {
-    margin-left: 6px;
-    
-    
-  }
-  
-  .box select {
-    margin-top: 20px;
-    background-color: cadetblue;
-    color: white;
-    padding: 12px;
-    width: 250px;
-    border: none;
-    font-size: 20px;
-   -webkit-appearance: button;
-    appearance: button;
-    outline: none;
-    text-align: center;
-   
-  }
-  
- 
-  
+	margin: 0;
+	padding: 0;
+	background-color: #004882;
+}
 
-  
-  .box select option {
-    padding: 30px;
-  }
-  
-  .input{
-     margin-top: 20px;
-        background-color: cadetblue;
-        color: white;
-        padding: 12px;
-        width: 250px;
-        border: none;
-        font-size: 20px;
-        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-        -webkit-appearance: button;
-        appearance: button;
-        outline: none;
-        
-      }
-      .bgselect{
-      margin:30px;
-          align-content: center;
-          
-          padding-top: 30px;
-          background: rgba(255, 255, 255, 0.6);
-          width: 350px;
-          height: 350px;
-          border-radius: 2rem;
-          text-align: center;
-          text-align: center;
-          
-          
-      }
-      .bgselect > *{
-        margin:0 auto;
-      }
-      
-      #bottone-calendario{
-         
-          width: 10em;  
-          height: 2em;
-          
-          
-          
+.box {
+	margin-left: 6px;
+}
 
-      }
-      .bottone{
-         margin-bottom: 20px;
-          border-radius: 0.8rem;
-          background-color: #1F4267 ;
-          color: white;
-          outline: none;
-          font-size:20px;
-          text-align: center;
-          
-      
-      }
-      .cal-position{
-       z-index:1;
-       position:absolute;
-       top: 200px;
-       left:200px;
-       
-      }
-      .div-car{
-     z-index:0;
-     
-      } 
+.box select option {
+	padding: 30px;
+}
+
+.bgselect {
+	margin: 30px;
+	align-content: center;
+	padding-top: 30px;
+	background: rgba(255, 255, 255, 0.6);
+	width: 350px;
+	height: 350px;
+	border-radius: 2rem;
+	text-align: center;
+	text-align: center;
+}
+
+
+
+.calendario
+{
+	width:100%;
+}
+
+.cal-position .box select {
+	margin-top: 20px;
+}
+
+.bgselect>* {
+	margin: 0 auto;
+}
+
+#bottone-calendario {
+	width: 10em;
+	height: 2em;
+}
+
+.cal-position {
+	z-index: 1;
+	position: absolute;
+	top: 200px;
+	left: 200px;
+}
+
+.div-car {
+	z-index: 0;
+}
