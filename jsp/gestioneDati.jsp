@@ -1,94 +1,35 @@
-<%@page import="model.Cliente"%>
 <%@page import="model.Utente"%>
-<br>
-<br>
-<br>
-<br>
-<%
-Utente u=(Utente)request.getAttribute("utente"); 
-Cliente c=(Cliente)request.getAttribute("cliente");
+<%@page import="model.Cliente"%>
+<br><br><br><br>
+<% 	Cliente c=(Cliente)request.getAttribute("cliente");  
+	Utente u=(Utente)request.getAttribute("utente");
 %>
 
-<%@page import="java.util.List"%>
 <div class="madre">
 	<div class="table-noleggio">
-		<table class="table">
-			<thead class="table">
-				<tr>
-					<th scope="col" ></th>
-					<th scope="col">Nome Cognome</th>
-					<th scope="col">Data di Nascita</th>
-					<th scope="col">Email</th>
-					<th scope="col">Password</th>
-					<th scope="col">Codice Fiscale</th>
-				<%if(c!= null){%> <th scope="col">Numero Patente</th>			<%} %>
-				</tr>
-			</thead>
-			<tbody class="table">
-			<%
-			if(c !=null){
-				
-			%>
-				<tr>
-					<th scope="row"></th>
-					<td><%=c.getNome()+" "+c.getCognome()%></td>
-					<td><%=c.getDataDiNascita()%></td>
-					<td><%=c.getEmail()%></td>
-					<td><%=c.getPassword()%></td>
-					<td><%=c.getCodiceFiscale()%></td>
-					<td><%=c.getNumeroPatente()%></td>
-					
-								
-				<%
-			}	else if(u != null){
-				
-				%>	
-				<tr>
-					<th scope="row"></th>
-					<td><%=u.getNome()+" "+u.getCognome()%></td>
-					<td><%=u.getDataDiNascita()%></td>
-					<td><%=u.getEmail()%></td>
-					<td><%=u.getPassword()%></td>
-					<td><%=u.getCodiceFiscale()%></td>
 		
-		<%
+		<h3 style="text-align:left"> I miei dati </h3>
+		
+		<table class="table">
+				<% if(c!=null){ %>
+					<tr><td>Nome Cognome</td><td><%=c.getNome()+" "+c.getCognome()%></td></tr>
+					<tr><td>Data di nascita</td><td><%=c.getDataDiNascita()%></td></tr>
+					<tr><td>Email</td><td><%=c.getEmail()%></td></tr>
+					<tr><td>Codice Fiscale</td><td><%=c.getCodiceFiscale()%></td></tr>
+					<tr><td>Patente</td><td><%=c.getNumeroPatente()%></td></tr>
+					<td><a href="modificadati" type="button" class="bottone">Modifica</a></td>
+					<td><a type="button" class="bottone" href="rimuoviclienti?remove=<%=c.getIdCliente()%>">Elimina</a></td>
+					
+				<%} %>
 				
-				
-			}
-			
-			
-			%>
-			
-			
-			
-			
-			
-			
-			
-			
-				</table>
-					<div>
-					<a href="modificadati"
-						type="button" class="bottone">Modifica</a>
-
-				</div>
-				<div>
-				<%if(u!=null){ %> 
-				<a type="button" class="bottone" href="rimuoviutenti?remove=<%=u.getIdUtente()%>">Elimina</a>		
-				<%}else if(c!=null){%>
-				  <a type="button" class="bottone" href="rimuoviclienti?remove=<%=c.getIdCliente()%>">Elimina</a> 
-				  <%} %>
-				</div>
-				
-				</div>
-				</div>
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
+				<% if(u!=null){ %>
+					<tr><td>Nome Cognome</td><td><%=u.getNome()+" "+u.getCognome()%></td></tr>
+					<tr><td>Data di nascita</td><td><%=u.getDataDiNascita()%></td></tr>
+					<tr><td>Email</td><td><%=u.getEmail()%></td></tr>
+					<tr><td>Codice Fiscale</td><td><%=u.getCodiceFiscale()%></td></tr>
+					<td><a href="modificadati" type="button" class="bottone">Modifica</a></td>
+					<td><a type="button" class="bottone" href="rimuoviutenti?remove=<%=u.getIdUtente()%>">Elimina</a></td>
+				<%} %>
+		</table>
+	</div>
+</div>
