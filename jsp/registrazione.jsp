@@ -80,15 +80,12 @@
 
 	document.getElementById('form').addEventListener('submit', function(e) {
 		e.preventDefault();
-		alert ('funziona');
 		var password = document.getElementById('exampleInputPassword');
 		var cPassword = document.getElementById('exampleInputConfermaPassword');
 		
 		if(password.value != cPassword.value){
 			alert('Le password non coincidono');	
 		} else {
-			alert(password.value);
-			alert(cPassword.value);
 			return true;
 		}
 	});
