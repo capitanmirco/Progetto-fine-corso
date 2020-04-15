@@ -3,7 +3,6 @@
 
 
 <%
-	request.getSession().setAttribute("email_admin", "ert");
 	/* 1 = citycar // 2 = suv // 3 = auto di lusso */
 
 	String data1 = null;
@@ -29,7 +28,7 @@
 <%@page import="model.Auto"%>
 <%@page import="java.util.List"%>
 <%
-	List<Auto> listaAuto = (List<Auto>) request.getAttribute("catalogo");
+	List<Auto> listaAuto = (List<Auto>) request.getAttribute("listaAuto");
 %>
 <div class="container" id="catalogo">
 
