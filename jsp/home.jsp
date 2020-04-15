@@ -47,14 +47,14 @@
 				</select>
 			</div>
 			<div class="calendario">
-				<label for="start" id="text"></label> <input  type="date" class="input coloreTre"
-					id="start" name="inizioNolo" value="<%=today%>" min="<%=today%>"
+				<label for="start" id="text"></label> <input  type="date" class="input coloreTre" onclick="verifica('inizioNolo')"  onchange="verifica('inizioNolo')" oninput="verifica('inizioNolo')"
+					id="inizioNolo" name="inizioNolo" value="<%=today%>" min="<%=today%>"
 					max="2021-04-08">
 			</div>
 			<div class="calendario">
 		
 				<label for="start" id="text"></label><input type="date" class="input  coloreTre"
-					id="start" name="fineNolo" value="<%=today%>" min="<%=today%>"
+					id="fineNolo" name="fineNolo" value="<%=today%>" min="<%=today%>" onclick="verifica('fineNolo')"  onchange="verifica('fineNolo')" oninput="verifica('fineNolo')"
 					max="2021-04-08"> <br>
 				<br>
 				<button class="bottone-calendario bottone" type="submit" id="text">Prenota</button>
@@ -65,3 +65,23 @@
 
 	</div>
 </div>
+<script type="text/javascript">
+<!--
+
+//-->
+function verifica(nome) {
+	
+	if(document.getElementById(nome).value == ""){
+		var today = new Date();
+		var dd = String(today.getDate()).padStart(2, '0');
+		var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+		var yyyy = today.getFullYear();
+		
+		today = yyyy + '-' + mm + '-' + dd; //yyyy-MM-dd
+		document.getElementById(nome).value = today;
+	}
+	
+}
+
+
+</script>
