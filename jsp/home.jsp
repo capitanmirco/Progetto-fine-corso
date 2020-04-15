@@ -39,7 +39,7 @@
 		<form method="post" action="filtro">
 
 			<div class="box">
-				<select name="auto" id="text">
+				<select name="auto" id="text" class="coloreTre">
 					<option value="1">City car</option>
 					<option value="3">Lusso</option>
 					<option value="2">Suv</option>
@@ -47,13 +47,13 @@
 				</select>
 			</div>
 			<div class="calendario">
-				<label for="start" id="text"></label> <input  type="date" class="input"
+				<label for="start" id="text"></label> <input  type="date" class="input coloreTre"
 					id="start" name="inizioNolo" value="<%=today%>" min="<%=today%>"
 					max="2021-04-08">
 			</div>
 			<div class="calendario">
 		
-				<label for="start" id="text"></label><input type="date" class="input"
+				<label for="start" id="text"></label><input type="date" class="input  coloreTre"
 					id="start" name="fineNolo" value="<%=today%>" min="<%=today%>"
 					max="2021-04-08"> <br>
 				<br>
