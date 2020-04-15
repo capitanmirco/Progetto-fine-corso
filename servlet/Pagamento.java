@@ -34,25 +34,21 @@ public class Pagamento extends HttpServlet {
 		
 		if (request.getParameter("paga").equals("p")) {
 			
-			
-			
 			String dataInizio=request.getParameter("dataInizio");
 			String dataFine=request.getParameter("dataFine");
 			byte disp=0;
 			a.setDisponibilita(disp);
 			byte stato=1;
-			int id=Integer.parseInt(request.getParameter("id"));
 			Noleggio n=new Noleggio();
 			n.setStato(stato);
 			n.setCliente(c);
 			n.setAuto(a);
 			n.setDataInizio(dataInizio);
 			n.setDataFine(dataFine);
-			n.setIdNoleggio(id);
 			Database.getInstance().addNoleggio(n);
 			request.setAttribute("conferma", n);
 			//dall'attribute create un alert con solo data inizio e fine
-			request.getServletContext().getNamedDispatcher("home").forward(request,response);
+			request.getServletContext().getNamedDispatcher("home").forward(request, response);
 		}
 	}
 
