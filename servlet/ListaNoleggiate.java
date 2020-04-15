@@ -57,6 +57,8 @@ public class ListaNoleggiate extends HttpServlet {
     					}
     				}
     				request.setAttribute("storico_noleggi", storicoNoleggi);
+    			}else {
+    				request.setAttribute("storico_noleggi", listaNoleggi);
     			}
     		}
     	}//if loggato come utente/admin
@@ -116,3 +118,4 @@ public class ListaNoleggiate extends HttpServlet {
 	}
 
 }
+
