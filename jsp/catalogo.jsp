@@ -171,10 +171,10 @@
 							|| (request.getSession().getAttribute("utente") != null)) {
 			%>
 			<a href="rimuoviauto?remove=<%=auto.getIdAuto()%>"
-				class="btn btn-primary btn-lg active bottone" role="button"
+				class="bottone"  role="button"
 				aria-pressed="true">elimina</a> <a
 				href="modificaauto?modifica=<%=auto.getIdAuto()%>"
-				class="btn btn-primary btn-lg active bottone" role="button"
+				class=" bottone" role="button"
 				aria-pressed="true">modifica</a>
 
 			<%
