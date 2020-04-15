@@ -1,3 +1,10 @@
+
+* {
+	font-family: 'Montserrat', sans-serif;
+}
+
+
+
 .bottone {
 	border-radius: 10px !important;
 	background-color: #1F4267 !important;
@@ -13,9 +20,6 @@
 }
 
 
-* {
-	font-family: 'Montserrat', sans-serif;
-}
 
 
 .blue {
