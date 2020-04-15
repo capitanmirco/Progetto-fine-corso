@@ -190,17 +190,25 @@ public class Database {
 	}
 
 	public Cliente getClienteById(int id) {
-		em.getTransaction().begin();
-		Cliente c = em.find(Cliente.class, id);
-		em.getTransaction().commit();
-		return c;
+		try {
+			em.getTransaction().begin();
+			Cliente c = em.find(Cliente.class, id);
+			em.getTransaction().commit();
+			return c;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	public Utente getUtenteById(int id) {
-		em.getTransaction().begin();
-		Utente u = em.find(Utente.class, id);
-		em.getTransaction().commit();
-		return u;
+		try {
+			em.getTransaction().begin();
+			Utente u = em.find(Utente.class, id);
+			em.getTransaction().commit();
+			return u;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	public Categoria getCategoria(String categoria) {
@@ -216,24 +224,36 @@ public class Database {
 	}
 
 	public Categoria getCategoriaById(int id) {
-		em.getTransaction().begin();
-		Categoria c = em.find(Categoria.class, id);
-		em.getTransaction().commit();
-		return c;
+		try {
+			em.getTransaction().begin();
+			Categoria c = em.find(Categoria.class, id);
+			em.getTransaction().commit();
+			return c;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	public Noleggio getNoleggioById(int id) {
-		em.getTransaction().begin();
-		Noleggio n = em.find(Noleggio.class, id);
-		em.getTransaction().commit();
-		return n;
+		try {
+			em.getTransaction().begin();
+			Noleggio n = em.find(Noleggio.class, id);
+			em.getTransaction().commit();
+			return n;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	public Auto getAutoById(int id) {
-		em.getTransaction().begin();
-		Auto a = em.find(Auto.class, id);
-		em.getTransaction().commit();
-		return a;
+		try {
+			em.getTransaction().begin();
+			Auto a = em.find(Auto.class, id);
+			em.getTransaction().commit();
+			return a;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	public List<Noleggio> getListaNoleggi() {
@@ -257,3 +277,4 @@ public class Database {
 	}
 
 }
+
