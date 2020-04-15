@@ -2,18 +2,17 @@
 <%@page import="java.util.List"%>
 <%@page import="model.Auto"%>
 <div class="accordion" id="accordionExample">
-	<div class="card">
-		<div class="card-header" id="headingOne">
-			<h2 class="mb-0">
-				<button class="btn btn-link" type="button" data-toggle="collapse"
-					data-target="autorimosse" aria-expanded="true"
-					aria-controls="autorimosse">Lista auto rimosse</button>
-			</h2>
-		</div>
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        	Lista Auto Rimosse
+			 </button>
+      </h2>
+    </div>
 
-		<div id="autorimosse" class="collapse show"
-			aria-labelledby="headingOne" data-parent="#accordionExample">
-			<div class="card-body">
+		 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
 				<table class="table mt-3" border=1>
 					<thead class="thead-dark text-center">
 						<tr>
@@ -56,7 +55,7 @@
 			  	
 					</tbody>
 					</table>
-			</div>
-		</div>
-	</div>
-</div>
+ </div>
+    </div>
+  </div>
+  </div>
