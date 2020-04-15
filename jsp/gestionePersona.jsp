@@ -46,7 +46,7 @@
 			</h5>
 		</div>
 
-		<div id="collapse<%=numeri[i]%>" class="collapse show" aria-labelledby="heading<%=numeri[i]%>" data-parent="#accordionExample">
+		<div id="collapse<%=numeri[i]%>" class="collapse" aria-labelledby="heading<%=numeri[i]%>" data-parent="#accordionExample">
 			<div class="card-body">
 
 				<table class="table mt-3" border=1>
