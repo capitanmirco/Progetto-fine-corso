@@ -18,16 +18,18 @@ import database.Database;
 @WebServlet(name="listautenti", urlPatterns = {"/listautenti"})
 public class ListaUtenti extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	List<Utente> listaUtenti;
-	List<Utente> listaDaValidare;
-	List<Utente> listaValidati;
-	List<Utente> listaRimossi;
-
+	
 	public ListaUtenti() {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		List<Utente> listaUtenti;
+		List<Utente> listaDaValidare;
+		List<Utente> listaValidati;
+		List<Utente> listaRimossi;
+		
 		listaDaValidare = new ArrayList<Utente>();
 		listaValidati = new ArrayList<Utente>();
 		listaRimossi = new ArrayList<Utente>();
