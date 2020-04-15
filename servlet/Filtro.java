@@ -44,6 +44,7 @@ public class Filtro extends HttpServlet {
 			
 			if(isNumericId) {
 				int categoria = Integer.parseInt(request.getParameter("auto"));
+				request.setAttribute("categoria", categoria);
 				listaAuto = Database.getInstance().getAutoDisponibili();
 				Categoria c = Database.getInstance().getCategoriaById(categoria);
 
@@ -57,7 +58,7 @@ public class Filtro extends HttpServlet {
 						}
 					}
 				}
-				/*passa alla requst la lista auto già filtrata per categoria*/
+				/*passa alla requst la lista auto giÃ  filtrata per categoria*/
 				request.setAttribute("listaAuto", listaAuto);
 				
 				
@@ -98,7 +99,7 @@ public class Filtro extends HttpServlet {
 
 		}
 		
-		/*controllo validità date*/
+		/*controllo validitÃ  date*/
 		try {
 			if(request.getParameter("inizioNolo")!=null && request.getParameter("fineNolo")!=null &&
 					compareDate(request.getParameter("inizioNolo"), request.getParameter("fineNolo"))) {
@@ -141,7 +142,7 @@ public class Filtro extends HttpServlet {
 		return isNumericId;
 	}
 	
-	/*restituisce tutte le auto che non sono già noleggiate -- 0 = prenotata -- 1 = prenotabile*/
+	/*restituisce tutte le auto che non sono giÃ  noleggiate -- 0 = prenotata -- 1 = prenotabile*/
 	private void isAutoLibera(List<Auto> listaAuto, String data_inizio, String data_fine, int categoria) throws ParseException {
 		Date startData = stringToData(data_inizio);
 		Date endData = stringToData(data_fine);
