@@ -109,7 +109,7 @@
 						Auto</a>
 				</div>
 			</div>
-
+			<%} %>
 			<%
 			if(request.getAttribute("dataerrata")!=null && (boolean)request.getAttribute("dataerrata"))
 			{%>
@@ -187,7 +187,7 @@
 	</div>
 	<%
 		}
-	}
+
 	%>
 
 </div>
