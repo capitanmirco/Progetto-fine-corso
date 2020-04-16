@@ -1,9 +1,10 @@
-<br><br><br><br>
+
 <%@page import="java.util.List"%>
 <%@page import="model.Auto"%>
     <%if(request.getAttribute("listavuota")==null){
     %>
 <div id="accordion" class="pagineDiv">
+	<div class="min-h">
 	<div class="card">
 		<div class="card-header">
 			<h5 class=" testo mb-1">Automobili rimosse</h5>
@@ -60,4 +61,5 @@
     </div>
 					</div>
 					</div>
+	</div>
     
