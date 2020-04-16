@@ -86,9 +86,10 @@
 		<form method="POST" action="login">
 			<label>E-mail</label> <input type="email" name="email" id="email">
 			<label>Password</label> <input type="password" name="password" id="password">
-				
+				<input type="hidden" name="pagina" value="<%=request.getRequestURI()%>">
 				<input class="bottoni bottone" id="loginButton" type="submit" value="Login">	
 		</form>
 	</div>
 </div>
+
 <div style="min-height:1000px">
