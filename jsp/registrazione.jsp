@@ -70,7 +70,7 @@
 				</div>
 				
 				<div id="btn-reg">
-					<button type="submit" class="bottone" id="bottoner"> 
+					<button type="submit" class="bottone" id="bottoner" onclick="controllo(event)"> 
 						<%if(c ==null && u ==null) {
     	    				out.print("Registra");
         				} else {
@@ -80,10 +80,10 @@
 		</form>
 	</div>
 	
-	<script>
-	
-		document.getElementById('form').addEventListener('submit', function(e) {
-		//e.preventDefault();
+	<script type="text/javascript">
+	function controllo(event) {
+		event.preventDefault();
+		alert ('funziona');
 		var password = document.getElementById('exampleInputPassword');
 		var cPassword = document.getElementById('exampleInputConfermaPassword');
 		
@@ -91,11 +91,8 @@
 			alert('Le password non coincidono');
 			
 		} else {
-			alert(password.value);
-			alert(cPassword.value);
-			return;
-			
-
+			alert('Le password coincidono');
+			document.forms.myForm.submit();
 		}
-	});
-		</script>
+	}
+</script>
