@@ -13,8 +13,8 @@
 
 		 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
       <div class="card-body">
-				<table class="table mt-3" border=1>
-					<thead class="thead-dark text-center">
+				<table class="table table-borderless tableGestione">
+					<thead class="text-center">
 						<tr>
 							<th scope="col">#</th>
 							<th scope="col">Marca</th>
@@ -41,7 +41,7 @@
 			  		for(Auto a : listaauto){
 			  		 %>
 						<tr>
-							<th scope="row">Auto</th>
+							<td class="mezzo">Auto</td>
 							<td><%=a.getMarca()%></td>
 							<td><%=a.getModello()%></td>
 							<td><%=a.getTarga()%></td>
