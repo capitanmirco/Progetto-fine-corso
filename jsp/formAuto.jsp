@@ -4,6 +4,7 @@
 <%
 	Auto a = (Auto) request.getAttribute("auto");
 %>	
+<div class="min-h">
 
  <div class="container registra">
     <form method="post">
@@ -55,4 +56,5 @@
      	 </button> 	
      	 </div >	 		
  	</form>
+</div>
 </div>
