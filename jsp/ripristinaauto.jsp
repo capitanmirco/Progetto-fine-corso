@@ -14,7 +14,7 @@
     </div>
 		 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
       <div class="card-body">
-				<table class="table table-borderless tableGestione">
+				<table class="table table-unruled tableGestione">
 					<thead class="text-center">
 						<tr>
 							<th scope="col">#</th>
