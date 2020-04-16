@@ -84,7 +84,8 @@ public class Registrazione extends HttpServlet {
 						c.setNumeroPatente(numeroPatente);
 
 						request.setAttribute("cliente", c);
-						request.getServletContext().getNamedDispatcher("aggiungiclienti").forward(request, response);
+						request.getServletContext().getNamedDispatcher("aggiungiclienti").include(request, response);
+						doGet(request, response);
 						
 					} else {
 						request.setAttribute("errorecliente", "si");
@@ -105,7 +106,8 @@ public class Registrazione extends HttpServlet {
 						u.setCodiceFiscale(codiceFiscale);
 
 						request.setAttribute("utente", u);
-						request.getServletContext().getNamedDispatcher("aggiungiutenti").forward(request, response);
+						request.getServletContext().getNamedDispatcher("aggiungiutenti").include(request, response);
+						doGet(request, response);
 
 					} else {
 						request.setAttribute("erroreutente", "si");
