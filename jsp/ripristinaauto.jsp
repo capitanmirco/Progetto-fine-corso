@@ -3,7 +3,12 @@
 <%@page import="model.Auto"%>
     <%if(request.getAttribute("listavuota")==null){
     %>
-
+<div id="accordion" class="pagineDiv">
+	<div class="card">
+		<div class="card-header">
+			<h5 class=" testo mb-1">Automobili rimosse</h5>
+		</div>
+		<div class="card-body">
 				<table class="table table-unruled tableGestione">
 					<thead class="text-center">
 						<tr>
@@ -46,10 +51,13 @@
 			  	
 					</tbody>
 					</table>
-
+				
     <%}else{%>
     	<div class="alert alert-warning" role="alert">
     	 	Non Ci sono Auto Rimosse
     	</div>
     <%}%>  
-
+    </div>
+					</div>
+					</div>
+    
