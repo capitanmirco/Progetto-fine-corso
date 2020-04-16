@@ -26,7 +26,12 @@ public class GestioneAuto extends HttpServlet {
 		
 		if(session.getAttribute("email_admin") != null || session.getAttribute("utente") != null){
 			List<Auto> listaAuto = Database.getInstance().getAutoRimosse();
-			request.setAttribute("rimosse", listaAuto);
+			if(listaAuto!=null && !listaAuto.isEmpty()) {
+				request.setAttribute("rimosse", listaAuto);
+			}else {
+				request.setAttribute("listavuota", true);
+			}
+			
 		}
 
 			request.getServletContext().getRequestDispatcher("/jsp/header.jsp").include(request, response);
