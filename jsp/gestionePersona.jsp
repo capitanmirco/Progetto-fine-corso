@@ -7,6 +7,7 @@
 	int[] nRuoli = null;
 	String[] nomiAttr = null;
 	int[] nBottoni = null;
+	boolean utents = false;
 	
 	
 	if(request.getSession().getAttribute("email_admin") != null)
@@ -74,7 +75,7 @@
 					String nomeAttr = "listaUtenti"+nomiAttr[i];
 					List<Utente> listaUtenti = (List<Utente>) request.getAttribute(nomeAttr);
 					
-					if(listaUtenti.isEmpty()){%>
+					if((listaUtenti==null || listaUtenti.isEmpty()) && !nomeAttr.equals("listaUtentiNonValidati")){%>
 					<div id="collapse<%=numeri[i]%>" class="collapse in" aria-labelledby="heading<%=numeri[i]%>" data-parent="#accordionExample">
 						<div class="alert alert-warning" role="alert" style="text-align: center">
 			    	 	Nessun elemento nella lista
@@ -84,6 +85,10 @@
 				    	$('#<%=numeri[i]%>').css("display", "none");
 				    	</script>
 					<%}else{
+						
+						if(nomeAttr.equals("listaUtentiNonValidati") && !listaUtenti.isEmpty()){
+							utents = true;
+						}
 				
 			  		for(Utente u : listaUtenti){
 			  		 %>
@@ -126,7 +131,7 @@
 						String nomeAttr2 = "listaClienti"+nomiAttr[i];
 						List<Cliente> listaClienti = (List<Cliente>) request.getAttribute(nomeAttr2);
 					
-					if(listaClienti.isEmpty()){%>
+					if((listaClienti==null || listaClienti.isEmpty()) && !nomeAttr2.equals("listaClientiNonValidati")){%>
 						<div id="collapse<%=numeri[i]%>" class="collapse in" aria-labelledby="heading<%=numeri[i]%>" data-parent="#accordionExample">
 							<div class="alert alert-warning" role="alert" style="text-align: center">
 				    	 	Nessun elemento nella lista
@@ -135,6 +140,16 @@
 				    	<script>
 				    	$('#<%=numeri[i]%>').css("display", "none");
 				    	</script>
+					<%}else if(nomeAttr2.equals("listaClientiNonValidati") && ((listaClienti==null) || listaClienti.isEmpty()) 
+							&& !utents){%>
+						<div id="collapse<%=numeri[i]%>" class="collapse in" aria-labelledby="heading<%=numeri[i]%>" data-parent="#accordionExample">
+						<div class="alert alert-warning" role="alert" style="text-align: center">
+			    	 	Nessun elemento nella lista
+			    		</div>
+			    	</div>
+			    	<script>
+			    	$('#<%=numeri[i]%>').css("display", "none");
+			    	</script>
 					<%}else{
 						
 						
