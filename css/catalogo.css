@@ -80,7 +80,6 @@ select[name="auto"] {
 .col-3.descrizione{
 	 display: flex;
     align-items: center;
-    justify-content: center;
     overflow: unset;
 }
 
