@@ -18,7 +18,7 @@
 					<tr><td>Codice Fiscale</td><td><%=c.getCodiceFiscale()%></td></tr>
 					<tr><td>Patente</td><td><%=c.getNumeroPatente()%></td></tr>
 					<td><a href="modificadati" type="button" class="bottone">Modifica</a></td>
-					<td><a type="button" class="bottone" href="rimuoviclienti?remove=<%=c.getIdCliente()%>">Elimina</a></td>
+					<td><a type="button" class="bottone" href="rimuovicliente?remove=<%=c.getIdCliente()%>">Elimina</a></td>
 					
 				<%} %>
 				
