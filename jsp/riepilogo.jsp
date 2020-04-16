@@ -1,3 +1,6 @@
+
+
+
 <%@page import="model.Noleggio"%>
 <%
 	Noleggio n = (Noleggio) request.getAttribute("noleggio");
@@ -6,17 +9,18 @@
 <div class="min-h">
 <div class="size-riepilogo">
 	<div class="form">
+	
 	<h2>Dati auto</h2>
 	
-		<table class="table">
-			<thead>
+	<table class="table">
+		<thead>
 				<tr>
+              
 					<th scope="col">Marca e modello</th>
 				</tr>
 			</thead>
 	
-	
-		
+			
 			<tbody>
 				<tr>
 
@@ -27,6 +31,7 @@
 		<table class="table">
 			<thead>
 				<tr>
+
 					<th scope="col">Inizio noleggio</th>
 					<th scope="col">Fine noleggio</th>
 				</tr>
@@ -68,36 +73,30 @@
 	</div>
 	
 
-	<div class="car-riepilogo">
-		<div id="carouselExampleFade" class="carousel slide carousel-fade"
-			data-ride="carousel">
-			<div class="carousel-inner">
-				<div class="carousel-item active">
-
-				<%
+	
+	
+		
+		<div class="car-riepilogo">
+		<%
 				if (n.getAuto().getCategoria().getIdCategoria() == 1) {
 			%>
-			<img src="https://iili.io/JoB637.jpg"
-				class="d-block w-100">
+			<img src="https://iili.io/JoB637.jpg" style="width: 100%;">
 
 			<%
 				} else if (n.getAuto().getCategoria().getIdCategoria() == 2) {
 			%>
 
-			<img src="https://iili.io/Jof93X.jpg"
-				class="d-block w-100">
+			<img src="https://iili.io/Jof93X.jpg" style="width: 100%;">
 			<%
 				} else if (n.getAuto().getCategoria().getIdCategoria() == 3) {
 			%>
 
-			<img src="https://iili.io/JoBr4S.jpg"
-				class="d-block w-100">
+			<img src="https://iili.io/JoBr4S.jpg" style="width: 100%;">
 			<%
 				}
 			%>
-				</div>
-			</div>		
 		</div>
-	</div>
+
+
 	</div>
 	</div>
