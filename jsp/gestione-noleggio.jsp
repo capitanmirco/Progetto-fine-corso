@@ -5,6 +5,7 @@
 %>
 
 <%@page import="java.util.List"%>
+<div class="min-h">
 <div class="madre">
 <br><br><br><br><br>
 	<div class="table-noleggio">
@@ -87,3 +88,4 @@
 				</table>
 				</div>
 				</div>
+</div>
