@@ -23,7 +23,7 @@ public class ModificaDati extends HttpServlet {
 			throws ServletException, IOException {
 		request.getServletContext().getRequestDispatcher("/jsp/header.jsp").include(request, response);
 		request.getServletContext().getRequestDispatcher("/jsp/navbar.jsp").include(request, response);
-		request.getServletContext().getRequestDispatcher("/jsp/registrazione.jsp").include(request, response);
+		request.getServletContext().getRequestDispatcher("/jsp/modificaDati.jsp").include(request, response);
 		request.getServletContext().getRequestDispatcher("/jsp/footer.jsp").include(request, response);
 
 	}
@@ -80,7 +80,7 @@ public class ModificaDati extends HttpServlet {
 			}
 
 		}
-		response.sendRedirect("home");
+		response.sendRedirect("visualizzadati");
 	}
 
 }
