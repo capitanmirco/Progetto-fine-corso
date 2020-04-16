@@ -32,7 +32,7 @@
 	List<Auto> listaAuto = (List<Auto>) request.getAttribute("listaAuto");
 %>
 
-<br><br><br><br><br><br><br><br>
+<div class="min-h">
 <div class="container" id="catalogo">
 
 	
@@ -210,7 +210,7 @@
 		}
 	%>
 
-</div> <script type="text/javascript">
+</div></div> <script type="text/javascript">
 <!--
 
 //-->
