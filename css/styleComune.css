@@ -10,6 +10,12 @@ div{
 }
 
 
+
+.errore {
+	color: red;
+}
+
+
 .bottone {
 	border-radius: 10px !important;
 	background-color: #1F4267 !important;
