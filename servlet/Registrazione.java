@@ -44,13 +44,15 @@ public class Registrazione extends HttpServlet {
 				&& (request.getParameter("email") != null) && !(request.getParameter("email").trim().equals(""))
 				&& (request.getParameter("password") != null) && !(request.getParameter("password").trim().equals(""))
 				&& (request.getParameter("datadinascita") != null)
-				&& !(request.getParameter("datadinascita").trim().equals(""))// <------------------------------------------------------
+				&& !(request.getParameter("datadinascita").trim().equals(""))
 				&& (request.getParameter("codicefiscale") != null)
 				&& !(request.getParameter("codicefiscale").trim().equals(""))) {
+			
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 			LocalDate data = LocalDate.now().minusYears(18); // data attuale meno 18 anni
 			LocalDate dataInserita = LocalDate.parse(request.getParameter("datadinascita").trim());
 			int differenzaDate = data.compareTo(dataInserita); // restituisce la differenza tra le 2 date
+			
 			if (differenzaDate >= 0) {
 				request.removeAttribute("erroredata");
 				String nome = request.getParameter("nome");
@@ -59,13 +61,17 @@ public class Registrazione extends HttpServlet {
 				String password = request.getParameter("password");
 				String dataDiNascita = request.getParameter("datadinascita");
 				String codiceFiscale = request.getParameter("codicefiscale");
+				
 
 				if (request.getParameter("ut_cl") != null && request.getParameter("ut_cl").equals("cl")
 						&& (request.getParameter("numeropatente") != null)
 						&& !(request.getParameter("numeropatente").trim().equals(""))) {
 
-					if (!(Database.getInstance().getCliente(email) != null)) {
-
+					System.out.println(codiceFiscale);
+					
+					if (!(Database.getInstance().getClienteByCF(codiceFiscale) != null) && !(Database.getInstance().getCliente(email) != null) 
+							&& !(Database.getInstance().getClienteByPatente(request.getParameter("numeropatente")) != null)) {
+						
 						String numeroPatente = request.getParameter("numeropatente");
 						Cliente c = new Cliente();
 
@@ -79,12 +85,16 @@ public class Registrazione extends HttpServlet {
 
 						request.setAttribute("cliente", c);
 						request.getServletContext().getNamedDispatcher("aggiungiclienti").forward(request, response);
+						
 					} else {
-						System.out.println("Cliente gia' registrato con questa email");
+						request.setAttribute("errorecliente", "si");
+						System.out.println("email, codice fiscale o numero patente già presente");
+						doGet(request, response);
 					}
+					
 				} else if (request.getParameter("ut_cl") != null && request.getParameter("ut_cl").equals("ut")) {
 
-					if (!(Database.getInstance().getUtente(email) != null)) {
+					if (!(Database.getInstance().getUtenteByCF(codiceFiscale) != null) && !(Database.getInstance().getUtente(email) != null)) {
 						Utente u = new Utente();
 
 						u.setNome(nome);
@@ -98,15 +108,18 @@ public class Registrazione extends HttpServlet {
 						request.getServletContext().getNamedDispatcher("aggiungiutenti").forward(request, response);
 
 					} else {
-						System.out.println("Utente gia' registrato con questa email");
+						request.setAttribute("erroreutente", "si");
+						System.out.println("email o codice fiscale già presente");
 						doGet(request, response);
 					}
 				}
+				
 			} else {
 				request.setAttribute("erroredata", "si");
 				System.out.println("Tutto ok raga è minorenne");
 				doGet(request, response);
 			}
+			
 		}else {
 			System.out.println("Inserisci tutti i campi");
 			doGet(request, response);
