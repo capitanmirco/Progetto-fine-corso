@@ -51,7 +51,7 @@
 	</div>
 
 
-	<p class="privacy" id="privacy">© 2020 Nome Corporation. Tutti i
+	<p class="privacy" id="privacy">© 2020 AutomotivElis. Tutti i
 		diritti riservati.Informativa ai sensi dell’art. 13 del d. Lgs N.
 		196/2003</p>
 
