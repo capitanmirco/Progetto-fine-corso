@@ -40,6 +40,7 @@
 
 			<div class="box">
 				<select name="auto" id="text" class="coloreTre">
+					<option value="0">Tutte le categorie</option>
 					<option value="1">City car</option>
 					<option value="3">Lusso</option>
 					<option value="2">Suv</option>
