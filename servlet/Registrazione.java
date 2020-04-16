@@ -52,6 +52,7 @@ public class Registrazione extends HttpServlet {
 			LocalDate dataInserita = LocalDate.parse(request.getParameter("datadinascita").trim());
 			int differenzaDate = data.compareTo(dataInserita); // restituisce la differenza tra le 2 date
 			if (differenzaDate >= 0) {
+				request.removeAttribute("erroredata");
 				String nome = request.getParameter("nome");
 				String cognome = request.getParameter("cognome");
 				String email = request.getParameter("email");
@@ -102,6 +103,7 @@ public class Registrazione extends HttpServlet {
 					}
 				}
 			} else {
+				request.setAttribute("erroredata", "si");
 				System.out.println("Tutto ok raga è minorenne");
 				doGet(request, response);
 			}
