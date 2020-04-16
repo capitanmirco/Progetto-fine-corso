@@ -179,7 +179,8 @@
 			%>
 			
 			<%
-			if(request.getSession().getAttribute("utente")==null && request.getSession().getAttribute("email_admin")==null){
+			if(request.getSession().getAttribute("utente")==null && request.getSession().getAttribute("email_admin")==null 
+			&& request.getSession().getAttribute("cliente")==null){
 			%>
 				<a
 				href="javascript:finestraLog('accedi')"
