@@ -26,10 +26,12 @@ public class login extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-
+		
 		String[] pag = request.getParameter("pagina").split("/");
 		System.out.print("*****"+pag[2]);
 		response.sendRedirect(pag[2]);
+ 
+		
 	}
 
 
@@ -41,6 +43,8 @@ public class login extends HttpServlet {
 		if(admin_email.equals(risposta1_jsp)&&admin_password.equals(risposta2_jsp)){
 			session.setAttribute("email_admin", request.getParameter("email"));
 			session.removeAttribute("errore");
+			session.removeAttribute("nonvalidato");
+			session.removeAttribute("errore_null");
 			System.out.println("OK malfidati!!!!!");
 			doGet(request, response);
 			
@@ -50,13 +54,16 @@ public class login extends HttpServlet {
 			Utente utente=Database.getInstance().getUtente(risposta1_jsp,risposta2_jsp);
 			if(utente.getValidato()==1) {
 			session.setAttribute("utente", utente);
+			session.removeAttribute("nonvalidato");
 			session.removeAttribute("errore");
+			session.removeAttribute("errore_null");
 			System.out.println("Ciao!!!");
 			
 			doGet(request, response);
 			}
 			else {
 				System.out.println("non sei utente validato o sei stato rimosso");
+				session.setAttribute("nonvalidato", "no");
 				doGet(request, response);
 			}
 		}else if(Database.getInstance().getCliente(risposta1_jsp, risposta2_jsp)!=null){
@@ -65,23 +72,34 @@ public class login extends HttpServlet {
 			if(cliente.getValidato()==1) {
 			session.setAttribute("cliente",cliente);
 			session.removeAttribute("errore");
+			session.removeAttribute("errore_null");
+			session.removeAttribute("nonvalidato");
 			System.out.println("OK!!!!!");
 			
 			doGet(request, response);
 			}
 			else {
 				System.out.println("non sei cliente validato o sei stato rimosso");
+				session.setAttribute("nonvalidato", "no");
 				doGet(request, response);
 			}
-		}else if(risposta1_jsp==null||risposta2_jsp==null)
+		}
+		else if(risposta1_jsp==""||risposta2_jsp=="")
 		{
 			String errore_null="Non hai inserito tutti i campi!!!";
+			request.setAttribute("errorelogin", "si");
+			session.removeAttribute("errore");
 			session.setAttribute("errore_null", errore_null);
+			session.removeAttribute("nonvalidato");
+			doGet(request, response);
 		}
 		else {
 			String errore="siete scemi";
 			session.setAttribute("errore", errore);
+			session.removeAttribute("errore_null");
+			session.removeAttribute("nonvalidato");
 			System.out.println(errore);
+		
 			doGet(request, response);
 		}
 		
