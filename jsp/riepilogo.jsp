@@ -68,7 +68,7 @@
 					
 					double prezzo = n.getAuto().getCategoria().getPrezzo()*differenzaDate;
 					
-					out.print(prezzo);
+					out.print(prezzo + " euro");
 					%></td>
 					
 				</tr>
