@@ -165,6 +165,28 @@ public class Database {
 			return null;
 		}
 	}
+	
+	public Cliente getClienteByCF(String codice_fiscale) {
+		Query q = em.createQuery("SELECT c FROM Cliente c WHERE c.codiceFiscale=:cf");
+		q.setParameter("cf", codice_fiscale);
+		try {
+			Cliente cliente = (Cliente) q.getSingleResult();
+			return cliente;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	public Cliente getClienteByPatente(String numero_patente) {
+		Query q = em.createQuery("SELECT c FROM Cliente c WHERE c.numeroPatente=:np");
+		q.setParameter("np", numero_patente);
+		try {
+			Cliente cliente = (Cliente) q.getSingleResult();
+			return cliente;
+		} catch (Exception e) {
+			return null;
+		}
+	}
 
 	public Utente getUtente(String email) {
 		Query q = em.createQuery("SELECT u FROM Utente u WHERE u.email=:email");
@@ -181,6 +203,17 @@ public class Database {
 		Query q = em.createQuery("SELECT u FROM Utente u WHERE u.email=:email AND u.password=:password");
 		q.setParameter("email", email);
 		q.setParameter("password", password);
+		try {
+			Utente utente = (Utente) q.getSingleResult();
+			return utente;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	public Utente getUtenteByCF(String codice_fiscale) {
+		Query q = em.createQuery("SELECT u FROM Utente u WHERE u.codiceFiscale=:cf");
+		q.setParameter("cf", codice_fiscale);
 		try {
 			Utente utente = (Utente) q.getSingleResult();
 			return utente;
