@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import database.Database;
 import model.Auto;
 import model.Categoria;
+import model.Utente;
 
 
 @WebServlet("/modificaauto")
@@ -29,7 +30,7 @@ public class ModificaAuto extends HttpServlet {
 		HttpSession session=request.getSession();
 		if (session.getAttribute("utente")!=null || session.getAttribute("email_admin")!=null) {
 
-			//prendo l'id che mi passerÃ  il catalogo cliccando su modifica auto e creo un'auto
+			//prendo l'id che mi passerà il catalogo cliccando su modifica auto e creo un'auto
 			if(request.getParameter("modifica")!=null) {
 				
 				int id=Integer.parseInt(request.getParameter("modifica"));
@@ -70,11 +71,26 @@ public class ModificaAuto extends HttpServlet {
 			a.setColore(request.getParameter("colore"));
 			a.setMarca(request.getParameter("marca"));
 			a.setModello(request.getParameter("modello"));
-			a.setTarga(request.getParameter("targa"));
+			
+			if(!a.getTarga().equals(request.getParameter("targa"))) {
+				Auto auto_temp = Database.getInstance().getAutoByTarga(request.getParameter("targa"));
+				if(auto_temp.getIdAuto()==(a.getIdAuto())) {
+					a.setTarga(request.getParameter("targa"));
+				}
+				else {
+					request.setAttribute("erroremodificaauto", true);
+					System.out.println("targa esistente");
+					doGet(request, response);
+				}
+			}
+			
 			a.setCategoria(c);
-			Database.getInstance().updateAuto(a);
-			System.out.println("auto aggiornata");
-			response.sendRedirect("catalogo");
+			
+			if(request.getAttribute("erroremodificaauto") == null) {
+				Database.getInstance().updateAuto(a);
+				System.out.println("auto aggiornata");
+				response.sendRedirect("catalogo");
+			}
 		}
 		
 		else {
@@ -84,3 +100,4 @@ public class ModificaAuto extends HttpServlet {
 	}
 
 }
+
