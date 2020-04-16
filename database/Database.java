@@ -288,6 +288,17 @@ public class Database {
 			return null;
 		}
 	}
+	
+	public Auto getAutoByTarga(String targa) {
+		Query q = em.createQuery("SELECT a FROM Auto a WHERE a.targa=:targa");
+		q.setParameter("targa", targa);
+		try {
+			Auto auto = (Auto) q.getSingleResult();
+			return auto;
+		} catch (Exception e) {
+			return null;
+		}
+	}
 
 	public List<Noleggio> getListaNoleggi() {
 		Query q = em.createNamedQuery("Noleggio.findAll");
@@ -320,3 +331,4 @@ public class Database {
 	}
 
 }
+
