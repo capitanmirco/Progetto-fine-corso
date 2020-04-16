@@ -37,7 +37,7 @@
 						<td><%=a.getCilindrata()%></td>
 						<td><%=a.getColore()%></td>
 						<td><%=a.getCategoria().getNome()%></td>
-						<td><a href=ripristinaauto?ripristinaauto= <%=a.getIdAuto()%>>Ripristina</a></td>
+						<td><a href=ripristinaauto?ripristinaauto=<%=a.getIdAuto()%>>Ripristina</a></td>
 					</tr>
 				
 				<%
