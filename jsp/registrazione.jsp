@@ -44,6 +44,11 @@
 				<div class="form-group">
 					<label for="exampleInputDataDiNascita"> Data di nascita </label> 
 					<input type="date" class="form-control" name="datadinascita" id="exampleInputDataDiNascita" value="<%= dataDiNascita= c!=null ? c.getDataDiNascita(): u!=null? u.getDataDiNascita():""%>">
+				<% if ( request.getAttribute("erroredata")!=null)
+				{  %>
+					<p class="errore"> Devi essere maggiorenne per iscriverti. </p>
+				<% }  %>
+				
 				</div>
 				
 				<div class="form-group">
