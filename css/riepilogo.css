@@ -13,8 +13,9 @@ grid-area: form;
 min-width: 850px
 }
 .car-riepilogo{
+    padding: 40px;
     margin-left: 49px;
-    margin-top: 49px;
+    margin-top: 3px;
     grid-area: div-car;
     max-width: 800px;
     min-width: 500px;
