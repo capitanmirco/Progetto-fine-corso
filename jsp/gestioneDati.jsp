@@ -4,7 +4,7 @@
 <% 	Cliente c=(Cliente)request.getAttribute("cliente");  
 	Utente u=(Utente)request.getAttribute("utente");
 %>
-
+<div class="min-h">
 <div class="madre">
 	<div class="table-noleggio">
 		
@@ -33,3 +33,4 @@
 		</table>
 	</div>
 </div>
+	</div>
