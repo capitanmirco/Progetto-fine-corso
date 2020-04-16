@@ -117,9 +117,7 @@
 					
 						for(Cliente c :  listaClienti){  %>
 						<tr>
-							<th scope="row">
-								Cliente
-							</th>
+							<td class="mezzo">Cliente</td>
 							<td><%=c.getNome()%></td>
 							<td><%=c.getCognome()%></td>
 							<td><%=c.getEmail()%></td>
