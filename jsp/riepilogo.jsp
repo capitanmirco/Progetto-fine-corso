@@ -6,13 +6,17 @@
 <div class="min-h">
 <div class="size-riepilogo">
 	<div class="form">
+	<h2>Dati auto</h2>
+	
 		<table class="table">
 			<thead>
 				<tr>
-              
-					<th scope="col">Dati auto</th>
+					<th scope="col">Marca e modello</th>
 				</tr>
 			</thead>
+	
+	
+		
 			<tbody>
 				<tr>
 
