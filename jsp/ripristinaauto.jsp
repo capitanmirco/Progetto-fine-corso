@@ -1,20 +1,9 @@
-
+<br><br><br><br>
 <%@page import="java.util.List"%>
 <%@page import="model.Auto"%>
     <%if(request.getAttribute("listavuota")==null){
     %>
-<div class="min-h">
-<div class="accordion" id="accordionExample">
-  <div class="card">
-    <div class="card-header" id="headingOne">
-      <h2 class="mb-0">
-        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        	Lista Auto Rimosse
-			 </button>
-      </h2>
-    </div>
-		 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-      <div class="card-body">
+
 				<table class="table table-unruled tableGestione">
 					<thead class="text-center">
 						<tr>
@@ -57,15 +46,10 @@
 			  	
 					</tbody>
 					</table>
- 	</div>
-    </div>
+
     <%}else{%>
     	<div class="alert alert-warning" role="alert">
     	 	Non Ci sono Auto Rimosse
     	</div>
     <%}%>  
-    
-  </div>
-  </div>
-<div>
-	
+
