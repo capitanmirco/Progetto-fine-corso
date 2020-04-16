@@ -54,10 +54,10 @@
 					</table>
 				
     <%}else{%>
-    	<div class="alert alert-warning" role="alert">
-    	 	Non Ci sono Auto Rimosse
+    	<div class="alert alert-warning" role="alert" style="text-align: center">
+    	 	Non ci sono auto rimosse
     	</div>
-    <%}%>  
+    <%}%>   
     </div>
 					</div>
 					</div>
