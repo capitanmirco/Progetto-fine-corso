@@ -12,28 +12,28 @@
        	      
         <div class="form-group">
             <label for="inputMarca">Marca</label>
-            <input type="text" class="form-control" name="marca" id="inputMarca" value="<%=a != null ? a.getMarca() : "" %>">
+            <input type="text" required class="form-control" name="marca" id="inputMarca" value="<%=a != null ? a.getMarca() : "" %>">
         </div>
         
         <div class="form-group">
           <label for="inputModello">Modello</label>
-          <input type="text" class="form-control" name="modello" id="inputModello" value="<%=a != null ? a.getModello() : "" %>">
+          <input type="text" required class="form-control" name="modello" id="inputModello" value="<%=a != null ? a.getModello() : "" %>">
         </div>
         
       
      	  <div class="form-group">
             <label for="inputCilindrata">Cilindrata</label>
-            <input type="text" class="form-control" name="cilindrata" id="inputCilindrata" value="<%=a != null ? a.getCilindrata() : "" %>">
+            <input type="text" required class="form-control" name="cilindrata" id="inputCilindrata" value="<%=a != null ? a.getCilindrata() : "" %>">
           </div>
     
           <div class="form-group">
             <label for="inputTarga">Targa</label>
-            <input type="text" class="form-control" name="targa" id="inputTarga" value="<%=a != null ? a.getTarga() : "" %>">
+            <input type="text" required class="form-control" name="targa" id="inputTarga" value="<%=a != null ? a.getTarga() : "" %>">
           </div>
         
           <div class="form-group">
             <label for="inputColore">Colore</label>
-            <input type="text" class="form-control" name="colore" id="inputColore" value="<%=a != null ? a.getColore() : "" %>">
+            <input type="text" required class="form-control" name="colore" id="inputColore" value="<%=a != null ? a.getColore() : "" %>">
           </div>
        
        
