@@ -1,7 +1,7 @@
 <%@page import="java.util.List"%>
 <%@page import="model.Auto"%>
 
-<div id="accordion" class="pagineDiv">
+<div id="accordion" class="pagineDiv min-h">
 	<div class="card">
 		<div class="card-header">
 			<h5 class=" testo mb-1">Automobili rimosse</h5>
