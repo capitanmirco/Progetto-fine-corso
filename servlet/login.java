@@ -37,7 +37,11 @@ public class login extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		HttpSession session=request.getSession();
+		request.getSession().removeAttribute("nonvalidato");
+		request.getSession().removeAttribute("errore");
+		request.getSession().removeAttribute("errore_null");
 		risposta1_jsp=request.getParameter("email");
 		risposta2_jsp=request.getParameter("password");
 		if(admin_email.equals(risposta1_jsp)&&admin_password.equals(risposta2_jsp)){
