@@ -1,0 +1,24 @@
+.tableGestione th{
+	text-align: center;
+	color: #337ab7;
+	border: none;
+	border-bottom: none;
+}
+
+.tableGestione td{
+	border: none;
+	border-bottom: none;
+}
+
+.tableGestione tr{
+	border: none;
+}
+
+.mezzo{
+	color: ##212529;
+	 font-weight: bold;
+}
+
+.tableGestione table{
+	 border-collapse: none;
+}
