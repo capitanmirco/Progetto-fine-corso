@@ -38,6 +38,7 @@ public class ModificaDati extends HttpServlet {
 				(request.getParameter("password") != null)&&(!request.getParameter("password").trim().equals(""))
 				&& (!request.getParameter("datadinascita").trim().equals(""))&& (request.getParameter("datadinascita") != null) &&
 				(!request.getParameter("codicefiscale").trim().equals(""))&&(request.getParameter("codicefiscale") != null)) {
+			
 			String nome = request.getParameter("nome");
 			String cognome = request.getParameter("cognome");
 			String email = request.getParameter("email");
@@ -45,26 +46,41 @@ public class ModificaDati extends HttpServlet {
 			String dataDiNascita = request.getParameter("datadinascita");
 			String codiceFiscale = request.getParameter("codicefiscale");
 			
-			System.out.println(nome+cognome+email+password+dataDiNascita+codiceFiscale);
 			if (session.getAttribute("cliente") != null) {
+				
+				if (!(Database.getInstance().getClienteByCF(codiceFiscale) != null) && !(Database.getInstance().getCliente(email) != null) 
+						&& !(Database.getInstance().getClienteByPatente(request.getParameter("numeropatente")) != null)) {
 
-				Cliente c = (Cliente) session.getAttribute("cliente");
-				if(request.getParameter("numeropatente")!=null&&(!request.getParameter("numeropatente").trim().equals(""))) {
-				String numeroPatente = request.getParameter("numeropatente");
-
-				c.setNome(nome);
-				c.setCognome(cognome);
-				c.setEmail(email);
-				c.setPassword(password);
-				c.setDataDiNascita(dataDiNascita);
-				c.setCodiceFiscale(codiceFiscale);
-				c.setNumeroPatente(numeroPatente);
-
-				Database.getInstance().updateCliente(c);
+					Cliente c = (Cliente) session.getAttribute("cliente");
+				
+					if(request.getParameter("numeropatente")!=null&&(!request.getParameter("numeropatente").trim().equals(""))) {
+						String numeroPatente = request.getParameter("numeropatente");
+		
+						c.setNome(nome);
+						c.setCognome(cognome);
+						c.setEmail(email);
+						c.setPassword(password);
+						c.setDataDiNascita(dataDiNascita);
+						c.setCodiceFiscale(codiceFiscale);
+						c.setNumeroPatente(numeroPatente);
+		
+						Database.getInstance().updateCliente(c);
+						
+						response.sendRedirect("visualizzadati");
+					}
 				}
+				else {
+					request.setAttribute("erroremodificacliente", "si");
+					System.out.println("hai scritto qualcosa di brutto");
+					doGet(request, response);
+				}
+				
 			}
+			
 
 			if (session.getAttribute("utente") != null) {
+				
+				if (!(Database.getInstance().getUtenteByCF(codiceFiscale) != null) && !(Database.getInstance().getUtente(email) != null)) {
 
 				Utente u = (Utente) session.getAttribute("utente");
 				
@@ -77,10 +93,16 @@ public class ModificaDati extends HttpServlet {
 				u.setCodiceFiscale(codiceFiscale);
 
 				Database.getInstance().updateUtente(u);
+				response.sendRedirect("visualizzadati");
 			}
-
+				else {
+					request.setAttribute("erroremodificautente", "si");
+					System.out.println("hai scritto qualcosa di brutto");
+					doGet(request, response);
+				}
 		}
-		response.sendRedirect("visualizzadati");
+		
 	}
 
+}
 }
