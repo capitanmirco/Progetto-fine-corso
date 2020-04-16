@@ -14,7 +14,12 @@
 }
 
 .mezzo {
-	color: ##212529;
+	color: #212529;
+	font-weight: bold;
+}
+
+.testo {
+	color: #337ab7;
 	font-weight: bold;
 }
 
