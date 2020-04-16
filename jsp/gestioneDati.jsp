@@ -25,6 +25,7 @@
 				<%} %>
 				
 				<% if(u!=null){ %>
+					<tr><td colspan="2"> <h2> I miei dati </h2></td></tr>
 					<tr><td>Nome Cognome</td><td><%=u.getNome()+" "+u.getCognome()%></td></tr>
 					<tr><td>Data di nascita</td><td><%=u.getDataDiNascita()%></td></tr>
 					<tr><td>Email</td><td><%=u.getEmail()%></td></tr>
