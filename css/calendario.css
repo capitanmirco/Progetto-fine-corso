@@ -12,7 +12,7 @@ body {
 
 .box select option {
 	padding: 30px;
-	width: 250px;
+	
 }
 
 .bgselect {
@@ -36,6 +36,7 @@ body {
 
 .cal-position .box select {
 	margin-top: 20px;
+	width: 250px;
 }
 
 .bgselect>* {
