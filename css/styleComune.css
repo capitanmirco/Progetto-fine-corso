@@ -85,4 +85,7 @@ body * {
 	margin-top: 150px;
 	
 }
-
+.min-h{
+	min-height:1000px;
+	margin-top:100px;
+}
