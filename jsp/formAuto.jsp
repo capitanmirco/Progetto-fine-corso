@@ -29,6 +29,9 @@
           <div class="form-group">
             <label for="inputTarga">Targa</label>
             <input type="text" required class="form-control" name="targa" id="inputTarga" value="<%=a != null ? a.getTarga() : "" %>">
+            <% if(request.getAttribute("erroremodificaauto") != null) { %>
+            	<p style="margin-bottom: 10px" class="errore"> Targa esistente </p>
+            <% } %>
           </div>
         
           <div class="form-group">
