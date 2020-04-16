@@ -29,10 +29,7 @@ public class login extends HttpServlet {
 
 		String[] pag = request.getParameter("pagina").split("/");
 		System.out.print("*****"+pag[2]);
-		request.getServletContext().getRequestDispatcher("/jsp/header.jsp").include(request,response);
-		request.getServletContext().getRequestDispatcher("/jsp/navbar.jsp").include(request,response);
-		request.getServletContext().getRequestDispatcher("/jsp/"+ pag[2] +".jsp").include(request,response);
-		request.getServletContext().getRequestDispatcher("/jsp/footer.jsp").include(request,response);
+		response.sendRedirect(pag[2]);
 	}
 
 
@@ -77,7 +74,7 @@ public class login extends HttpServlet {
 			session.setAttribute("errore", errore);
 			System.out.println(errore);
 		}
-
+		
 	}
 	
 }
