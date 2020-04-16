@@ -44,7 +44,7 @@
 					%>
 
 					<a class="dropdown-item" href="listanoleggi">Noleggi clienti</a> 
-					<a class="dropdown-item" href="gestioneauto">Auto Rimosse</a>
+					<a class="dropdown-item" href="gestioneauto">Auto rimosse</a>
 					
 				
 					<%
