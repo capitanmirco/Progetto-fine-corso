@@ -9,11 +9,9 @@
 	<!-- CSS -->
     <link type="text/css" rel="stylesheet" href="css/styleHeader.css">
     <link type="text/css" rel="stylesheet" href="css/registra.css">
-  	<link type="text/css" rel="stylesheet" href="style.css">
    	<link type="text/css" rel="stylesheet" href="css/calendario.css">
     <link type="text/css" rel="stylesheet" href="css/footer.css">
     <link type="text/css" rel="stylesheet" href="css/login.css">
-    <link type="text/css" rel="stylesheet" href="css/filtri.css">
     <link type="text/css" rel="stylesheet" href="css/styleComune.css">
     <link type="text/css" rel="stylesheet" href="css/styleGestione.css">
     <link type="text/css" rel="stylesheet" href="css/riepilogo.css">
