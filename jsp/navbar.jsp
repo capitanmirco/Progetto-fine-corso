@@ -1,4 +1,4 @@
-<div class="blue" id="header" align="center" style=""> AutomotivElis </div>
+<div class="blue" id="header" align="center"> AutomotivElis </div>
 <%
 %>
 
