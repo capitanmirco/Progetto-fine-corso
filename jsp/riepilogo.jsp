@@ -1,10 +1,12 @@
 
 
+
 <%@page import="model.Noleggio"%>
 <%
 	Noleggio n = (Noleggio) request.getAttribute("noleggio");
 %>
-
+<!--RIEPILOGO NOLEGGIO-->
+<div class="min-h">
 <div class="size-riepilogo">
 	<div class="form">
 		<table class="table">
@@ -60,7 +62,7 @@
 					id="emailHelp" class="form-text text-muted"></small>
 			</div>
 			<a type="button"
-				href="pagamento?paga=p&dataInizio=<%=n.getDataInizio()%>&dataFine=<%=n.getDataFine()%>&idAuto=<%=n.getAuto().getIdAuto()%>&idCliente=<%=n.getCliente().getIdCliente()%>"
+				href="pagamento?paga=p&dataInizio=<%=n.getDataInizio()%>&dataIFine=<%=n.getDataFine()%>&idAuto=<%=n.getAuto().getIdAuto()%>&idCliente=<%=n.getCliente().getIdCliente()%>"
 				class="btn btn-primary" id="colore-bottone">Conferma</a>
 		</form>
 	</div>
@@ -95,5 +97,6 @@
 		</div>
 
 
+	</div>
 	</div>
 	</div>
