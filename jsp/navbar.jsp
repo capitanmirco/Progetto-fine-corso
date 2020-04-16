@@ -44,6 +44,7 @@
 					%>
 
 					<a class="dropdown-item" href="listanoleggi">Noleggi clienti</a> 
+					<a class="dropdown-item" href="gestioneauto">Auto Rimosse</a>
 					
 				
 					<%
@@ -107,13 +108,11 @@
 	
 	
 	<script>
-
 function finestraLog()
 {
 	$('#divLogin').css("display","flex");
 	$('body>*:not("#divLogin"), #div-car, .bgselect.cal-position').css('filter', 'blur(3px)');
 }
-
 		<%
 		if(request.getSession().getAttribute("errore_null") != null || 
 		request.getSession().getAttribute("errore") != null || 
@@ -121,11 +120,6 @@ function finestraLog()
 			 %>
 			 finestraLog();
 		<%} %>
-
  </script>
 
 </div>
-
-
-
-
