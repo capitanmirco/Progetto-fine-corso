@@ -48,7 +48,7 @@ public class Pagamento extends HttpServlet {
 			Database.getInstance().addNoleggio(n);
 			request.setAttribute("conferma", n);
 			//dall'attribute create un alert con solo data inizio e fine
-			request.getServletContext().getNamedDispatcher("home").forward(request, response);
+			request.getServletContext().getNamedDispatcher("catalogo").forward(request, response);
 		}
 	}
 
