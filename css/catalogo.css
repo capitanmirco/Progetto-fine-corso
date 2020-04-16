@@ -55,6 +55,16 @@
 .col-sm #div-prenota {
     margin: 3px auto;
 }
+
+select[name="auto"] {
+    height: 52px;
+}
+
+#catalogo .row {
+    margin: 50px auto;
+}
+
+
 .row .col-sm {
     overflow: unset;
     margin: 12px auto;
