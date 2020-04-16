@@ -30,7 +30,7 @@
 	}
 	%>
 	
-	
+	<div class="min-h">
 <div id="accordion" class="pagineDiv">
 
 
@@ -162,3 +162,4 @@
 	
 	<% } %>
 </div>
+		</div>
