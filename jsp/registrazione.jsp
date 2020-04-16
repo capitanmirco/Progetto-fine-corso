@@ -13,8 +13,18 @@
 	}
 %>
 
-<div class="min-h">		
+
+
+
+
+
+<div class="min-h">	
 <div class="container registra">
+
+<% if(request.getAttribute("validazione") != null){ %>
+		<p style="margin-bottom: 10px" class="errore"> Registrato. In fase di validazione. </p>
+	<% } %>	
+	
 			<form method="post" name="myForm" action="registrazione"  id="form">
 				<div class="form-group">
 				
