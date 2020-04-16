@@ -1,6 +1,7 @@
 
 
 
+<%@page import="java.time.LocalDate"%>
 <%@page import="model.Noleggio"%>
 <%
 	Noleggio n = (Noleggio) request.getAttribute("noleggio");
@@ -54,13 +55,28 @@
 			<tbody>
 				<tr>
 
-					<td><%=n.getAuto().getCategoria().getPrezzo()%></td>
+					
+					
+					
+					<% LocalDate inizio = LocalDate.parse(n.getDataInizio()); 
+						LocalDate fine = LocalDate.parse(n.getDataFine()); 
+						int differenzaDate = fine.compareTo(inizio);
+						System.out.println(differenzaDate++);
+						
+					%>
+					<td><%
+					
+					double prezzo = n.getAuto().getCategoria().getPrezzo()*differenzaDate;
+					
+					out.print(prezzo);
+					%></td>
+					
 				</tr>
 			</tbody>
 		</table>
 		<form>
 			<div class="form-group">
-				<label for="exampleInputEmail1">Numero Carta</label> <input
+				<label for="exampleInputEmail1">Numero Carta</label> <input required
 					type="number" id="input-carta" min="1000000000000000"
 					max="9000000000000000" id="ccard" class="form-control"
 					id="exampleInputEmail1" aria-describedby="emailHelp"> <small
