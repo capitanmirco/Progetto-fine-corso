@@ -1,6 +1,6 @@
 <%@page import="model.Utente"%>
 <%@page import="model.Cliente"%>
-
+<br><br><br><br><br>
 <% 	Cliente c=(Cliente)request.getAttribute("cliente");  
 	Utente u=(Utente)request.getAttribute("utente");
 %>
