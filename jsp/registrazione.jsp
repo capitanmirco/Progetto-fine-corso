@@ -13,7 +13,7 @@
 	}
 %>
 		<div class="container registra">
-			<form method="post" action="registrazione" name="myForm"  id="form">
+			<form method="post" name="myForm" action="registrazione"  id="form">
 				<div class="form-group">
 				
        			<% if(c == null && u == null){%>	
@@ -83,8 +83,7 @@
 	<script>
 	
 		document.getElementById('form').addEventListener('submit', function(e) {
-		e.preventDefault();
-		alert ('funziona');
+		//e.preventDefault();
 		var password = document.getElementById('exampleInputPassword');
 		var cPassword = document.getElementById('exampleInputConfermaPassword');
 		
@@ -92,8 +91,11 @@
 			alert('Le password non coincidono');
 			
 		} else {
-			alert('Le password coincidono');
-			return true;
+			alert(password.value);
+			alert(cPassword.value);
+			return;
+			
 
 		}
-	});</script>
+	});
+		</script>
