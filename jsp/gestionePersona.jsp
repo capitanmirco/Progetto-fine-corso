@@ -2,7 +2,6 @@
 <%@page import="model.Utente"%>
 <%@page import="java.util.List"%>
 <%
-
 	String[] numeri = null;
 	String[] titoli = null;
 	int[] nRuoli = null;
@@ -49,7 +48,7 @@
 		<div id="collapse<%=numeri[i]%>" class="collapse" aria-labelledby="heading<%=numeri[i]%>" data-parent="#accordionExample">
 			<div class="card-body">
 
-				<table class="table tableGestione table-borderless">
+				<table class="table table-unruled tableGestione">
 					<thead class="text-center">
 						<tr>
 							<th scope="col">Ruolo</th>
@@ -165,5 +164,3 @@
 	
 	<% } %>
 </div>
-
-	
