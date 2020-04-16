@@ -49,8 +49,8 @@
 		<div id="collapse<%=numeri[i]%>" class="collapse" aria-labelledby="heading<%=numeri[i]%>" data-parent="#accordionExample">
 			<div class="card-body">
 
-				<table class="table mt-3" border=1>
-					<thead class="thead-dark text-center">
+				<table class="table tableGestione table-borderless">
+					<thead class="text-center">
 						<tr>
 							<th scope="col">Ruolo</th>
 							<th scope="col">Nome</th>
@@ -78,7 +78,7 @@
 			  		for(Utente u : listaUtenti){
 			  		 %>
 						<tr>
-							<th scope="row">Utente</th>
+							<td class="mezzo">Utente</td>
 							<td><%=u.getNome()%></td>
 							<td><%=u.getCognome()%></td>
 							<td><%=u.getEmail()%></td>
