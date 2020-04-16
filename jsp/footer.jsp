@@ -19,7 +19,7 @@
 
 
 	</div>
-	<div class="col-12 col-md-4">
+	<div class="col-12 col-md-4" style="text-align: center;">
 		<h3>AutomotivElis&copy;</h3>
 		<br>
 		<iframe
@@ -32,7 +32,7 @@
 
 	
 
-	<div class="col-12 col-md-4">
+	<div class="col-12 col-md-4" style="text-align: right;">
 		<h3>Seguici anche sui Social!</h3>
 		<br>
 		<a href="https://it-it.facebook.com/login/"
