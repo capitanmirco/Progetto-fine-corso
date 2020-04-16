@@ -56,6 +56,7 @@
 
 select[name="auto"] {
     height: 52px;
+	width: min-content;
 }
 
 #catalogo .row {
