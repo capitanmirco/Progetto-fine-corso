@@ -74,6 +74,15 @@
 					<label for="exampleInputNumeroPatente"> Numero di patente </label> 
 					<input type="text" class="form-control" name="numeropatente" id="exampleInputNumeroPatente" value="<%= numeroDiPatente= c!=null ? c.getNumeroPatente() :""%>">
 				<%}%>	
+				
+				<% if(request.getAttribute("erroremodificacliente") != null) { %>
+					<p class="errore"> Email, codice fiscale o patente esistente </p>
+				<% } %>
+				
+				<% if(request.getAttribute("erroremodificautente") != null) { %>
+					<p class="errore"> Email o codice fiscale esistente </p>
+				<% } %>
+				
 				</div>
 				
 				<div id="btn-reg">
