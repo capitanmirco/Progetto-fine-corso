@@ -1,24 +1,29 @@
-.tableGestione th{
+.tableGestione th {
 	text-align: center;
 	color: #337ab7;
 	border: none;
-	border-bottom: none;
 }
 
-.tableGestione td{
-	border: none;
-	border-bottom: none;
-}
-
-.tableGestione tr{
+.tableGestione td {
 	border: none;
 }
 
-.mezzo{
+.tableGestione tr {
+	border: none;
+	border-top: none;
+}
+
+.mezzo {
 	color: ##212529;
-	 font-weight: bold;
+	font-weight: bold;
 }
 
-.tableGestione table{
-	 border-collapse: none;
+.tableGestione table {
+	border-collapse: none;
+}
+
+.table.table-unruled>tbody>tr>td, 
+.table.table-unruled>tbody>tr>th {
+	border-top: 0 none transparent;
+	border-bottom: 0 none transparent;
 }
