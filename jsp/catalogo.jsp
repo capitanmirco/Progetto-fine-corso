@@ -32,7 +32,13 @@
 <div class="min-h"  id="catalogo">
 <div class="container">
 
-	
+		<%
+		if(request.getAttribute("conferma") != null){
+	%>
+		<p class="errore"> Auto noleggiata con successo. </p>
+	<%
+		}
+	%>
 
 	<div class="row" >
 		<div class="col-12">
