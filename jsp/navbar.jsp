@@ -43,8 +43,7 @@
 								|| request.getSession().getAttribute("utente") != null) {
 					%>
 
-					<a class="dropdown-item" href="listanoleggi">Noleggi clienti</a>
-					<a class="dropdown-item" href="gestioneauto">Auto rimosse</a>
+					<a class="dropdown-item" href="listanoleggi">Noleggi clienti</a> 
 					
 				
 					<%
@@ -70,7 +69,7 @@
 		<li id="loginLi">
 		
 				<a class="aMenu" style="float:right;margin-right:20px" href="registrazione">Registrati</a>
-				<a class="aMenu" style="float:right" href="javascript:finestraLog('accedi')">Accedi</a>
+				<a class="aMenu" style="float:right" href="javascript:finestraLog()">Accedi</a>
 		</li>
 
 		<%
@@ -79,6 +78,9 @@
 	</ul>
 
 </nav>
+
+
+ 
 <div id="divLogin" class="">
 	<div id="login" class="">
 		<a href="javascript:esci()" id="esci">x</a> 
@@ -86,9 +88,39 @@
 		<form method="POST" action="login">
 			<label>E-mail</label> <input type="email" name="email" id="email">
 			<label>Password</label> <input type="password" name="password" id="password">
+			<% if(request.getSession().getAttribute("errore") != null){%>
+			<p class="errore">Credenziali sbagliate.</p>
+			
+			<%} else if(request.getSession().getAttribute("errore_null") != null){%>
+			
+			<p class="errore">Inserisci tutti i campi.</p>
+			
+			<%} %>
+			
 				<input type="hidden" name="pagina" value="<%=request.getRequestURI()%>">
 				<input class="bottoni bottone" id="loginButton" type="submit" value="Login">	
 		</form>
 	</div>
+	
+	
+	<script>
+
+function finestraLog()
+{
+	$('#divLogin').css("display","flex");
+	$('body>*:not("#divLogin"), #div-car, .bgselect.cal-position').css('filter', 'blur(3px)');
+}
+
+<%
+if(request.getSession().getAttribute("errore_null") != null || request.getSession().getAttribute("errore") != null) {
+	 %>
+	 finestraLog();
+<%} %>
+
+ </script>
+
 </div>
+
+
+
 
