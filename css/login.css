@@ -17,6 +17,7 @@
 	justify-content: center;
 	display: none;
 	position: absolute;
+	text-align: center;
 }
 
 #login input[type=text]
