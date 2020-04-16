@@ -2,7 +2,6 @@ package servlet;
 
 import java.io.IOException;
 import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,7 +28,7 @@ public class GestioneAuto extends HttpServlet {
 			if(listaAuto!=null && !listaAuto.isEmpty()) {
 				request.setAttribute("rimosse", listaAuto);
 			}else {
-				request.setAttribute("listavuota", true);
+				request.setAttribute("listavuota", false);
 			}
 			
 		}
