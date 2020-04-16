@@ -73,6 +73,7 @@ public class login extends HttpServlet {
 			String errore="siete scemi";
 			session.setAttribute("errore", errore);
 			System.out.println(errore);
+			doGet(request, response);
 		}
 		
 	}
