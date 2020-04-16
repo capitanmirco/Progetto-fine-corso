@@ -13,7 +13,9 @@
 	}
 %>
 		<div class="container registra">
-			<form method="post" name="myForm" action="registrazione" id="form">
+			<form method="post" name="myForm" id="form" action="registrazione">
+			
+			
 				<div class="form-group">
 				
        			<% if(c == null && u == null){%>	
