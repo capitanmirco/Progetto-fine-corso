@@ -170,7 +170,7 @@
 			<a
 				href="noleggiaauto?noleggia=<%=auto.getIdAuto()%>&inizioNolo=<%=data1%>&fineNolo=<%=data2%>"
 				class="btn btn-primary btn-lg active bottone" role="button"
-				aria-pressed="true">noleggia</a>
+				aria-pressed="true">Noleggia</a>
 			<%
 				}
 			%>
@@ -182,7 +182,7 @@
 				<a
 				href="javascript:finestraLog('accedi')"
 				class="btn btn-primary btn-lg active bottone" role="button"
-				aria-pressed="true">noleggia</a>
+				aria-pressed="true">Noleggia</a>
 			<%
 			}
 			%>
@@ -193,10 +193,10 @@
 			%>
 			<a href="rimuoviauto?remove=<%=auto.getIdAuto()%>"
 				class="btn btn-primary btn-lg active bottone" role="button"
-				aria-pressed="true">elimina</a> <a
+				aria-pressed="true">Elimina</a> <a
 				href="modificaauto?modifica=<%=auto.getIdAuto()%>"
 				class="btn btn-primary btn-lg active bottone" role="button"
-				aria-pressed="true">modifica</a>
+				aria-pressed="true">Modifica</a>
 
 			<%
 				}
