@@ -12,7 +12,9 @@
     	u = (Utente) request.getSession().getAttribute("utente");
 	}
 %>
-		<div class="container registra">
+
+<div class="min-h">		
+<div class="container registra">
 			<form method="post" name="myForm" action="registrazione"  id="form">
 				<div class="form-group">
 				
@@ -83,6 +85,7 @@
         				} %> </button>
 				</div>
 		</form>
+	</div>
 	</div>
 	
 	<script type="text/javascript">
