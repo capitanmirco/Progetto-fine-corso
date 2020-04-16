@@ -1,4 +1,4 @@
-<br><br><br><br>
+
 <%@page import="java.util.List"%>
 <%@page import="model.Auto"%>
     <%if(request.getAttribute("listavuota")==null){
