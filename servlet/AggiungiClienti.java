@@ -16,10 +16,14 @@ public class AggiungiClienti extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Cliente c = (Cliente) request.getAttribute("cliente");
-		Database.getInstance().addCliente(c);
+		boolean registrato = Database.getInstance().addCliente(c);
+		if(registrato) {
+		request.setAttribute("validazione", true);
+		}
 		System.out.println("ok cliente aggiunto");
-		response.sendRedirect("home");
 	}
 
 }
+
+
 
