@@ -47,23 +47,32 @@ public class ModificaDati extends HttpServlet {
 			String codiceFiscale = request.getParameter("codicefiscale");
 			
 			if (session.getAttribute("cliente") != null) {
-				
+				Cliente c = (Cliente) session.getAttribute("cliente");
+				String numeroPatente = request.getParameter("numeropatente");
+				if(!c.getNome().equals(nome)) {
+					c.setNome(nome);
+				}
+				if(!c.getCognome().equals(cognome)) {
+					c.setCognome(cognome);
+				}
+				if(!c.getPassword().equals(password)) {
+					c.setPassword(password);
+				}
+				if(!c.getDataDiNascita().equals(dataDiNascita)) {
+					c.setDataDiNascita(dataDiNascita);
+				}
+				if(!c.getCodiceFiscale().equals(codiceFiscale)) {
+					c.setCodiceFiscale(codiceFiscale);
+				}
+				if(!c.getNumeroPatente().equals(numeroPatente)) {
+					c.setNumeroPatente(numeroPatente);
+				}
 				if (!(Database.getInstance().getClienteByCF(codiceFiscale) != null) && !(Database.getInstance().getCliente(email) != null) 
 						&& !(Database.getInstance().getClienteByPatente(request.getParameter("numeropatente")) != null)) {
-
-					Cliente c = (Cliente) session.getAttribute("cliente");
 				
 					if(request.getParameter("numeropatente")!=null&&(!request.getParameter("numeropatente").trim().equals(""))) {
-						String numeroPatente = request.getParameter("numeropatente");
-		
-						c.setNome(nome);
-						c.setCognome(cognome);
-						c.setEmail(email);
-						c.setPassword(password);
-						c.setDataDiNascita(dataDiNascita);
-						c.setCodiceFiscale(codiceFiscale);
-						c.setNumeroPatente(numeroPatente);
-		
+						
+
 						Database.getInstance().updateCliente(c);
 						
 						response.sendRedirect("visualizzadati");
