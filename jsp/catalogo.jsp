@@ -32,8 +32,8 @@
 	List<Auto> listaAuto = (List<Auto>) request.getAttribute("listaAuto");
 %>
 
-<div class="min-h">
-<div class="container" id="catalogo">
+<div class="min-h"  id="catalogo">
+<div class="container">
 
 	
 
@@ -126,8 +126,7 @@
 
 		</div>
 	</div>
-</div>
-<div class="container">
+
 	<%
 		for (Auto auto : listaAuto) {
 	%>
