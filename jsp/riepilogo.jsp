@@ -1,6 +1,3 @@
-
-
-
 <%@page import="model.Noleggio"%>
 <%
 	Noleggio n = (Noleggio) request.getAttribute("noleggio");
@@ -26,7 +23,6 @@
 		<table class="table">
 			<thead>
 				<tr>
-
 					<th scope="col">Inizio noleggio</th>
 					<th scope="col">Fine noleggio</th>
 				</tr>
@@ -73,30 +69,31 @@
 			data-ride="carousel">
 			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<img src="https://iili.io/JnPsVV.jpg" class="d-block w-100"
-						alt="immagine non trovata">
+
+				<%
+				if (n.getAuto().getCategoria().getIdCategoria() == 1) {
+			%>
+			<img src="https://iili.io/JoB637.jpg"
+				class="d-block w-100">
+
+			<%
+				} else if (n.getAuto().getCategoria().getIdCategoria() == 2) {
+			%>
+
+			<img src="https://iili.io/Jof93X.jpg"
+				class="d-block w-100">
+			<%
+				} else if (n.getAuto().getCategoria().getIdCategoria() == 3) {
+			%>
+
+			<img src="https://iili.io/JoBr4S.jpg"
+				class="d-block w-100">
+			<%
+				}
+			%>
 				</div>
-				<div class="carousel-item">
-					<img src="https://iili.io/JnLnn4.jpg" class="d-block w-100"
-						alt="immagine non trovata">
-				</div>
-				<div class="carousel-item">
-					<img src="https://iili.io/JCyqVs.jpg" class="d-block w-100"
-						alt="immagine non trovata">
-				</div>
-			</div>
-			<a class="carousel-control-prev" href="#carouselExampleFade"
-				role="button" data-slide="prev"> <span
-				class="carousel-control-prev-icon" aria-hidden="true"></span> <span
-				class="sr-only">Precedente</span>
-			</a> <a class="carousel-control-next" href="#carouselExampleFade"
-				role="button" data-slide="next"> <span
-				class="carousel-control-next-icon" aria-hidden="true"></span> <span
-				class="sr-only">Prossima</span>
-			</a>
+			</div>		
 		</div>
-
-
 	</div>
 	</div>
 	</div>
