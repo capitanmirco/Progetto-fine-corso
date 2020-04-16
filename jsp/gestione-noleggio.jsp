@@ -1,6 +1,7 @@
 <%@page import="model.Noleggio"%>
 <%
-	request.getAttribute("Noleggi_lista");
+	List<Noleggio> listaNoleggi = (List<Noleggio>) request.getAttribute("Noleggi_lista");
+	List<Noleggio> storicoNoleggi = (List<Noleggio>) request.getAttribute("storico_noleggi");
 %>
 
 <%@page import="java.util.List"%>
@@ -9,9 +10,10 @@
 <div id="accordion" class="pagineDiv">
 	<div class="card">
 		<div class="card-header">
-			<h5 class=" testo mb-1"">Noleggi in corso</h5>
+			<h5 class=" testo mb-1">Noleggi in corso</h5>
 		</div>
 		<div class="card-body">
+		<% if(!listaNoleggi.isEmpty()) { %>
 			<table class="table table-unruled tableGestione">
 				<thead class="text-center">
 					<tr>
@@ -27,11 +29,8 @@
 				<tbody class="text-center">
 
 					<%
-						List<Noleggio> listaNoleggi = (List<Noleggio>) request.getAttribute("Noleggi_lista");
-						if (listaNoleggi != null) {
 							for (Noleggio n : listaNoleggi) {
 					%>
-
 					<tr>
 						<th class="mezzo"><%=(listaNoleggi.indexOf(n) + 1)%></th>
 						<td><%=n.getCliente().getNome() + " " + n.getCliente().getCognome()%></td>
@@ -44,15 +43,20 @@
 
 						<td><a href="jsp/gestione"></a></td>
 					</tr>
-					<%
+		<%
+					}
 						}
-						}
-					%>
+		else if(listaNoleggi.isEmpty()){
+				%>
 
-
-
-
-				</tbody>
+					<tr id="inCorso">
+						<div class="alert alert-warning" role="alert" style="text-align: center"> Nessun noleggio in corso </div>
+					</tr>
+					<script>
+				    	$('#inCorso').css("display", "none");
+				    	</script>
+		<%} %>
+			</tbody>
 			</table>
 		</div>
 		<div class="card">
@@ -60,6 +64,7 @@
 				<h5 class="testo mb-1">Storico noleggi</h5>
 			</div>
 			<div class="card-body">
+			<% if(!storicoNoleggi.isEmpty()) { %>
 				<!--////////////////////////////////////////// storico cliente  -->
 				<table class="table table-unruled tableGestione">
 					<thead class="text-center">
@@ -73,12 +78,11 @@
 						</tr>
 					</thead>
 					<tbody class="text-center">
+
 						<%
-							List<Noleggio> storicoNoleggi = (List<Noleggio>) request.getAttribute("storico_noleggi");
-							if (storicoNoleggi != null) {
 								for (Noleggio n : storicoNoleggi) {
 						%>
-
+					
 						<tr>
 							<td><%=(storicoNoleggi.indexOf(n) + 1)%></td>
 							<td><%=n.getCliente().getNome() + " " + n.getCliente().getCognome()%></td>
@@ -86,17 +90,30 @@
 							<td><%=n.getDataInizio()%></td>
 							<td><%=n.getDataFine()%></td>
 
-
-
-
-							<%
-								}
-								}
-							%>
 						</tr>
-					</tbody>
+					<%
+					}
+						}
+		else if(storicoNoleggi.isEmpty()){
+				%>
+
+					<tr id="storico">
+						<div class="alert alert-warning" role="alert" style="text-align: center"> Nessun noleggio</div>
+					</tr>
+					<script>
+				    	$('#storico').css("display", "none");
+				    	</script>
+				<%
+					}
+
+				%>
+				</tbody>	
 				</table>
 			</div>
 		</div>
 	</div>
 </div>
+
+
+					
+
