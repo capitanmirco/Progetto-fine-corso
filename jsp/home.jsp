@@ -4,7 +4,7 @@
 
 <%String today = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 %>
-<div class="div-car">
+<div class="div-car" style="width:101%">
 	<div id="carouselExampleFade" class="carousel slide carousel-fade"
 		data-ride="carousel">
 		<div class="carousel-inner">
