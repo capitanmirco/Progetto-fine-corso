@@ -5,18 +5,15 @@
 <%
 	//request.getSession().setAttribute("email_admin", "ert");
 	/* 1 = citycar // 2 = suv // 3 = auto di lusso */
-
 	String data1 = null;
 	String data2 = null;
 	String today = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 	boolean flag = false;
 	if (request.getParameter("inizioNolo") != null) {
 		data1 = (String) request.getAttribute("inizioNolo");
-
 	} else {
 		data1 = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 	}
-
 	if (request.getParameter("fineNolo") != null) {
 		data2 = (String) request.getAttribute("fineNolo");
 	} else if (flag) {
@@ -37,10 +34,10 @@
 
 	
 
-	<div class="row">
+	<div class="row" >
 		<div class="col-12">
 			<form class="form-inline col-sm-10" action="filtro" method="post">
-				<div class="form-group  col-sm-3 box">
+				<div class="form-group  col-sm-3 box mr-4">
 					<%
 						int categoria = 0;
 						if (request.getAttribute("categoria") != null) {
@@ -84,7 +81,7 @@
 						
 					%>
 				</div>
-
+       
 
 
 				<div class="form-group mx-sm-3">
@@ -108,7 +105,7 @@
 			<div class="col-sm-2">
 
 				<div class="calendario  divBottone" id="div-prenota">
-					<a class="bottone-catalogo bottone" type="button"
+					<a class="bottone" type="button"
 						href="aggiungiauto" style="min-width: max-content;">Aggiungi
 						Auto</a>
 				</div>
@@ -126,11 +123,12 @@
 
 		</div>
 	</div>
+	
 
 	<%
 		for (Auto auto : listaAuto) {
 	%>
-	<div class="row">
+	<div class="row dist">
 
 		<div class="col-3">
 
@@ -160,8 +158,8 @@
 
 		<div class="col-6 descrizione">
 			<%
-				out.print(auto.getMarca() + " " + auto.getModello() + " " + auto.getCilindrata() + " "
-							+ auto.getColore() + " " + auto.getCategoria().getPrezzo() + " euro/giorno");
+				out.print("Marca: "+auto.getMarca() + " Modello: " + auto.getModello() + " Cilindrata: " + auto.getCilindrata() + " Colore: "
+							+ auto.getColore() + " <br>Prezzo: "  + auto.getCategoria().getPrezzo() + " euro/giorno");
 			%>
 		</div>
 
@@ -205,13 +203,13 @@
 			%>
 		</div>
 	</div>
+	
 	<%
 		}
 	%>
 
 </div></div> <script type="text/javascript">
 <!--
-
 //-->
 function verifica(nome) {
 	
@@ -226,6 +224,4 @@ function verifica(nome) {
 	}
 	
 }
-
-
 </script>
