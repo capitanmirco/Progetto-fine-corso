@@ -15,7 +15,7 @@
 		<div class="card-body">
 		<% if(!listaNoleggi.isEmpty()) { %>
 			<table class="table table-unruled tableGestione">
-				<thead class="text-center">
+				<thead >
 					<tr>
 						<th scope="col"></th>
 						<th scope="col">Cliente</th>
@@ -41,7 +41,7 @@
 							href="interrompinoleggiate?stato=2&idNoleggio=<%=n.getIdNoleggio()%>"
 							type="button" class="bottone">Interrompi</a></td>
 
-						<td><a href="jsp/gestione"></a></td>
+						<td style="padding: 0px"><a href="jsp/gestione"></a></td>
 					</tr>
 		<%
 					}
