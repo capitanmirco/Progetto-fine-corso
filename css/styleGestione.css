@@ -4,6 +4,10 @@
 	border: none;
 }
 
+.tableGestione>.text-center>tr> td, .tableGestione>.text-center>tr> th{
+	vertical-align: middle;
+}
+
 .tableGestione td {
 	border: none;
 }
