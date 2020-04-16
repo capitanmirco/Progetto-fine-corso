@@ -74,6 +74,7 @@
 							<th scope="col">Veicolo</th>
 							<th scope="col">Inizio noleggio</th>
 							<th scope="col">Fine noleggio</th>
+							<th scope="col"></th>
 
 						</tr>
 					</thead>
@@ -89,6 +90,7 @@
 							<td><%=n.getAuto().getModello() + " " + n.getAuto().getMarca()%></td>
 							<td><%=n.getDataInizio()%></td>
 							<td><%=n.getDataFine()%></td>
+							<td><%=n.getStato()==2 ? "Interrotto" : ""%></td>
 
 						</tr>
 					<%
