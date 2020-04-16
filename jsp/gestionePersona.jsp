@@ -44,11 +44,11 @@
 				</button>
 			</h5>
 		</div>
-
+		
 		<div id="collapse<%=numeri[i]%>" class="collapse in" aria-labelledby="heading<%=numeri[i]%>" data-parent="#accordionExample">
 			<div class="card-body">
 
-				<table class="table table-unruled tableGestione">
+				<table class="table table-unruled tableGestione" id=<%=numeri[i]%>>
 					<thead class="text-center">
 						<tr>
 							<th scope="col">Ruolo</th>
@@ -73,6 +73,17 @@
 						
 					String nomeAttr = "listaUtenti"+nomiAttr[i];
 					List<Utente> listaUtenti = (List<Utente>) request.getAttribute(nomeAttr);
+					
+					if(listaUtenti.isEmpty()){%>
+					<div id="collapse<%=numeri[i]%>" class="collapse in" aria-labelledby="heading<%=numeri[i]%>" data-parent="#accordionExample">
+						<div class="alert alert-warning" role="alert" style="text-align: center">
+			    	 	Nessun elemento nella lista
+			    		</div>
+			    	</div>
+			    	<script>
+				    	$('#<%=numeri[i]%>').css("display", "none");
+				    	</script>
+					<%}else{
 				
 			  		for(Utente u : listaUtenti){
 			  		 %>
@@ -108,13 +119,25 @@
 						 	</td>
 						</tr>
 					<% } 
-					}
+					}}
 			  		
 			  		
 					if(nRuoli[i]==1 || nRuoli[i]==3){
 						String nomeAttr2 = "listaClienti"+nomiAttr[i];
 						List<Cliente> listaClienti = (List<Cliente>) request.getAttribute(nomeAttr2);
 					
+					if(listaClienti.isEmpty()){%>
+						<div id="collapse<%=numeri[i]%>" class="collapse in" aria-labelledby="heading<%=numeri[i]%>" data-parent="#accordionExample">
+							<div class="alert alert-warning" role="alert" style="text-align: center">
+				    	 	Nessun elemento nella lista
+				    		</div>
+				    	</div>
+				    	<script>
+				    	$('#<%=numeri[i]%>').css("display", "none");
+				    	</script>
+					<%}else{
+						
+						
 						for(Cliente c :  listaClienti){  %>
 						<tr>
 							<td class="mezzo">Cliente</td>
@@ -151,7 +174,7 @@
 						 	</td>
 	
 						</tr>
-						<% } }%>
+						<% }} }%>
 	
 					</tbody>
 				</table>
