@@ -7,111 +7,80 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import database.Database;
-import model.Cliente;
-import model.Utente;
+import model.Auto;
+import model.Categoria;
 
-@WebServlet("/modificadati")
-public class ModificaDati extends HttpServlet {
+
+@WebServlet("/modificaauto")
+public class ModificaAuto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
+   
+    public ModificaAuto() {
+        super();
+        
+    }
 
-	public ModificaDati() {
-		super();
-	}
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		HttpSession session=request.getSession();
+		if (session.getAttribute("utente")!=null || session.getAttribute("email_admin")!=null) {
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		request.getServletContext().getRequestDispatcher("/jsp/header.jsp").include(request, response);
-		request.getServletContext().getRequestDispatcher("/jsp/navbar.jsp").include(request, response);
-		request.getServletContext().getRequestDispatcher("/jsp/modificaDati.jsp").include(request, response);
-		request.getServletContext().getRequestDispatcher("/jsp/footer.jsp").include(request, response);
-
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		HttpSession session = request.getSession();
-		if ((request.getParameter("nome") != null)&&(!request.getParameter("nome").trim().equals("")) && (request.getParameter("cognome") != null)&&
-				(!request.getParameter("cognome").trim().equals(""))
-				&& (request.getParameter("email") != null)&&(!request.getParameter("email").trim().equals("")) && 
-				(request.getParameter("password") != null)&&(!request.getParameter("password").trim().equals(""))
-				&& (!request.getParameter("datadinascita").trim().equals(""))&& (request.getParameter("datadinascita") != null) &&
-				(!request.getParameter("codicefiscale").trim().equals(""))&&(request.getParameter("codicefiscale") != null)) {
-			
-			String nome = request.getParameter("nome");
-			String cognome = request.getParameter("cognome");
-			String email = request.getParameter("email");
-			String password = request.getParameter("password");
-			String dataDiNascita = request.getParameter("datadinascita");
-			String codiceFiscale = request.getParameter("codicefiscale");
-			
-			if (session.getAttribute("cliente") != null) {
-				Cliente c = (Cliente) session.getAttribute("cliente");
-				String numeroPatente = request.getParameter("numeropatente");
-				if(!c.getNome().equals(nome)) {
-					c.setNome(nome);
-				}
-				if(!c.getCognome().equals(cognome)) {
-					c.setCognome(cognome);
-				}
-				if(!c.getPassword().equals(password)) {
-					c.setPassword(password);
-				}
-				if(!c.getDataDiNascita().equals(dataDiNascita)) {
-					c.setDataDiNascita(dataDiNascita);
-				}
-				if(!c.getCodiceFiscale().equals(codiceFiscale)) {
-					c.setCodiceFiscale(codiceFiscale);
-				}
-				if(!c.getNumeroPatente().equals(numeroPatente)) {
-					c.setNumeroPatente(numeroPatente);
-				}
-				if (!(Database.getInstance().getClienteByCF(codiceFiscale) != null) && !(Database.getInstance().getCliente(email) != null) 
-						&& !(Database.getInstance().getClienteByPatente(request.getParameter("numeropatente")) != null)) {
+			//prendo l'id che mi passerÃ  il catalogo cliccando su modifica auto e creo un'auto
+			if(request.getParameter("modifica")!=null) {
 				
-					if(request.getParameter("numeropatente")!=null&&(!request.getParameter("numeropatente").trim().equals(""))) {
-						
-
-						Database.getInstance().updateCliente(c);
-						
-						response.sendRedirect("visualizzadati");
-					}
-				}
-				else {
-					request.setAttribute("erroremodificacliente", "si");
-					System.out.println("hai scritto qualcosa di brutto");
-					doGet(request, response);
-				}
+				int id=Integer.parseInt(request.getParameter("modifica"));
+				Auto a=Database.getInstance().getAutoById(id);
+				request.setAttribute("auto", a);
 				
 			}
 			
+				request.getServletContext().getRequestDispatcher("/jsp/header.jsp").include(request,response);
+				request.getServletContext().getRequestDispatcher("/jsp/navbar.jsp").include(request,response);
+				request.getServletContext().getRequestDispatcher("/jsp/formAuto.jsp").include(request,response);
+				request.getServletContext().getRequestDispatcher("/jsp/footer.jsp").include(request,response);
 
-			if (session.getAttribute("utente") != null) {
-				
-				if (!(Database.getInstance().getUtenteByCF(codiceFiscale) != null) && !(Database.getInstance().getUtente(email) != null)) {
+		}
+		
+		else {
+			response.sendRedirect("home");
+		}
+	}
 
-				Utente u = (Utente) session.getAttribute("utente");
-				
-
-				u.setNome(nome);
-				u.setCognome(cognome);
-				u.setEmail(email);
-				u.setPassword(password);
-				u.setDataDiNascita(dataDiNascita);
-				u.setCodiceFiscale(codiceFiscale);
-
-				Database.getInstance().updateUtente(u);
-				response.sendRedirect("visualizzadati");
-			}
-				else {
-					request.setAttribute("erroremodificautente", "si");
-					System.out.println("hai scritto qualcosa di brutto");
-					doGet(request, response);
-				}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		HttpSession session=request.getSession();
+		if (session.getAttribute("utente")!=null || session.getAttribute("email_admin")!=null) {
+			//mi creo un'auto 
+			int id=Integer.parseInt(request.getParameter("id"));
+			
+			Auto a= Database.getInstance().getAutoById(id);  
+			
+			double cilindrata=Double.parseDouble(request.getParameter("cilindrata"));
+			int idCategoria=Integer.parseInt(request.getParameter("categoria"));
+			
+			Categoria c=Database.getInstance().getCategoriaById(idCategoria);
+			
+			
+			a.setCilindrata(cilindrata);
+			a.setColore(request.getParameter("colore"));
+			a.setMarca(request.getParameter("marca"));
+			a.setModello(request.getParameter("modello"));
+			a.setTarga(request.getParameter("targa"));
+			a.setCategoria(c);
+			Database.getInstance().updateAuto(a);
+			System.out.println("auto aggiornata");
+			response.sendRedirect("catalogo");
+		}
+		
+		else {
+			response.sendRedirect("home");
 		}
 		
 	}
 
-}
 }
