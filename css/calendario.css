@@ -12,6 +12,7 @@ body {
 
 .box select option {
 	padding: 30px;
+	width: 250px;
 }
 
 .bgselect {
