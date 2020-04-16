@@ -37,7 +37,7 @@
 	<div class="row" >
 		<div class="col-12">
 			<form class="form-inline col-sm-10" action="filtro" method="post">
-				<div class="form-group  col-sm-3 box">
+				<div class="form-group  col-sm-3 box mr-4">
 					<%
 						int categoria = 0;
 						if (request.getAttribute("categoria") != null) {
@@ -157,10 +157,24 @@
 		</div>
 
 		<div class="col-6 descrizione">
-			<%
-				out.print("Marca: "+auto.getMarca() + " Modello: " + auto.getModello() + " Cilindrata: " + auto.getCilindrata() + " Colore: "
-							+ auto.getColore() + " <br>Prezzo: "  + auto.getCategoria().getPrezzo() + " euro/giorno");
-			%>
+			
+			<table class="catalogoTable">
+				<tr>
+				
+				<td><span class='mezzo'> Marca:</span> <%=auto.getMarca()%> </td>
+				<td><span class='mezzo'>Modello:</span> <%=auto.getModello()%></td>
+			
+				</tr>
+				 <tr>
+				 
+				 	<td><span class='mezzo'>Cilindrata:</span> <%=auto.getCilindrata() %> </td>
+				 
+				<td> <span class='mezzo'>Colore:</span> <%=auto.getColore()  %>  </td> </tr>
+							<tr><td colspan="2"> &nbsp;</td></tr> 
+				<tr><td colspan="2"><span class='mezzo'>Prezzo:</span> <%=auto.getCategoria().getPrezzo() %>  euro/giorno </td>
+							 
+				</table> 
+			
 		</div>
 
 		<div class="col-3 descrizione">
