@@ -89,17 +89,31 @@
 		<form method="POST" action="login">
 			<label>E-mail</label> <input type="email" name="email" id="email">
 			<label>Password</label> <input type="password" name="password" id="password">
-			<% if (request.getSession().getAttribute("nonvalidato") != null){%>
+			<% if (request.getSession().getAttribute("nonvalidato") != null){
+				;%>
+			
 			<p class="errore">Non sei ancora stato validato.</p>
 			
-			<%}else if(request.getSession().getAttribute("errore") != null){%>
+			<%
+			
+			}else if(request.getSession().getAttribute("errore") != null){
+			
+			%>
+			
 			<p class="errore">Credenziali sbagliate.</p>
 			
-			<%} else if(request.getSession().getAttribute("errore_null") != null){%>
+			
+			<%
+			
+			} else if(request.getSession().getAttribute("errore_null") != null){
+			%>
 			
 			<p class="errore">Inserisci tutti i campi.</p>
 			
-			<%} %>
+			<%
+			
+			} 
+			%>
 			
 				<input type="hidden" name="pagina" value="<%=request.getRequestURI()%>">
 				<input class="bottoni bottone" id="loginButton" type="submit" value="Login">	
