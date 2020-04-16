@@ -25,9 +25,13 @@ public class login extends HttpServlet {
     }
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+
+		String[] pag = request.getParameter("pagina").split("/");
+		System.out.print("*****"+pag[2]);
 		request.getServletContext().getRequestDispatcher("/jsp/header.jsp").include(request,response);
 		request.getServletContext().getRequestDispatcher("/jsp/navbar.jsp").include(request,response);
-		request.getServletContext().getRequestDispatcher("/jsp/home.jsp").include(request,response);
+		request.getServletContext().getRequestDispatcher("/jsp/"+ pag[2] +".jsp").include(request,response);
 		request.getServletContext().getRequestDispatcher("/jsp/footer.jsp").include(request,response);
 	}
 
@@ -41,6 +45,9 @@ public class login extends HttpServlet {
 			session.setAttribute("email_admin", request.getParameter("email"));
 			session.removeAttribute("errore");
 			System.out.println("OK malfidati!!!!!");
+			doGet(request, response);
+			
+			
 		}else if(Database.getInstance().getUtente(risposta1_jsp, risposta2_jsp)!=null)
 		{
 			Utente utente=Database.getInstance().getUtente(risposta1_jsp,risposta2_jsp);
@@ -48,6 +55,8 @@ public class login extends HttpServlet {
 			session.setAttribute("utente", utente);
 			session.removeAttribute("errore");
 			System.out.println("Ciao!!!");
+			
+			doGet(request, response);
 			}
 		}else if(Database.getInstance().getCliente(risposta1_jsp, risposta2_jsp)!=null){
 			Cliente cliente=Database.getInstance().getCliente(risposta1_jsp,risposta2_jsp);
@@ -55,6 +64,8 @@ public class login extends HttpServlet {
 			session.setAttribute("cliente",cliente);
 			session.removeAttribute("errore");
 			System.out.println("OK!!!!!");
+			
+			doGet(request, response);
 			}
 		}else if(risposta1_jsp==null||risposta2_jsp==null)
 		{
@@ -66,7 +77,7 @@ public class login extends HttpServlet {
 			session.setAttribute("errore", errore);
 			System.out.println(errore);
 		}
-		response.sendRedirect("login");
+
 	}
 	
 }
