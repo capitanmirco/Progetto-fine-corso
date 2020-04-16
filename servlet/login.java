@@ -15,8 +15,8 @@ import database.Database;
 @WebServlet("/login")
 public class login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private String admin_email="matteo.aiello@gmail.com";
-	private String admin_password="progettofinaleGeneration";
+	private String admin_email="root@gmail.com";
+	private String admin_password="root";
 	String risposta1_jsp;
 	String risposta2_jsp;
 
