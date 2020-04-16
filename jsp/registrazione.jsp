@@ -1,8 +1,7 @@
 <%@page import="model.Utente"%>
 <%@page import="model.Cliente"%>
 
-<%	
-	
+<%
 	String nome, cognome, email, dataDiNascita, codiceFiscale, password, numeroDiPatente;
 	Cliente c = null;
 	Utente u = null;
@@ -12,10 +11,9 @@
 	else if(session.getAttribute("utente") != null ) {
     	u = (Utente) request.getSession().getAttribute("utente");
 	}
-	
 %>
 		<div class="container registra">
-			<form method="post" name="myForm" action="registrazione" id="form">
+			<form method="get" name="myForm"  id="form">
 				<div class="form-group">
 				
        			<% if(c == null && u == null){%>	
@@ -58,6 +56,11 @@
 					<input type="password" class="form-control" name="password" id="exampleInputPassword" value="<%= password= c!=null ? c.getPassword(): u!=null? u.getPassword():""%>">
 				</div>
 				
+				<div class="form-group">
+					<label for="exampleInputConfermaPassword"> Conferma password </label> 
+					<input type="password" class="form-control" name="cPassword" id="exampleInputConfermaPassword">
+				</div>
+				
 				
 				<div class="form-group" id="patente">
 				<% if(u == null || c != null) {%>
@@ -67,26 +70,31 @@
 				</div>
 				
 				<div id="btn-reg">
-					<button type="submit"  class="bottone"> 
-					<%if(c ==null && u ==null) {
-    	    					out.print("Registra");
+					<button type="submit" class="bottone" id="bottoner"> 
+						<%if(c ==null && u ==null) {
+    	    				out.print("Registra");
         				} else {
 	        				out.print("Modifica");
         				} %> </button>
-        			</div>
+				</div>
 		</form>
 	</div>
-<script>
-
-	document.getElementById('form').addEventListener('submit', function(e) {
+	
+	<script>
+	
+		document.getElementById('form').addEventListener('submit', function(e) {
 		e.preventDefault();
+		alert ('funziona');
 		var password = document.getElementById('exampleInputPassword');
 		var cPassword = document.getElementById('exampleInputConfermaPassword');
 		
 		if(password.value != cPassword.value){
-			alert('Le password non coincidono');	
+			alert('Le password non coincidono');
+			
 		} else {
+			alert(password.value);
+			alert(cPassword.value);
 			return true;
+
 		}
-	});
-</script>
+	});</script>
