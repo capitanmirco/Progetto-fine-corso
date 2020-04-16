@@ -27,7 +27,7 @@ public class logout extends HttpServlet {
 		System.out.println(request.getSession().getAttribute("mail_admin")!=null);
 		System.out.println("logout");
 		session.invalidate();
-		response.sendRedirect("login");
+		response.sendRedirect("home");
 	}
 	
 }
