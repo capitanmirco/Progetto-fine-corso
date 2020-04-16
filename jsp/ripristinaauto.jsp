@@ -3,6 +3,7 @@
 <%@page import="model.Auto"%>
     <%if(request.getAttribute("listavuota")==null){
     %>
+<div class="min-h">
 <div class="accordion" id="accordionExample">
   <div class="card">
     <div class="card-header" id="headingOne">
@@ -66,3 +67,5 @@
     
   </div>
   </div>
+<div>
+	
