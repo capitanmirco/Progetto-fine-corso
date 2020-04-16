@@ -11,10 +11,15 @@ div{
 
 
 
-.errore {
-	color: red;
+.errore 
+{
+	color: #9e2727;
+	background-color: #a09f93;
+	border-radius: 10px;
+	width: 70% !important;
+	text-align: center;
+	margin: 0 auto;
 }
-
 
 .bottone {
 	border-radius: 10px !important;
