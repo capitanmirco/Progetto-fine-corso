@@ -218,13 +218,13 @@
 		</div>
 		
 		
-		<br><br><br>
+		
 	</div>
 	
 	<%
 		}
 	%>
-
+<br><br><br>
 </div></div> <script type="text/javascript">
 <!--
 //-->
