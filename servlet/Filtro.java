@@ -32,8 +32,17 @@ public class Filtro extends HttpServlet {
     public Filtro() {
         super();
     }
+    
+    
 
-    /*filtro per categoria e filtro per data*/
+    @Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+	}
+
+
+
+	/*filtro per categoria e filtro per data*/
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		
@@ -63,7 +72,7 @@ public class Filtro extends HttpServlet {
 						}
 					}
 				}
-				/*passa alla requst la lista auto giÃ  filtrata per categoria*/
+				/*passa alla requst la lista auto giÃƒÂ  filtrata per categoria*/
 				request.setAttribute("listaAuto", listaAuto);
 				
 				
@@ -110,7 +119,7 @@ public class Filtro extends HttpServlet {
 
 		}
 		
-		/*controllo validitÃ  date*/
+		/*controllo validitÃƒÂ  date*/
 		try {
 			if(request.getParameter("inizioNolo")!=null && request.getParameter("fineNolo")!=null &&
 					!request.getParameter("inizioNolo").trim().equals("") && !request.getParameter("fineNolo").trim().equals("") &&
@@ -118,9 +127,10 @@ public class Filtro extends HttpServlet {
 				System.out.println("date sbagliate");
 				request.setAttribute("dataerrata", true);
 				request.removeAttribute("listaAuto");
-				List<Auto> catalogoAuto = Database.getInstance().getAutoDisponibili();
-				request.setAttribute("listaAuto", catalogoAuto);
-				request.getServletContext().getNamedDispatcher("catalogo").forward(request, response);
+				//List<Auto> catalogoAuto = Database.getInstance().getAutoDisponibili();
+				//request.setAttribute("listaAuto", catalogoAuto);
+				//request.getServletContext().getNamedDispatcher("catalogo").forward(request, response);
+				response.sendRedirect("catalogo");
 			}else {
 				request.removeAttribute("dataerrata");
 				request.getServletContext().getNamedDispatcher("catalogo").forward(request, response);
@@ -159,7 +169,7 @@ public class Filtro extends HttpServlet {
 		return isNumericId;
 	}
 	
-	/*restituisce tutte le auto che non sono giÃ  noleggiate -- 0 = prenotata -- 1 = prenotabile*/
+	/*restituisce tutte le auto che non sono giÃƒÂ  noleggiate -- 0 = prenotata -- 1 = prenotabile*/
 	private void isAutoLibera(List<Auto> listaAuto, String data_inizio, String data_fine, int categoria) throws ParseException {
 		Date startData = stringToData(data_inizio);
 		Date endData = stringToData(data_fine);
