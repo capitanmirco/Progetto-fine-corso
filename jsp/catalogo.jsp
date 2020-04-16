@@ -37,7 +37,7 @@
 	<div class="row" >
 		<div class="col-12">
 			<form class="form-inline col-sm-10" action="filtro" method="post">
-				<div class="form-group  col-sm-3 box mr-4">
+				<div class="form-group  col-sm-3 box">
 					<%
 						int categoria = 0;
 						if (request.getAttribute("categoria") != null) {
