@@ -45,8 +45,8 @@ public class login extends HttpServlet {
 			doGet(request, response);
 			
 			
-		}else if(Database.getInstance().getUtente(risposta1_jsp, risposta2_jsp)!=null)
-		{
+		}else if(Database.getInstance().getUtente(risposta1_jsp, risposta2_jsp)!=null){
+			
 			Utente utente=Database.getInstance().getUtente(risposta1_jsp,risposta2_jsp);
 			if(utente.getValidato()==1) {
 			session.setAttribute("utente", utente);
@@ -55,7 +55,12 @@ public class login extends HttpServlet {
 			
 			doGet(request, response);
 			}
+			else {
+				System.out.println("non sei utente validato o sei stato rimosso");
+				doGet(request, response);
+			}
 		}else if(Database.getInstance().getCliente(risposta1_jsp, risposta2_jsp)!=null){
+			
 			Cliente cliente=Database.getInstance().getCliente(risposta1_jsp,risposta2_jsp);
 			if(cliente.getValidato()==1) {
 			session.setAttribute("cliente",cliente);
@@ -63,6 +68,10 @@ public class login extends HttpServlet {
 			System.out.println("OK!!!!!");
 			
 			doGet(request, response);
+			}
+			else {
+				System.out.println("non sei cliente validato o sei stato rimosso");
+				doGet(request, response);
 			}
 		}else if(risposta1_jsp==null||risposta2_jsp==null)
 		{
