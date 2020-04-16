@@ -88,7 +88,10 @@
 		<form method="POST" action="login">
 			<label>E-mail</label> <input type="email" name="email" id="email">
 			<label>Password</label> <input type="password" name="password" id="password">
-			<% if(request.getSession().getAttribute("errore") != null){%>
+			<% if (request.getSession().getAttribute("nonvalidato") != null){%>
+			<p class="errore">Non sei ancora stato validato.</p>
+			
+			<%}else if(request.getSession().getAttribute("errore") != null){%>
 			<p class="errore">Credenziali sbagliate.</p>
 			
 			<%} else if(request.getSession().getAttribute("errore_null") != null){%>
@@ -111,11 +114,13 @@ function finestraLog()
 	$('body>*:not("#divLogin"), #div-car, .bgselect.cal-position').css('filter', 'blur(3px)');
 }
 
-<%
-if(request.getSession().getAttribute("errore_null") != null || request.getSession().getAttribute("errore") != null) {
-	 %>
-	 finestraLog();
-<%} %>
+		<%
+		if(request.getSession().getAttribute("errore_null") != null || 
+		request.getSession().getAttribute("errore") != null || 
+		request.getSession().getAttribute("nonvalidato") != null) {
+			 %>
+			 finestraLog();
+		<%} %>
 
  </script>
 
