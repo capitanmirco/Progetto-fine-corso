@@ -98,8 +98,7 @@
 			alert('Le password non coincidono');
 			
 		} else {
-			alert('Le password coincidono');
 			document.forms.myForm.submit();
 		}
 	}
-</script>
+	</script>
