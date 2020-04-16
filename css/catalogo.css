@@ -50,19 +50,46 @@
 	margin-bottom: auto;
 }
 
+.catalogoTable
+{
+	width:100%;
+}
+
+.catalogoTable td
+{
+	text-align: left;
+	width: 300px;
+}
+
+.form-group.col-sm-3.box.mr-4 {
+
+    margin-left: 0;
+    padding-left: 0;
+
+}
+
+#catalogo .row {
+
+    padding: 40px;
+    border-bottom: 1px solid gray;
+
+}
+
 .col-sm #div-prenota {
     margin: 3px auto;
 }
 
 select[name="auto"] {
     height: 52px;
+    padding: 0px;
 	width: min-content;
 }
 
-#catalogo .row {
-    margin: 50px auto;
-}
+#catalogo .container {
 
+    margin-top: -25px;
+
+}
 
 .row .col-sm {
     overflow: unset;
@@ -81,6 +108,7 @@ select[name="auto"] {
 .col-3.descrizione{
 	 display: flex;
     align-items: center;
+    justify-content: center;
     overflow: unset;
 }
 
