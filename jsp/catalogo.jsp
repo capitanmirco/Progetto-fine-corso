@@ -177,6 +177,17 @@
 			<%
 				}
 			%>
+			
+			<%
+			if(request.getSession().getAttribute("utente")==null && request.getSession().getAttribute("email_admin")==null){
+			%>
+				<a
+				href="javascript:finestraLog('accedi')"
+				class="btn btn-primary btn-lg active bottone" role="button"
+				aria-pressed="true">noleggia</a>
+			<%
+			}
+			%>
 
 			<%
 				if ((request.getSession().getAttribute("email_admin") != null)
