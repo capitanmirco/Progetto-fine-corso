@@ -48,7 +48,7 @@
 					<input type="date" class="form-control" name="datadinascita" id="exampleInputDataDiNascita" value="<%= dataDiNascita= c!=null ? c.getDataDiNascita(): u!=null? u.getDataDiNascita():""%>">
 				<% if ( request.getAttribute("erroredata")!=null)
 				{  %>
-					<p class="errore"> Devi essere maggiorenne per iscriverti. </p>
+					<p style="margin-top: 10px" class="errore"> Devi essere maggiorenne per iscriverti. </p>
 				<% }  %>
 				
 				</div>
@@ -76,11 +76,11 @@
 				<%}%>	
 				
 				<% if(request.getAttribute("erroremodificacliente") != null) { %>
-					<p class="errore"> Email, codice fiscale o patente esistente </p>
+					<p style="margin-top: 10px" class="errore"> Email, codice fiscale o patente esistente </p>
 				<% } %>
 				
 				<% if(request.getAttribute("erroremodificautente") != null) { %>
-					<p class="errore"> Email o codice fiscale esistente </p>
+					<p style="margin-top: 10px" class="errore"> Email o codice fiscale esistente </p>
 				<% } %>
 				
 				</div>
