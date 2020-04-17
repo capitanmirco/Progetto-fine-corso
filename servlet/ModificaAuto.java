@@ -73,14 +73,16 @@ public class ModificaAuto extends HttpServlet {
 			a.setModello(request.getParameter("modello"));
 			
 			if(!a.getTarga().equals(request.getParameter("targa"))) {
-				Auto auto_temp = Database.getInstance().getAutoByTarga(request.getParameter("targa"));
-				if(auto_temp.getIdAuto()==(a.getIdAuto())) {
-					a.setTarga(request.getParameter("targa"));
-				}
-				else {
-					request.setAttribute("erroremodificaauto", true);
-					System.out.println("targa esistente");
-					doGet(request, response);
+				if(Database.getInstance().getAutoByTarga(request.getParameter("targa")) != null){
+					Auto auto_temp = Database.getInstance().getAutoByTarga(request.getParameter("targa"));
+					if(auto_temp.getIdAuto()==(a.getIdAuto())) {
+						a.setTarga(request.getParameter("targa"));
+					}
+					else {
+						request.setAttribute("erroremodificaauto", true);
+						System.out.println("targa esistente");
+						doGet(request, response);
+					}
 				}
 			}
 			
