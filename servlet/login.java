@@ -49,7 +49,7 @@ public class login extends HttpServlet {
 			session.removeAttribute("errore");
 			session.removeAttribute("nonvalidato");
 			session.removeAttribute("errore_null");
-			System.out.println("OK malfidati!!!!!");
+			System.out.println("Loggato!!!!");
 			doGet(request, response);
 			
 			
@@ -90,7 +90,7 @@ public class login extends HttpServlet {
 		}
 		else if(risposta1_jsp==""||risposta2_jsp=="")
 		{
-			String errore_null="Non hai inserito tutti i campi!!!";
+			String errore_null="Non hai inserito tutti i campi!";
 			request.setAttribute("errorelogin", "si");
 			session.removeAttribute("errore");
 			session.setAttribute("errore_null", errore_null);
@@ -98,7 +98,7 @@ public class login extends HttpServlet {
 			doGet(request, response);
 		}
 		else {
-			String errore="siete scemi";
+			String errore="credenziali errate";
 			session.setAttribute("errore", errore);
 			session.removeAttribute("errore_null");
 			session.removeAttribute("nonvalidato");
