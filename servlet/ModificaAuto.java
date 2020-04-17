@@ -30,7 +30,7 @@ public class ModificaAuto extends HttpServlet {
 		HttpSession session=request.getSession();
 		if (session.getAttribute("utente")!=null || session.getAttribute("email_admin")!=null) {
 
-			//prendo l'id che mi passerà il catalogo cliccando su modifica auto e creo un'auto
+			//prendo l'id che mi passerÃ  il catalogo cliccando su modifica auto e creo un'auto
 			if(request.getParameter("modifica")!=null) {
 				
 				int id=Integer.parseInt(request.getParameter("modifica"));
@@ -73,16 +73,14 @@ public class ModificaAuto extends HttpServlet {
 			a.setModello(request.getParameter("modello"));
 			
 			if(!a.getTarga().equals(request.getParameter("targa"))) {
-				if(Database.getInstance().getAutoByTarga(request.getParameter("targa")) != null){
-					Auto auto_temp = Database.getInstance().getAutoByTarga(request.getParameter("targa"));
-					if(auto_temp.getIdAuto()==(a.getIdAuto())) {
-						a.setTarga(request.getParameter("targa"));
-					}
-					else {
-						request.setAttribute("erroremodificaauto", true);
-						System.out.println("targa esistente");
-						doGet(request, response);
-					}
+				Auto auto_temp = Database.getInstance().getAutoByTarga(request.getParameter("targa"));
+				if(auto_temp == null || (auto_temp != null && auto_temp.getIdAuto()==(a.getIdAuto()))) {
+					a.setTarga(request.getParameter("targa"));
+				}
+				else {
+					request.setAttribute("erroremodificaauto", true);
+					System.out.println("targa esistente");
+					doGet(request, response);
 				}
 			}
 			
