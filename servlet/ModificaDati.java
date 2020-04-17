@@ -67,7 +67,7 @@ public class ModificaDati extends HttpServlet {
 
 				if(!c.getEmail().equals(email)) {
 					Cliente cliente_temp = Database.getInstance().getCliente(email);
-					if(cliente_temp.getIdCliente()==(c.getIdCliente())) {
+					if(cliente_temp== null || (cliente_temp != null && cliente_temp.getIdCliente()==(c.getIdCliente()))) {
 						c.setEmail(email);
 					}
 					else {
@@ -83,7 +83,7 @@ public class ModificaDati extends HttpServlet {
 
 				if(!c.getCodiceFiscale().equals(codiceFiscale)) {
 					Cliente cliente_temp = Database.getInstance().getClienteByCF(codiceFiscale);
-					if(cliente_temp.getIdCliente()==(c.getIdCliente())) {
+					if(cliente_temp== null || (cliente_temp != null && cliente_temp.getIdCliente()==(c.getIdCliente()))) {
 						c.setCodiceFiscale(codiceFiscale);
 					}
 					else {
@@ -96,7 +96,7 @@ public class ModificaDati extends HttpServlet {
 				if(!c.getNumeroPatente().equals(numeroPatente)) {
 					if((request.getParameter("numeropatente")!=null) && (!request.getParameter("numeropatente").trim().equals(""))) {
 						Cliente cliente_temp = Database.getInstance().getClienteByPatente(numeroPatente);
-						if(cliente_temp.getIdCliente()==(c.getIdCliente())) {
+						if(cliente_temp== null || (cliente_temp != null && cliente_temp.getIdCliente()==(c.getIdCliente()))) {
 							c.setNumeroPatente(numeroPatente);
 						}
 						else {
