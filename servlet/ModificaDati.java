@@ -132,7 +132,7 @@ public class ModificaDati extends HttpServlet {
 					}
 					if(!u.getEmail().equals(email)) {
 						Utente utente_temp = Database.getInstance().getUtente(email);
-						if(utente_temp.getIdUtente()==(u.getIdUtente())) {
+						if(utente_temp== null || (utente_temp != null && utente_temp.getIdUtente()==(u.getIdUtente()))) {
 							u.setEmail(email);
 						}
 						else {
@@ -149,12 +149,12 @@ public class ModificaDati extends HttpServlet {
 					}
 					if(!u.getCodiceFiscale().equals(codiceFiscale)) {
 						Utente utente_temp = Database.getInstance().getUtenteByCF(codiceFiscale);
-						if(utente_temp.getIdUtente()==(u.getIdUtente())) {
-							u.setEmail(email);
+						if(utente_temp== null || (utente_temp != null && utente_temp.getIdUtente()==(u.getIdUtente()))) {
+							u.setCodiceFiscale(codiceFiscale);
 						}
 						else {
 							request.setAttribute("erroremodificautente", true);
-							System.out.println("email esistente");
+							System.out.println("cf esistente");
 							doGet(request, response);
 						}
 					}
@@ -170,4 +170,3 @@ public class ModificaDati extends HttpServlet {
 
 		}
 	}
-
