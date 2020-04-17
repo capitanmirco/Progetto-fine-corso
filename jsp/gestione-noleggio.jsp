@@ -39,7 +39,7 @@
 						<td><%=n.getDataFine()%></td>
 						<td><a
 							href="interrompinoleggiate?stato=2&idNoleggio=<%=n.getIdNoleggio()%>"
-							type="button" class="bottone">Interrompi</a></td>
+							type="button" >Interrompi</a></td>
 
 						<td style="padding: 0px"><a href="jsp/gestione"></a></td>
 					</tr>
