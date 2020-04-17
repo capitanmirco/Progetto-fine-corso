@@ -64,8 +64,8 @@ public class ListaNoleggiate extends HttpServlet {
 				request.setAttribute("storico_noleggi", storicoNoleggi);
 				request.setAttribute("Noleggi_lista", noleggiIncorsoCliente);
 			} else {
-				request.setAttribute("storico_noleggi", listaNoleggi);
-			}
+				request.setAttribute("storico_noleggi", storicoNoleggi);
+			} 
 
 		} // if loggato come utente/admin
 
