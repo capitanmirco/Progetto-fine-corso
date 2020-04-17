@@ -1,6 +1,9 @@
 package servlet;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,6 +41,14 @@ public class ModificaDati extends HttpServlet {
 				(request.getParameter("password") != null)&&(!request.getParameter("password").trim().equals(""))
 				&& (!request.getParameter("datadinascita").trim().equals(""))&& (request.getParameter("datadinascita") != null) &&
 				(!request.getParameter("codicefiscale").trim().equals(""))&&(request.getParameter("codicefiscale") != null)) {
+
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			LocalDate data = LocalDate.now().minusYears(18); // data attuale meno 18 anni
+			LocalDate dataInserita = LocalDate.parse(request.getParameter("datadinascita").trim());
+			int differenzaDate = data.compareTo(dataInserita); // restituisce la differenza tra le 2 date
+			
+			if (differenzaDate >= 0) {
+				request.removeAttribute("erroredata");
 
 			String nome = request.getParameter("nome");
 			String cognome = request.getParameter("cognome");
@@ -115,9 +126,8 @@ public class ModificaDati extends HttpServlet {
 					System.out.println("cliente modificato");
 					response.sendRedirect("visualizzadati");
 				}
-
-
 			}
+
 
 
 			if (session.getAttribute("utente") != null) {
@@ -167,6 +177,13 @@ public class ModificaDati extends HttpServlet {
 				}
 
 			}
+			
+			else {
+				request.setAttribute("erroredata", "si");
+				System.out.println("Minorenne");
+				doGet(request, response);
+			}
+		}
 
 		}
 	}
